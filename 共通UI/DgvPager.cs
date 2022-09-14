@@ -47,7 +47,7 @@ namespace テストDB.共通UI
             var castedlist = fullDataSource.Cast<T>().ToList();
     
             var list = castedlist
-                .Skip((UcPageControl.CurrentPage - 1) * UcPageControl.RowsInPage)
+                .Skip(UcPageControl.CurrentCount - 1)
                 .Take(UcPageControl.RowsInPage)
                 .ToArray()
                 ;

@@ -41,6 +41,7 @@ namespace テストDB.UI
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cButton検索 = new テストDB.共通UI.CButton();
             this.ucPageControl = new テストDB.共通UI.UcPageControl();
             this.userControl売上伝票 = new テストDB.UI.Uc売上伝票();
             this.dgvPager売上一覧 = new テストDB.共通UI.DgvPager();
@@ -48,7 +49,6 @@ namespace テストDB.UI
             this.userControl社員検索 = new テストDB.共通UI.Uc社員検索();
             this.userControl社員入力 = new テストDB.共通UI.Uc社員入力();
             this.userControl得意先入力 = new テストDB.共通UI.Uc得意先入力();
-            this.cButton検索 = new テストDB.共通UI.CButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPager売上一覧)).BeginInit();
             this.SuspendLayout();
@@ -117,15 +117,30 @@ namespace テストDB.UI
             this.panel1.Size = new System.Drawing.Size(845, 36);
             this.panel1.TabIndex = 66;
             // 
+            // cButton検索
+            // 
+            this.cButton検索.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cButton検索.BackColorSaved = System.Drawing.Color.Empty;
+            this.cButton検索.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cButton検索.Font = new System.Drawing.Font("MS UI Gothic", 18F);
+            this.cButton検索.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.cButton検索.Location = new System.Drawing.Point(732, 182);
+            this.cButton検索.Name = "cButton検索";
+            this.cButton検索.Size = new System.Drawing.Size(101, 44);
+            this.cButton検索.TabIndex = 67;
+            this.cButton検索.Text = "検索";
+            this.cButton検索.UseVisualStyleBackColor = false;
+            this.cButton検索.Click += new System.EventHandler(this.cButton検索_Click);
+            // 
             // ucPageControl
             // 
             this.ucPageControl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ucPageControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(225)))), ((int)(((byte)(232)))));
-            this.ucPageControl.CurrentPage = 0;
-            this.ucPageControl.Location = new System.Drawing.Point(563, 6);
+            this.ucPageControl.CurrentCount = 0;
+            this.ucPageControl.Location = new System.Drawing.Point(432, 6);
             this.ucPageControl.Name = "ucPageControl";
             this.ucPageControl.RowCount = 0;
-            this.ucPageControl.Size = new System.Drawing.Size(280, 27);
+            this.ucPageControl.Size = new System.Drawing.Size(410, 27);
             this.ucPageControl.TabIndex = 0;
             // 
             // userControl売上伝票
@@ -238,21 +253,6 @@ namespace テストDB.UI
             this.userControl得意先入力.Size = new System.Drawing.Size(294, 78);
             this.userControl得意先入力.TabIndex = 60;
             this.userControl得意先入力.userControl得意先検索 = null;
-            // 
-            // cButton検索
-            // 
-            this.cButton検索.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cButton検索.BackColorSaved = System.Drawing.Color.Empty;
-            this.cButton検索.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cButton検索.Font = new System.Drawing.Font("MS UI Gothic", 18F);
-            this.cButton検索.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.cButton検索.Location = new System.Drawing.Point(732, 182);
-            this.cButton検索.Name = "cButton検索";
-            this.cButton検索.Size = new System.Drawing.Size(101, 44);
-            this.cButton検索.TabIndex = 67;
-            this.cButton検索.Text = "検索";
-            this.cButton検索.UseVisualStyleBackColor = false;
-            this.cButton検索.Click += new System.EventHandler(this.cButton検索_Click);
             // 
             // Uc売上一覧
             // 

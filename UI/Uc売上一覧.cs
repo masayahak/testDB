@@ -144,17 +144,17 @@ namespace テストDB.UI
                 ;
 
             this.dgvPager売上一覧.UcPageControl.RowCount = list.Count();
-            this.dgvPager売上一覧.UcPageControl.CurrentPage = 1;
+            this.dgvPager売上一覧.UcPageControl.CurrentCount = 1;
 
             this.dgvPager売上一覧.SetFullDatasource(list);
             this.dgvPager売上一覧.ShowPage<ds売上一覧>();
 
             // 列幅の設定:
-            dgvPager売上一覧.Columns[(int)ds売上一覧_Col.ID].Visible = false;
+            dgvPager売上一覧.Columns[(int)ds売上一覧_Col.ID].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvPager売上一覧.Columns[(int)ds売上一覧_Col.売上日].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgvPager売上一覧.Columns[(int)ds売上一覧_Col.得意先CD].Visible = false;
-            dgvPager売上一覧.Columns[(int)ds売上一覧_Col.得意先名].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgvPager売上一覧.Columns[(int)ds売上一覧_Col.担当社員番号].Visible = false;
+            dgvPager売上一覧.Columns[(int)ds売上一覧_Col.得意先CD].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvPager売上一覧.Columns[(int)ds売上一覧_Col.得意先名].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgvPager売上一覧.Columns[(int)ds売上一覧_Col.担当社員番号].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvPager売上一覧.Columns[(int)ds売上一覧_Col.担当社員名].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dgvPager売上一覧.Columns[(int)ds売上一覧_Col.売上高].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
@@ -168,6 +168,7 @@ namespace テストDB.UI
 
             // ヘッダー
             dgvPager売上一覧.Columns[(int)ds売上一覧_Col.ID].HeaderText = "伝票№";
+
         }
 
         // ----------------------------------------------------------------

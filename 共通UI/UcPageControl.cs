@@ -9,14 +9,21 @@ namespace テストDB.共通UI
         // -------------------------------------------------------
         // 公開プロパティ
         // -------------------------------------------------------
-        private int currentPage;
-        public int CurrentPage 
+        private int currentCount;
+        public int CurrentCount 
         { 
-            get { return currentPage; }
+            get { return currentCount; }
             set 
             { 
-                currentPage = value;
-                this.lblCurrentPage.Text = value.ToString();
+                currentCount = value;
+
+                int end;
+                if (value + RowsInPage < rowCount)
+                    end = value + RowsInPage - 1;
+                else
+                    end = rowCount;
+
+                this.lblCurrentCount.Text = value.ToString() + "～" + end.ToString();
 
                 // ボタン制御
                 SwitchButtonEnabled();
@@ -30,11 +37,9 @@ namespace テストDB.共通UI
             get { return rowCount; }
             set { 
                 rowCount = value;
-                MaxPage = (int)Math.Ceiling((double)RowCount / RowsInPage);
-                this.lblMaxPage.Text = MaxPage.ToString();
+                this.lblMaxCount.Text = rowCount.ToString();
             }
         }
-        public int MaxPage;
 
         // -------------------------------------------------------------
         // デリゲートイベントの定義
@@ -56,7 +61,7 @@ namespace テストDB.共通UI
         // -------------------------------------------------------------
         private void btnFirst_Click(object sender, EventArgs e)
         {
-            CurrentPage = 1;
+            CurrentCount = 1;
 
             // イベントの発火
             OnPageChange();
@@ -64,7 +69,7 @@ namespace テストDB.共通UI
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            CurrentPage--;
+            CurrentCount -= RowsInPage;
 
             // イベントの発火
             OnPageChange();
@@ -72,7 +77,7 @@ namespace テストDB.共通UI
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            CurrentPage++;
+            CurrentCount += RowsInPage;
 
             // イベントの発火
             OnPageChange();
@@ -80,7 +85,11 @@ namespace テストDB.共通UI
 
         private void btnLast_Click(object sender, EventArgs e)
         {
-            CurrentPage = MaxPage;
+            while (CurrentCount < rowCount)
+            {
+                CurrentCount += RowsInPage;
+            }
+            CurrentCount -= RowsInPage;
 
             // イベントの発火
             OnPageChange();
@@ -97,13 +106,13 @@ namespace テストDB.共通UI
             this.btnNext.Enabled = true;
             this.btnLast.Enabled = true;
 
-            if (CurrentPage == 1)
+            if (CurrentCount == 1)
             {
                 this.btnFirst.Enabled = false;
                 this.btnBack.Enabled = false;
             }
 
-            if (CurrentPage == MaxPage)
+            if (CurrentCount + RowsInPage > rowCount)
             {
                 this.btnNext.Enabled = false;
                 this.btnLast.Enabled = false;
