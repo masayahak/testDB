@@ -14,14 +14,11 @@ namespace テストDB.共通UI
         // -------------------------------------------------------
 
         // こちらに全ページ分のDataSourceをセット
-        private List<Object> fullDataSource;
+        public List<Object> fullDataSource;
         public void SetFullDatasource<T>(List<T> list)
         {
             fullDataSource = list.Cast<Object>().ToList();
         }
-
-        // ページコントローラー
-        public UcPageControl UcPageControl { get; set; }
 
         // -------------------------------------------------------
         // コンストラクタ
@@ -40,15 +37,15 @@ namespace テストDB.共通UI
         // -------------------------------------------------------
         // ページを表示
         // -------------------------------------------------------
-        public void ShowPage<T>()
+        public void ShowPage<T>(int CurrentCount, int RoesInPage)
         {
             if (fullDataSource == null) return;
 
             var castedlist = fullDataSource.Cast<T>().ToList();
     
             var list = castedlist
-                .Skip(UcPageControl.CurrentCount - 1)
-                .Take(UcPageControl.RowsInPage)
+                .Skip(CurrentCount - 1)
+                .Take(RoesInPage)
                 .ToArray()
                 ;
 

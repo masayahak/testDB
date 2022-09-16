@@ -40,16 +40,14 @@ namespace テストDB.UI
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.cButton検索 = new テストDB.共通UI.CButton();
-            this.ucPageControl = new テストDB.共通UI.UcPageControl();
             this.userControl売上伝票 = new テストDB.UI.Uc売上伝票();
             this.dgvPager売上一覧 = new テストDB.共通UI.DgvPager();
             this.userControl得意先検索 = new テストDB.共通UI.Uc得意先検索();
             this.userControl社員検索 = new テストDB.共通UI.Uc社員検索();
             this.userControl社員入力 = new テストDB.共通UI.Uc社員入力();
             this.userControl得意先入力 = new テストDB.共通UI.Uc得意先入力();
-            this.panel1.SuspendLayout();
+            this.ucPageControl = new テストDB.共通UI.UcPageControl();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPager売上一覧)).BeginInit();
             this.SuspendLayout();
             // 
@@ -106,17 +104,6 @@ namespace テストDB.UI
             this.label2.TabIndex = 64;
             this.label2.Text = "担当社員";
             // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(225)))), ((int)(((byte)(232)))));
-            this.panel1.Controls.Add(this.ucPageControl);
-            this.panel1.Location = new System.Drawing.Point(0, 693);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(845, 36);
-            this.panel1.TabIndex = 66;
-            // 
             // cButton検索
             // 
             this.cButton検索.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -131,17 +118,6 @@ namespace テストDB.UI
             this.cButton検索.Text = "検索";
             this.cButton検索.UseVisualStyleBackColor = false;
             this.cButton検索.Click += new System.EventHandler(this.cButton検索_Click);
-            // 
-            // ucPageControl
-            // 
-            this.ucPageControl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ucPageControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(225)))), ((int)(((byte)(232)))));
-            this.ucPageControl.CurrentCount = 0;
-            this.ucPageControl.Location = new System.Drawing.Point(432, 6);
-            this.ucPageControl.Name = "ucPageControl";
-            this.ucPageControl.RowCount = 0;
-            this.ucPageControl.Size = new System.Drawing.Size(410, 27);
-            this.ucPageControl.TabIndex = 0;
             // 
             // userControl売上伝票
             // 
@@ -201,8 +177,8 @@ namespace テストDB.UI
             this.dgvPager売上一覧.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPager売上一覧.Size = new System.Drawing.Size(845, 461);
             this.dgvPager売上一覧.TabIndex = 36;
-            this.dgvPager売上一覧.UcPageControl = null;
             this.dgvPager売上一覧.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPager売上一覧_CellDoubleClick);
+            this.dgvPager売上一覧.SizeChanged += new System.EventHandler(this.dgvPager売上一覧_SizeChanged);
             // 
             // userControl得意先検索
             // 
@@ -254,13 +230,25 @@ namespace テストDB.UI
             this.userControl得意先入力.TabIndex = 60;
             this.userControl得意先入力.userControl得意先検索 = null;
             // 
+            // ucPageControl
+            // 
+            this.ucPageControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(225)))), ((int)(((byte)(232)))));
+            this.ucPageControl.CurrentCount = 0;
+            this.ucPageControl.dgvPager = null;
+            this.ucPageControl.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ucPageControl.Location = new System.Drawing.Point(0, 694);
+            this.ucPageControl.Name = "ucPageControl";
+            this.ucPageControl.RowCount = 0;
+            this.ucPageControl.Size = new System.Drawing.Size(845, 35);
+            this.ucPageControl.TabIndex = 68;
+            // 
             // Uc売上一覧
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(47)))), ((int)(((byte)(87)))));
+            this.Controls.Add(this.ucPageControl);
             this.Controls.Add(this.cButton検索);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.userControl売上伝票);
             this.Controls.Add(this.dgvPager売上一覧);
             this.Controls.Add(this.userControl得意先検索);
@@ -275,7 +263,6 @@ namespace テストDB.UI
             this.Name = "Uc売上一覧";
             this.Size = new System.Drawing.Size(845, 729);
             this.Load += new System.EventHandler(this.UserControl売上日別売上一覧_Load);
-            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPager売上一覧)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -293,9 +280,8 @@ namespace テストDB.UI
         private 共通UI.Uc社員入力 userControl社員入力;
         private System.Windows.Forms.Label label2;
         private 共通UI.Uc社員検索 userControl社員検索;
-        private System.Windows.Forms.Panel panel1;
         private 共通UI.DgvPager dgvPager売上一覧;
-        private 共通UI.UcPageControl ucPageControl;
         private 共通UI.CButton cButton検索;
+        private 共通UI.UcPageControl ucPageControl;
     }
 }

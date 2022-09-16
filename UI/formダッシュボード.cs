@@ -1,5 +1,8 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
+using テストDB.ViewModel;
 using static テストDB.UI.Uc売上分析;
 
 namespace テストDB

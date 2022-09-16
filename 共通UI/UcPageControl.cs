@@ -42,11 +42,28 @@ namespace テストDB.共通UI
         }
 
         // -------------------------------------------------------------
+        // 対象のグリッドビュー
+        // -------------------------------------------------------------
+        public DgvPager dgvPager { get; set; }
+
+        // -------------------------------------------------------------
         // デリゲートイベントの定義
         // -------------------------------------------------------------
         // 親へイベントをデリゲートするためのイベントハンドラを定義
-        public delegate void OnPageChangeEventHandler();
+        public delegate void OnPageChangeEventHandler(OnPageChangeEventArgs args);
         public event OnPageChangeEventHandler OnPageChange;
+
+        // デリゲートの引数を定義
+        public class OnPageChangeEventArgs : EventArgs
+        {
+            public int CurrentCount;
+            public int RowsInPage;
+        }
+
+        // 親へイベントをデリゲートするためのイベントハンドラを定義
+        public delegate void OnGridToExcelEventHandler();
+        public event OnGridToExcelEventHandler OnGridToExcel;
+
 
         // -------------------------------------------------------------
         // 初期化とロード
@@ -64,7 +81,13 @@ namespace テストDB.共通UI
             CurrentCount = 1;
 
             // イベントの発火
-            OnPageChange();
+            var arg = new OnPageChangeEventArgs
+            {
+                CurrentCount = CurrentCount,
+                RowsInPage = RowsInPage
+
+            };
+            OnPageChange(arg);
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -72,7 +95,13 @@ namespace テストDB.共通UI
             CurrentCount -= RowsInPage;
 
             // イベントの発火
-            OnPageChange();
+            var arg = new OnPageChangeEventArgs
+            {
+                CurrentCount = CurrentCount,
+                RowsInPage = RowsInPage
+
+            };
+            OnPageChange(arg);
         }
 
         private void btnNext_Click(object sender, EventArgs e)
@@ -80,7 +109,13 @@ namespace テストDB.共通UI
             CurrentCount += RowsInPage;
 
             // イベントの発火
-            OnPageChange();
+            var arg = new OnPageChangeEventArgs
+            {
+                CurrentCount = CurrentCount,
+                RowsInPage = RowsInPage
+
+            };
+            OnPageChange(arg);
         }
 
         private void btnLast_Click(object sender, EventArgs e)
@@ -92,7 +127,13 @@ namespace テストDB.共通UI
             CurrentCount -= RowsInPage;
 
             // イベントの発火
-            OnPageChange();
+            var arg = new OnPageChangeEventArgs
+            {
+                CurrentCount = CurrentCount,
+                RowsInPage = RowsInPage
+
+            };
+            OnPageChange(arg);
         }
 
         // -------------------------------------------------------------
@@ -119,5 +160,14 @@ namespace テストDB.共通UI
             }
         }
 
+        private void buttonExcel_Click(object sender, EventArgs e)
+        {
+            // ボタンを連続でクリックできなくする
+            this.buttonExcel.Enabled = false;
+
+            OnGridToExcel();
+
+            this.buttonExcel.Enabled = true;
+        }
     }
 }
