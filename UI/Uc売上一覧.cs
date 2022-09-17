@@ -1,20 +1,11 @@
-﻿using Microsoft.Office.Interop.Excel;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using System.Data;
-using System.Data.SqlTypes;
-using System.Drawing;
-using System.Drawing.Text;
-using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using System.Xml.Linq;
 using テストDB.ViewModel;
 using static テストDB.共通UI.UcPageControl;
 using static テストDB.共通UI.Uc得意先検索;
 using static テストDB.共通UI.Uc社員検索;
-using Excel = Microsoft.Office.Interop.Excel;
 
 namespace テストDB.UI
 {
@@ -64,7 +55,7 @@ namespace テストDB.UI
             this.ucPageControl.RowsInPage = 100;
             this.ucPageControl.OnPageChange += OnPageChange;
 
-            this.ucPageControl.OnGridToExcel += OnGridToExcel;
+            this.ucPageControl.EditExcel += Edit_Excel;
         }
 
 
@@ -164,13 +155,10 @@ namespace テストDB.UI
             this.dgvPager売上一覧.ShowPage<ds売上一覧>(this.ucPageControl.CurrentCount, this.ucPageControl.RowsInPage);
 
             // 列幅の設定:
-            dgvPager売上一覧.Columns[(int)ds売上一覧_Col.ID].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgvPager売上一覧.Columns[(int)ds売上一覧_Col.売上日].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgvPager売上一覧.Columns[(int)ds売上一覧_Col.得意先CD].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgvPager売上一覧.Columns[(int)ds売上一覧_Col.得意先名].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgvPager売上一覧.Columns[(int)ds売上一覧_Col.担当社員番号].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgvPager売上一覧.Columns[(int)ds売上一覧_Col.担当社員名].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgvPager売上一覧.Columns[(int)ds売上一覧_Col.売上高].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            foreach (DataGridViewColumn column in dgvPager売上一覧.Columns)
+            {
+                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
 
             // 書式
             dgvPager売上一覧.Columns[(int)ds売上一覧_Col.売上日].DefaultCellStyle.Format = "MM/dd";
@@ -194,14 +182,11 @@ namespace テストDB.UI
         {
             dgvPager売上一覧.Columns[(int)ds売上一覧_Col.得意先名].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
-            int ColWidthSum =
-            dgvPager売上一覧.Columns[(int)ds売上一覧_Col.ID].Width +
-            dgvPager売上一覧.Columns[(int)ds売上一覧_Col.売上日].Width +
-            dgvPager売上一覧.Columns[(int)ds売上一覧_Col.得意先CD].Width +
-            dgvPager売上一覧.Columns[(int)ds売上一覧_Col.得意先名].Width +
-            dgvPager売上一覧.Columns[(int)ds売上一覧_Col.担当社員番号].Width +
-            dgvPager売上一覧.Columns[(int)ds売上一覧_Col.担当社員名].Width +
-            dgvPager売上一覧.Columns[(int)ds売上一覧_Col.売上高].Width;
+            int ColWidthSum = 0;
+            foreach (DataGridViewColumn column in dgvPager売上一覧.Columns)
+            {
+                ColWidthSum += column.Width;
+            }
 
             if (dgvPager売上一覧.Width > ColWidthSum)
             {
@@ -242,99 +227,11 @@ namespace テストDB.UI
             this.userControl売上伝票.BringToFront();
         }
 
-        private void OnGridToExcel()
+        // -----------------------------------------------------
+        // EXCELの追加編集
+        // -----------------------------------------------------
+        private void Edit_Excel(EditExcelEventArgs args)
         {
-            //Excelオブジェクトの初期化
-            Excel.Application ExcelApp = null;
-            Excel.Workbook exCurrentBook = null;
-            Excel.Worksheet exCurrentSheet = null;
-
-
-            try
-            {
-                //待機状態
-                Cursor.Current = Cursors.WaitCursor;
-
-                //Excelシートのインスタンスを作る
-                ExcelApp = new Excel.Application();
-
-                exCurrentBook = ExcelApp.Workbooks.Add();
-                exCurrentSheet = exCurrentBook.Worksheets[1];
-
-                exCurrentSheet.Select(Type.Missing);
-
-
-                // -----------------------------------------------------
-                // ヘッダー
-                // -----------------------------------------------------
-                int rows = dgvPager売上一覧.fullDataSource.Count;
-                int cols = dgvPager売上一覧.Columns.Count;
-
-                string[] Header = new string[cols];
-
-                int col = 0;
-                foreach (DataGridViewColumn column in dgvPager売上一覧.Columns)
-                {
-                    Header[col] = column.HeaderText;
-                    col++;
-                }
-
-                Excel.Range rangeHeader = (Excel.Range)exCurrentSheet.Cells[1, 1];
-                rangeHeader = rangeHeader.get_Resize(1, cols);
-
-                rangeHeader.Value = Header;
-                rangeHeader.Interior.Color = Color.DarkBlue;
-                rangeHeader.Font.Color = Color.White;
-                rangeHeader.Font.Bold = true;
-
-                // -----------------------------------------------------
-                // リスト
-                // -----------------------------------------------------
-                object[,] ListToExcel = new object[rows, cols];
-
-                int row = 0;
-
-                foreach (ds売上一覧 item in dgvPager売上一覧.fullDataSource)
-                {
-                    // 行
-                    ListToExcel[row, 0] = item.ID;
-                    ListToExcel[row, 1] = item.売上日;
-                    ListToExcel[row, 2] = item.得意先CD;
-                    ListToExcel[row, 3] = item.得意先名;
-                    ListToExcel[row, 4] = item.担当社員番号;
-                    ListToExcel[row, 5] = item.担当社員名;
-                    ListToExcel[row, 6] = item.売上高;
-
-                    row++;
-                }
-
-                Excel.Range range = (Excel.Range)exCurrentSheet.Cells[2, 1];
-                range = range.get_Resize(rows, cols);
-                range.Value = ListToExcel;
-
-                // -----------------------------------------------------
-                // 書式
-                // -----------------------------------------------------
-                Excel.Range formatRange = (Excel.Range)exCurrentSheet.get_Range("B:B");
-                formatRange.NumberFormatLocal = "yyyy/MM/dd";
-
-                formatRange = (Excel.Range)exCurrentSheet.get_Range("G:G");
-                formatRange.NumberFormatLocal = "\\ #,##0";
-
-            }
-
-            finally
-            {
-                exCurrentSheet.Cells.Columns.AutoFit();
-
-                //excel表示
-                ExcelApp.Visible = true;
-
-                //元に戻す
-                Cursor.Current = Cursors.Default;
-            }
-
-
         }
     }
 }
