@@ -10,14 +10,17 @@ namespace テストDB
     public partial class formダッシュボード : Form
     {
 
+        // -----------------------------------------------------------
+        // グラフで売上日をダブルクリック
+        // -----------------------------------------------------------
         private void On売上日_Selected(On売上日SelectedEventArgs arg)
         {
             // todo このロードの仕方もださい
             button売上日別_Click(this, null);
 
-            this.userControl売上日別売上一覧.期間開始 = arg.売上日;
-            this.userControl売上日別売上一覧.期間終了 = arg.売上日;
-            this.userControl売上日別売上一覧.LoadDataWithParama();
+            this.uc売上一覧.期間開始 = arg.売上日;
+            this.uc売上一覧.期間終了 = arg.売上日;
+            this.uc売上一覧.LoadDataWithParama();
         }
 
         public formダッシュボード()
@@ -50,7 +53,7 @@ namespace テストDB
 
             // 表示したいユーザーコントロールを表示してから、他の表示をOFFにする
             this.userControl売上総合.Visible = true;
-            this.userControl売上日別売上一覧.Visible = false;
+            this.uc売上一覧.Visible = false;
             this.userControl社員メンテ.Visible = false;
             this.userControl得意先メンテ.Visible = false;
 
@@ -71,7 +74,7 @@ namespace テストDB
             this.button社員.FlatAppearance.BorderColor = Color.FromArgb(123, 137, 163);
 
             // 表示したいユーザーコントロールを表示してから、他の表示をOFFにする
-            this.userControl売上日別売上一覧.Visible = true;
+            this.uc売上一覧.Visible = true;
             this.userControl得意先メンテ.Visible = false;
             this.userControl売上総合.Visible = false;
             this.userControl社員メンテ.Visible = false;
@@ -94,7 +97,7 @@ namespace テストDB
             // 表示したいユーザーコントロールを表示してから、他の表示をOFFにする
             this.userControl社員メンテ.Visible = true;
             this.userControl売上総合.Visible = false;
-            this.userControl売上日別売上一覧.Visible = false;
+            this.uc売上一覧.Visible = false;
             this.userControl得意先メンテ.Visible = false;
         }
 
@@ -115,7 +118,7 @@ namespace テストDB
             // 表示したいユーザーコントロールを表示してから、他の表示をOFFにする
             this.userControl得意先メンテ.Visible = true;
             this.userControl売上総合.Visible = false;
-            this.userControl売上日別売上一覧.Visible = false;
+            this.uc売上一覧.Visible = false;
             this.userControl社員メンテ.Visible = false;
 
         }

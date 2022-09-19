@@ -2,42 +2,16 @@
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
-using static テストDB.共通UI.Uc社員検索;
-using static テストDB.共通UI.Uc得意先検索;
 using テストDB.ViewModel;
-using static テストDB.共通UI.UcPager;
-using System.Runtime.CompilerServices;
+using static テストDB.UI.Uc売上一覧;
+using static テストDB.共通UI.UcPageControl;
+using static テストDB.共通UI.Uc得意先検索;
+using static テストDB.共通UI.Uc社員検索;
 
 namespace テストDB.UI
 {
-
-    public partial class Uc売上一覧 : UserControl
+    public partial class Uc売上一覧_OLD : UserControl
     {
-
-        public class ds売上一覧
-        {
-            public int No { get; set;}
-            public int ID { get; set; }
-            public DateTime 売上日 { get; set; }
-            public string 得意先CD { get; set; }
-            public string 得意先名 { get; set; }
-            public string 担当社員番号 { get; set; }
-            public string 担当社員名 { get; set; }
-            public int 売上高 { get; set; }
-        }
-
-        public enum ds売上一覧_Col
-        {
-            No = 0,
-            ID = 1,
-            売上日 = 2,
-            得意先CD = 3,
-            得意先名 = 4,
-            担当社員番号 = 5,
-            担当社員名 = 6,
-            売上高 = 7,
-        }
-
         private ViewModel売上 vm売上;
 
         // ----------------------------------------------------------------
@@ -58,7 +32,13 @@ namespace テストDB.UI
             this.userControl社員入力.M社員 = e.m社員;
         }
 
-        public Uc売上一覧()
+        private void OnPageChange(OnPageChangeEventArgs e)
+        {
+            this.dgvPager売上一覧.ShowPage<ds売上一覧>(e.CurrentCount, e.RowsInPage);
+        }
+
+
+        public Uc売上一覧_OLD()
         {
             InitializeComponent();
 
@@ -70,14 +50,15 @@ namespace テストDB.UI
             this.userControl社員入力.userControl社員検索 = this.userControl社員検索;
             this.userControl社員検索.On社員番号Selected += On社員番号_Selected;
 
-            // ユーザーコントロールで発火するイベントハンドラを追加
-            this.ucPager.OnGridFormat += OnGrid_Format;
 
             // ユーザーコントロールで発火するイベントハンドラを追加
-            this.ucPager.OnGridDoubleClick += OnGrid_DoubleClick;
+            this.ucPageControl.dgvPager = dgvPager売上一覧;
+            this.ucPageControl.RowsInPage = 100;
+            this.ucPageControl.OnPageChange += OnPageChange;
 
-
+            this.ucPageControl.EditExcel += Edit_Excel;
         }
+
 
         private void UserControl売上日別売上一覧_Load(object sender, EventArgs e)
         {
@@ -131,11 +112,8 @@ namespace テストDB.UI
             vm売上.LoadT売上(期間開始, 期間終了, 得意先CD, 担当社員番号);
 
             var list = vm売上.list売上
-                .OrderBy(it => it.売上日)
-                .ThenBy(it => it.得意先CD)
-                .Select((it, i) => new ds売上一覧
+                .Select(it => new ds売上一覧
                 {
-                    No = i + 1,
                     ID = it.ID,
                     売上日 = it.売上日,
                     得意先CD = it.得意先CD,
@@ -144,76 +122,92 @@ namespace テストDB.UI
                     担当社員名 = it.担当社員名,
                     売上高 = it.売上高,
                 })
+                .OrderBy(it => it.売上日)
+                .ThenBy(it => it.得意先CD)
                 .ToList()
                 ;
 
+            this.ucPageControl.RowCount = list.Count();
+            this.ucPageControl.CurrentCount = 1;
 
-            this.ucPager.RowsInPage = 100;
-            this.ucPager.KeyColumn = (int)ds売上一覧_Col.ID;
+            this.dgvPager売上一覧.SetFullDatasource(list);
+            this.dgvPager売上一覧.ShowPage<ds売上一覧>(this.ucPageControl.CurrentCount, this.ucPageControl.RowsInPage);
 
-            this.ucPager.RowCount = list.Count();
-
-            this.ucPager.SetFullDatasource<ds売上一覧>(list);
-            this.ucPager.ShowPage();
+            SetDgvFormat();
         }
 
         // ----------------------------------------------------------------
         // グリッドの書式
         // ----------------------------------------------------------------
-        // グリッドの書式設定
-        private void OnGrid_Format()
+        private void SetDgvFormat()
         {
-            DataGridView dg = this.ucPager.dataGridView;
+            // 列幅の設定:
+            foreach (DataGridViewColumn column in dgvPager売上一覧.Columns)
+            {
+                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
 
             // 書式
-            dg.Columns[(int)ds売上一覧_Col.売上日].DefaultCellStyle.Format = "MM/dd";
-            dg.Columns[(int)ds売上一覧_Col.売上高].DefaultCellStyle.Format = "C";
+            dgvPager売上一覧.Columns[(int)ds売上一覧_Col.売上日].DefaultCellStyle.Format = "MM/dd";
+            dgvPager売上一覧.Columns[(int)ds売上一覧_Col.売上高].DefaultCellStyle.Format = "C";
 
-            dg.Columns[(int)ds売上一覧_Col.ID].HeaderText = "伝票№";
 
-            ucPager_SizeChanged(this, null);
+            dgvPager売上一覧.Columns[(int)ds売上一覧_Col.ID].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvPager売上一覧.Columns[(int)ds売上一覧_Col.売上高].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            // ヘッダー
+            dgvPager売上一覧.Columns[(int)ds売上一覧_Col.ID].HeaderText = "伝票№";
+
+            // サイズ調整
+            dgvPager売上一覧_SizeChanged(this, null);
         }
 
 
         // ----------------------------------------------------------------
         // 一覧のサイズ変更
         // ----------------------------------------------------------------
-        private void ucPager_SizeChanged(object sender, EventArgs e)
+        private void dgvPager売上一覧_SizeChanged(object sender, EventArgs e)
         {
-            DataGridView dg = this.ucPager.dataGridView;
-
-            dg.Columns[(int)ds売上一覧_Col.得意先名].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgvPager売上一覧.Columns[(int)ds売上一覧_Col.得意先名].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             int ColWidthSum = 0;
-            foreach (DataGridViewColumn column in dg.Columns)
+            foreach (DataGridViewColumn column in dgvPager売上一覧.Columns)
             {
                 ColWidthSum += column.Width;
             }
 
-            if (dg.Width > ColWidthSum)
+            if (dgvPager売上一覧.Width > ColWidthSum)
             {
-                dg.Columns[(int)ds売上一覧_Col.ID].Visible = true;
-                dg.Columns[(int)ds売上一覧_Col.得意先CD].Visible = true;
-                dg.Columns[(int)ds売上一覧_Col.担当社員番号].Visible = true;
-                dg.Columns[(int)ds売上一覧_Col.得意先名].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvPager売上一覧.Columns[(int)ds売上一覧_Col.ID].Visible = true;
+                dgvPager売上一覧.Columns[(int)ds売上一覧_Col.得意先CD].Visible = true;
+                dgvPager売上一覧.Columns[(int)ds売上一覧_Col.担当社員番号].Visible = true;
+                dgvPager売上一覧.Columns[(int)ds売上一覧_Col.得意先名].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
             else
             {
-                dg.Columns[(int)ds売上一覧_Col.ID].Visible = false;
-                dg.Columns[(int)ds売上一覧_Col.得意先CD].Visible = false;
-                dg.Columns[(int)ds売上一覧_Col.担当社員番号].Visible = false;
-                dg.Columns[(int)ds売上一覧_Col.得意先名].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvPager売上一覧.Columns[(int)ds売上一覧_Col.ID].Visible = false;
+                dgvPager売上一覧.Columns[(int)ds売上一覧_Col.得意先CD].Visible = false;
+                dgvPager売上一覧.Columns[(int)ds売上一覧_Col.担当社員番号].Visible = false;
+                dgvPager売上一覧.Columns[(int)ds売上一覧_Col.得意先名].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
         }
 
         // ----------------------------------------------------------------
         // 一覧のダブルクリック
         // ----------------------------------------------------------------
-        private void OnGrid_DoubleClick(OnGridDoubleClickArgs args)
+        private void dgvPager売上一覧_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int 売上ID;
 
-            int.TryParse(args.ID, out 売上ID);
+            try
+            {
+                var str = dgvPager売上一覧.Rows[e.RowIndex].Cells[0].Value.ToString();
+                int.TryParse(str, out 売上ID);
+            }
+            catch
+            {
+                return;
+            }
 
             this.userControl売上伝票.売上ID = 売上ID;
             this.userControl売上伝票.LoadData();
@@ -221,5 +215,11 @@ namespace テストDB.UI
             this.userControl売上伝票.BringToFront();
         }
 
+        // -----------------------------------------------------
+        // EXCELの追加編集
+        // -----------------------------------------------------
+        private void Edit_Excel(EditExcelEventArgs args)
+        {
+        }
     }
 }

@@ -1,6 +1,8 @@
-﻿namespace テストDB.UI
+﻿using System.Windows.Forms;
+
+namespace テストDB.UI
 {
-    partial class Uc売上一覧
+    partial class Uc売上一覧_OLD
     {
         /// <summary> 
         /// 必要なデザイナー変数です。
@@ -28,6 +30,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             テストDB.Models.M社員 m社員1 = new テストDB.Models.M社員();
             テストDB.Models.M得意先一覧 m得意先一覧1 = new テストDB.Models.M得意先一覧();
             this.dtp期間終了 = new System.Windows.Forms.DateTimePicker();
@@ -37,11 +42,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cButton検索 = new テストDB.共通UI.CButton();
             this.userControl売上伝票 = new テストDB.UI.Uc売上伝票();
+            this.dgvPager売上一覧 = new テストDB.共通UI.DgvPager();
             this.userControl得意先検索 = new テストDB.共通UI.Uc得意先検索();
             this.userControl社員検索 = new テストDB.共通UI.Uc社員検索();
             this.userControl社員入力 = new テストDB.共通UI.Uc社員入力();
             this.userControl得意先入力 = new テストDB.共通UI.Uc得意先入力();
-            this.ucPager = new テストDB.共通UI.UcPager();
+            this.ucPageControl = new テストDB.共通UI.UcPageControl();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPager売上一覧)).BeginInit();
             this.SuspendLayout();
             // 
             // dtp期間終了
@@ -122,6 +129,57 @@
             this.userControl売上伝票.Visible = false;
             this.userControl売上伝票.売上ID = 1;
             // 
+            // dgvPager売上一覧
+            // 
+            this.dgvPager売上一覧.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvPager売上一覧.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvPager売上一覧.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvPager売上一覧.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(225)))), ((int)(((byte)(232)))));
+            this.dgvPager売上一覧.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvPager売上一覧.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvPager売上一覧.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(225)))), ((int)(((byte)(232)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(225)))), ((int)(((byte)(232)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPager売上一覧.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvPager売上一覧.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPager売上一覧.Cursor = System.Windows.Forms.Cursors.Hand;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(218)))), ((int)(((byte)(198)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPager売上一覧.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvPager売上一覧.EnableHeadersVisualStyles = false;
+            this.dgvPager売上一覧.Location = new System.Drawing.Point(0, 232);
+            this.dgvPager売上一覧.MultiSelect = false;
+            this.dgvPager売上一覧.Name = "dgvPager売上一覧";
+            this.dgvPager売上一覧.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPager売上一覧.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvPager売上一覧.RowHeadersVisible = false;
+            this.dgvPager売上一覧.RowTemplate.Height = 36;
+            this.dgvPager売上一覧.RowTemplate.ReadOnly = true;
+            this.dgvPager売上一覧.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPager売上一覧.Size = new System.Drawing.Size(845, 461);
+            this.dgvPager売上一覧.TabIndex = 36;
+            this.dgvPager売上一覧.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPager売上一覧_CellDoubleClick);
+            this.dgvPager売上一覧.SizeChanged += new System.EventHandler(this.dgvPager売上一覧_SizeChanged);
+            // 
             // userControl得意先検索
             // 
             this.userControl得意先検索.Location = new System.Drawing.Point(223, 93);
@@ -172,26 +230,27 @@
             this.userControl得意先入力.TabIndex = 60;
             this.userControl得意先入力.userControl得意先検索 = null;
             // 
-            // ucPager
+            // ucPageControl
             // 
-            this.ucPager.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ucPager.Location = new System.Drawing.Point(0, 232);
-            this.ucPager.Name = "ucPager";
-            this.ucPager.RowCount = 0;
-            this.ucPager.Size = new System.Drawing.Size(845, 497);
-            this.ucPager.TabIndex = 68;
-            this.ucPager.SizeChanged += new System.EventHandler(this.ucPager_SizeChanged);
+            this.ucPageControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(225)))), ((int)(((byte)(232)))));
+            this.ucPageControl.CurrentCount = 0;
+            this.ucPageControl.dgvPager = null;
+            this.ucPageControl.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ucPageControl.Location = new System.Drawing.Point(0, 694);
+            this.ucPageControl.Name = "ucPageControl";
+            this.ucPageControl.RowCount = 0;
+            this.ucPageControl.Size = new System.Drawing.Size(845, 35);
+            this.ucPageControl.TabIndex = 68;
             // 
-            // Uc売上一覧2
+            // Uc売上一覧
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(47)))), ((int)(((byte)(87)))));
-            this.Controls.Add(this.ucPager);
+            this.Controls.Add(this.ucPageControl);
             this.Controls.Add(this.cButton検索);
             this.Controls.Add(this.userControl売上伝票);
+            this.Controls.Add(this.dgvPager売上一覧);
             this.Controls.Add(this.userControl得意先検索);
             this.Controls.Add(this.userControl社員検索);
             this.Controls.Add(this.label2);
@@ -201,9 +260,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dtp期間終了);
             this.Controls.Add(this.dtp期間開始);
-            this.Name = "Uc売上一覧2";
+            this.Name = "Uc売上一覧";
             this.Size = new System.Drawing.Size(845, 729);
             this.Load += new System.EventHandler(this.UserControl売上日別売上一覧_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPager売上一覧)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -220,7 +280,8 @@
         private 共通UI.Uc社員入力 userControl社員入力;
         private System.Windows.Forms.Label label2;
         private 共通UI.Uc社員検索 userControl社員検索;
+        private 共通UI.DgvPager dgvPager売上一覧;
         private 共通UI.CButton cButton検索;
-        private 共通UI.UcPager ucPager;
+        private 共通UI.UcPageControl ucPageControl;
     }
 }

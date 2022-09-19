@@ -37,7 +37,7 @@ namespace テストDB.共通UI
         // -------------------------------------------------------
         // ページを表示
         // -------------------------------------------------------
-        public void ShowPage<T>(int CurrentCount, int RoesInPage)
+        public void ShowPage<T>(int CurrentCount, int RowsInPage)
         {
             if (fullDataSource == null) return;
 
@@ -45,7 +45,7 @@ namespace テストDB.共通UI
     
             var list = castedlist
                 .Skip(CurrentCount - 1)
-                .Take(RoesInPage)
+                .Take(RowsInPage)
                 .ToArray()
                 ;
 

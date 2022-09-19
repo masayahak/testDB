@@ -38,7 +38,7 @@
             this.userControl売上総合 = new テストDB.UI.Uc売上分析();
             this.userControl社員メンテ = new テストDB.UI.Uc社員メンテ();
             this.userControl得意先メンテ = new テストDB.UI.Uc得意先メンテ();
-            this.userControl売上日別売上一覧 = new テストDB.UI.Uc売上一覧();
+            this.uc売上一覧 = new テストDB.UI.Uc売上一覧();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -152,7 +152,7 @@
             this.panel1.Controls.Add(this.userControl売上総合);
             this.panel1.Controls.Add(this.userControl社員メンテ);
             this.panel1.Controls.Add(this.userControl得意先メンテ);
-            this.panel1.Controls.Add(this.userControl売上日別売上一覧);
+            this.panel1.Controls.Add(this.uc売上一覧);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(163, 0);
             this.panel1.Name = "panel1";
@@ -187,14 +187,15 @@
             this.userControl得意先メンテ.TabIndex = 1;
             this.userControl得意先メンテ.Visible = false;
             // 
-            // userControl売上日別売上一覧
+            // uc売上一覧
             // 
-            this.userControl売上日別売上一覧.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(47)))), ((int)(((byte)(87)))));
-            this.userControl売上日別売上一覧.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.userControl売上日別売上一覧.Location = new System.Drawing.Point(0, 0);
-            this.userControl売上日別売上一覧.Name = "userControl売上日別売上一覧";
-            this.userControl売上日別売上一覧.Size = new System.Drawing.Size(845, 729);
-            this.userControl売上日別売上一覧.TabIndex = 3;
+            this.uc売上一覧.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(47)))), ((int)(((byte)(87)))));
+            this.uc売上一覧.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uc売上一覧.Location = new System.Drawing.Point(0, 0);
+            this.uc売上一覧.Name = "uc売上一覧";
+            this.uc売上一覧.Size = new System.Drawing.Size(845, 729);
+            this.uc売上一覧.TabIndex = 4;
+            this.uc売上一覧.Visible = false;
             // 
             // formダッシュボード
             // 
@@ -223,7 +224,7 @@
         private UI.Uc売上分析 userControl売上総合;
         private System.Windows.Forms.Button button売上日別;
         private System.Windows.Forms.Button button売上伝票;
-        private UI.Uc売上一覧 userControl売上日別売上一覧;
+        private UI.Uc売上一覧 uc売上一覧;
     }
 }
 
