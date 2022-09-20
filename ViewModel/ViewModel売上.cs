@@ -13,39 +13,6 @@ namespace テストDB.ViewModel
         public T売上[] list売上 { get; private set; }
         public T売上明細[] list売上明細 { get; private set; }
 
-        public class V売上明細
-        {
-            public int ID { get; set; }
-            public string 得意先CD { get; set; }
-            public string 得意先名 { get; set; }
-            public string 担当社員番号 { get; set; }
-            public string 担当社員名 { get; set; }
-            public DateTime 売上日 { get; set; }
-            public string バーコード { get; set; }
-            public string 商品名 { get; set; }
-            public int 販売単価 { get; set; }
-            public int 販売数量 { get; set; }
-            public int 明細売上高 { get; set; }
-        }
-
-        public enum V売上明細_Col
-        {
-            ID = 0,
-            得意先CD = 1,
-            得意先名 = 2,
-            担当社員番号 = 3,
-            担当社員名 = 4,
-            売上日 = 5,
-            バーコード = 6,
-            商品名 = 7,
-            販売単価 = 8,
-            販売数量 = 9,
-            明細売上高 = 10,
-        }
-
-
-        public V売上明細[] listV売上明細 { get; private set; }
-
         // -------------------------------------------------------------------------
         // コンストラクタ
         // -------------------------------------------------------------------------

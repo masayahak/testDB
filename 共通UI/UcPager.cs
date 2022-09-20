@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using static テストDB.UI.Uc売上明細一覧;
 using Excel = Microsoft.Office.Interop.Excel;
 
 
@@ -139,6 +141,8 @@ namespace テストDB.共通UI
             bindingSource.DataSource = list;
             dataGridView.DataSource = bindingSource;
 
+            if (list.Count == 0) return;
+
             SetDgvFormat();
 
         }
@@ -182,9 +186,13 @@ namespace テストDB.共通UI
             {
                 column.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
 
-                if( column.ValueType == typeof(int))
+                if (column.ValueType == typeof(int))
                 {
                     column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                }
+                if (column.ValueType == typeof(DateTime))
+                {
+                    column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 }
             }
 
@@ -354,6 +362,10 @@ namespace テストDB.共通UI
         // -----------------------------------------------------
         private void SetExcelFormat(Excel.Worksheet CurrentSheet)
         {
+
+            Excel.Range range = CurrentSheet.UsedRange;
+            range.NumberFormatLocal = "0";
+
             int c = 0;
             foreach (DataGridViewColumn column in dataGridView.Columns)
             {
@@ -371,9 +383,9 @@ namespace テストDB.共通UI
                     Excel.Range range2 = CurrentSheet.get_Range(currentLetter + ":" + currentLetter);
                     range2.NumberFormatLocal = "\\ #,##0";
                 }
-
                 c++;
             }
+
         }
 
     }

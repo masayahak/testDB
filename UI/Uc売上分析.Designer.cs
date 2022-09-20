@@ -490,6 +490,7 @@
             title3.Name = "Title1";
             title3.Text = "売上上位 商品５種";
             this.chart売上上位商品.Titles.Add(title3);
+            this.chart売上上位商品.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.chart売上上位商品_MouseDoubleClick);
             // 
             // button期間検索
             // 

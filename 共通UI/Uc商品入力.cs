@@ -134,5 +134,24 @@ namespace テストDB.共通UI
 
         }
 
+        public void Get商品by商品名(string 商品名)
+        {
+            try
+            {
+                var vm商品 = new ViewModel商品();
+                this.M商品 = vm商品.Get商品By商品名(商品名);
+            }
+            catch
+            {
+                // 商品を発見できない
+                this.M商品 = new M商品
+                {
+                    ID = -1,
+                    バーコード = textBoxバーコード.Text,
+                    商品名 = "※ 該当商品なし",
+                };
+            }
+        }
+
     }
 }

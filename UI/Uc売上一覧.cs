@@ -14,6 +14,9 @@ namespace テストDB.UI
     public partial class Uc売上一覧 : UserControl
     {
 
+        // ----------------------------------------------------------------
+        // 表示する一覧の定義
+        // ----------------------------------------------------------------
         public class ds売上一覧
         {
             public int No { get; set;}
@@ -62,18 +65,18 @@ namespace テストDB.UI
         {
             InitializeComponent();
 
-            // ユーザーコントロールで発火するイベントハンドラを追加
+            // 得意先検索イベント
             this.userControl得意先入力.userControl得意先検索 = this.userControl得意先検索;
             this.userControl得意先検索.On得意先CDSelected += On得意先CD_Selected;
 
-            // ユーザーコントロールで発火するイベントハンドラを追加
+            // 社員検索イベント
             this.userControl社員入力.userControl社員検索 = this.userControl社員検索;
             this.userControl社員検索.On社員番号Selected += On社員番号_Selected;
 
-            // ユーザーコントロールで発火するイベントハンドラを追加
+            // グリッドのフォーマットイベント
             this.ucPager.OnGridFormat += OnGrid_Format;
 
-            // ユーザーコントロールで発火するイベントハンドラを追加
+            // グリッドのダブルクリック
             this.ucPager.OnGridDoubleClick += OnGrid_DoubleClick;
 
 
@@ -94,8 +97,7 @@ namespace テストDB.UI
             this.dtp期間開始.Value = 期間開始;
             this.dtp期間終了.Value = 期間終了;
 
-            // todo キーから名前をロードしてない。
-            // はたして、外部から本当に指定が必要なのか
+            // todo はたして、外部から本当に指定が必要なのか
             this.userControl得意先入力.M得意先一覧.得意先CD = 得意先CD;
             this.userControl社員入力.M社員.社員番号 = 担当社員番号;
 
@@ -111,8 +113,7 @@ namespace テストDB.UI
             期間開始 = this.dtp期間開始.Value.Date;
             期間終了 = this.dtp期間終了.Value.Date;
 
-            // todo キーから名前をロードしてない。
-            // はたして、外部から本当に指定が必要なのか
+            // todo はたして、外部から本当に指定が必要なのか
             得意先CD = this.userControl得意先入力.M得意先一覧.得意先CD;
             担当社員番号 = this.userControl社員入力.M社員.社員番号;
 

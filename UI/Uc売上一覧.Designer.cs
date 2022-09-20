@@ -49,7 +49,7 @@
             this.dtp期間終了.CustomFormat = "yyyy/MM/dd";
             this.dtp期間終了.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp期間終了.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp期間終了.Location = new System.Drawing.Point(347, 15);
+            this.dtp期間終了.Location = new System.Drawing.Point(347, 13);
             this.dtp期間終了.Name = "dtp期間終了";
             this.dtp期間終了.Size = new System.Drawing.Size(142, 31);
             this.dtp期間終了.TabIndex = 49;
@@ -59,7 +59,7 @@
             this.dtp期間開始.CustomFormat = "yyyy/MM/dd";
             this.dtp期間開始.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp期間開始.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp期間開始.Location = new System.Drawing.Point(189, 15);
+            this.dtp期間開始.Location = new System.Drawing.Point(189, 13);
             this.dtp期間開始.Name = "dtp期間開始";
             this.dtp期間開始.Size = new System.Drawing.Size(142, 31);
             this.dtp期間開始.TabIndex = 48;
@@ -69,7 +69,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label1.Location = new System.Drawing.Point(14, 17);
+            this.label1.Location = new System.Drawing.Point(14, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(82, 24);
             this.label1.TabIndex = 57;
@@ -80,7 +80,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label3.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label3.Location = new System.Drawing.Point(14, 64);
+            this.label3.Location = new System.Drawing.Point(13, 58);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(82, 24);
             this.label3.TabIndex = 61;
@@ -91,7 +91,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label2.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label2.Location = new System.Drawing.Point(14, 150);
+            this.label2.Location = new System.Drawing.Point(13, 144);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(106, 24);
             this.label2.TabIndex = 64;
@@ -104,7 +104,7 @@
             this.cButton検索.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cButton検索.Font = new System.Drawing.Font("MS UI Gothic", 18F);
             this.cButton検索.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.cButton検索.Location = new System.Drawing.Point(732, 182);
+            this.cButton検索.Location = new System.Drawing.Point(729, 174);
             this.cButton検索.Name = "cButton検索";
             this.cButton検索.Size = new System.Drawing.Size(101, 44);
             this.cButton検索.TabIndex = 67;
@@ -124,7 +124,7 @@
             // 
             // userControl得意先検索
             // 
-            this.userControl得意先検索.Location = new System.Drawing.Point(223, 93);
+            this.userControl得意先検索.Location = new System.Drawing.Point(220, 85);
             this.userControl得意先検索.Name = "userControl得意先検索";
             this.userControl得意先検索.Size = new System.Drawing.Size(514, 331);
             this.userControl得意先検索.TabIndex = 62;
@@ -134,7 +134,7 @@
             // userControl社員検索
             // 
             this.userControl社員検索.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.userControl社員検索.Location = new System.Drawing.Point(363, 148);
+            this.userControl社員検索.Location = new System.Drawing.Point(360, 140);
             this.userControl社員検索.Name = "userControl社員検索";
             this.userControl社員検索.Size = new System.Drawing.Size(284, 262);
             this.userControl社員検索.TabIndex = 65;
@@ -144,7 +144,7 @@
             // userControl社員入力
             // 
             this.userControl社員入力.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
-            this.userControl社員入力.Location = new System.Drawing.Point(189, 148);
+            this.userControl社員入力.Location = new System.Drawing.Point(186, 140);
             m社員1.ID = -1;
             m社員1.社員名 = "";
             m社員1.社員番号 = "";
@@ -158,7 +158,7 @@
             // userControl得意先入力
             // 
             this.userControl得意先入力.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
-            this.userControl得意先入力.Location = new System.Drawing.Point(189, 55);
+            this.userControl得意先入力.Location = new System.Drawing.Point(188, 49);
             m得意先一覧1.ID = -1;
             m得意先一覧1.得意先CD = "";
             m得意先一覧1.得意先名 = "";
@@ -177,6 +177,7 @@
             this.ucPager.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ucPager.KeyColumn = 1;
             this.ucPager.Location = new System.Drawing.Point(0, 232);
             this.ucPager.Name = "ucPager";
             this.ucPager.RowCount = 0;
@@ -184,7 +185,7 @@
             this.ucPager.TabIndex = 68;
             this.ucPager.SizeChanged += new System.EventHandler(this.ucPager_SizeChanged);
             // 
-            // Uc売上一覧2
+            // Uc売上一覧
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -201,7 +202,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dtp期間終了);
             this.Controls.Add(this.dtp期間開始);
-            this.Name = "Uc売上一覧2";
+            this.Name = "Uc売上一覧";
             this.Size = new System.Drawing.Size(845, 729);
             this.Load += new System.EventHandler(this.UserControl売上日別売上一覧_Load);
             this.ResumeLayout(false);

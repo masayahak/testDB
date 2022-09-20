@@ -92,15 +92,28 @@ namespace テストDB.UI
         }
 
 
+        // ----------------------------------------------------------------
+        // 選択イベント
+        // ----------------------------------------------------------------
+        // 親へ選択した売上日をデリゲート
+        public delegate void On売上日SelectedEventHandler(On売上日SelectedEventArgs e);
+        public event On売上日SelectedEventHandler On売上日Selected;
         public class On売上日SelectedEventArgs : EventArgs
         {
             public DateTime 売上日;
         }
 
-        // 親へ選択した売上日をデリゲート
-        public delegate void On売上日SelectedEventHandler(On売上日SelectedEventArgs e);
 
-        public event On売上日SelectedEventHandler On売上日Selected;
+        // 親へ選択した売上日をデリゲート
+        public delegate void On商品SelectedEventHandler(On商品SelectedEventArgs e);
+        public event On商品SelectedEventHandler On商品Selected;
+        public class On商品SelectedEventArgs : EventArgs
+        {
+            public DateTime 期間開始;
+            public DateTime 期間終了;
+            public string 商品名;
+        }
+
 
         // ----------------------------------------------------------------
         // コンストラクタ
@@ -217,20 +230,28 @@ namespace テストDB.UI
             }
         }
 
-        //// ----------------------------------------------------------------
-        //// グラフのダブルクリック
-        //// ----------------------------------------------------------------
-        //private void chart売上高_MouseDoubleClick(object sender, MouseEventArgs e)
-        //{
+        // ----------------------------------------------------------------
+        // グラフのダブルクリック
+        // ----------------------------------------------------------------
+        private void chart売上上位商品_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
 
-        //    var result = chart売上上位商品.HitTest(e.X, e.Y);
+            var result = chart売上上位商品.HitTest(e.X, e.Y);
 
-        //    if (result.ChartElementType == ChartElementType.DataPoint)
-        //    {
-        //        var selectedRow = chart売上上位商品.Series[0].Points[result.PointIndex];
-        //        var 商品 = selectedRow.AxisLabel;
-        //        Console.WriteLine(商品);
-        //    }
-        //}
+            if (result.ChartElementType == ChartElementType.DataPoint)
+            {
+                var selectedRow = chart売上上位商品.Series[0].Points[result.PointIndex];
+                var 商品名 = selectedRow.AxisLabel;
+
+                var arg = new On商品SelectedEventArgs
+                {
+                    期間開始 = dtp期間開始.Value,
+                    期間終了 = dtp期間終了.Value,
+                    商品名 = 商品名
+                };
+
+                On商品Selected(arg);
+            }
+        }
     }
 }

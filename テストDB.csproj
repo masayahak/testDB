@@ -109,6 +109,7 @@
       <DependentUpon>Uc売上分析.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\ViewModel商品.cs" />
+    <Compile Include="ViewModel\ViewModel売上明細.cs" />
     <Compile Include="ViewModel\ViewModel得意先.cs" />
     <Compile Include="Models\テストDBContext.cs" />
     <Compile Include="ViewModel\ViewModel売上.cs" />

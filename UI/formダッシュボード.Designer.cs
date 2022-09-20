@@ -35,10 +35,12 @@
             this.button得意先 = new System.Windows.Forms.Button();
             this.button社員 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button商品別 = new System.Windows.Forms.Button();
             this.userControl売上総合 = new テストDB.UI.Uc売上分析();
             this.userControl社員メンテ = new テストDB.UI.Uc社員メンテ();
             this.userControl得意先メンテ = new テストDB.UI.Uc得意先メンテ();
             this.uc売上一覧 = new テストDB.UI.Uc売上一覧();
+            this.uc売上明細一覧 = new テストDB.UI.Uc売上明細一覧();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -46,6 +48,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(47)))));
+            this.panel2.Controls.Add(this.button商品別);
             this.panel2.Controls.Add(this.button売上伝票);
             this.panel2.Controls.Add(this.button売上日別);
             this.panel2.Controls.Add(this.button売上総合);
@@ -66,7 +69,7 @@
             this.button売上伝票.Font = new System.Drawing.Font("MS UI Gothic", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.button売上伝票.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(137)))), ((int)(((byte)(163)))));
             this.button売上伝票.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button売上伝票.Location = new System.Drawing.Point(12, 156);
+            this.button売上伝票.Location = new System.Drawing.Point(12, 210);
             this.button売上伝票.Name = "button売上伝票";
             this.button売上伝票.Size = new System.Drawing.Size(135, 48);
             this.button売上伝票.TabIndex = 6;
@@ -153,11 +156,30 @@
             this.panel1.Controls.Add(this.userControl社員メンテ);
             this.panel1.Controls.Add(this.userControl得意先メンテ);
             this.panel1.Controls.Add(this.uc売上一覧);
+            this.panel1.Controls.Add(this.uc売上明細一覧);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(163, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(845, 729);
             this.panel1.TabIndex = 7;
+            // 
+            // button商品別
+            // 
+            this.button商品別.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(47)))));
+            this.button商品別.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.button商品別.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(137)))), ((int)(((byte)(163)))));
+            this.button商品別.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button商品別.Font = new System.Drawing.Font("MS UI Gothic", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.button商品別.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(137)))), ((int)(((byte)(163)))));
+            this.button商品別.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button商品別.Location = new System.Drawing.Point(12, 156);
+            this.button商品別.Name = "button商品別";
+            this.button商品別.Size = new System.Drawing.Size(135, 48);
+            this.button商品別.TabIndex = 7;
+            this.button商品別.Text = "商品別";
+            this.button商品別.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.button商品別.UseVisualStyleBackColor = false;
+            this.button商品別.Click += new System.EventHandler(this.button商品別_Click);
             // 
             // userControl売上総合
             // 
@@ -197,6 +219,15 @@
             this.uc売上一覧.TabIndex = 4;
             this.uc売上一覧.Visible = false;
             // 
+            // uc売上明細一覧
+            // 
+            this.uc売上明細一覧.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(47)))), ((int)(((byte)(87)))));
+            this.uc売上明細一覧.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uc売上明細一覧.Location = new System.Drawing.Point(0, 0);
+            this.uc売上明細一覧.Name = "uc売上明細一覧";
+            this.uc売上明細一覧.Size = new System.Drawing.Size(845, 729);
+            this.uc売上明細一覧.TabIndex = 5;
+            // 
             // formダッシュボード
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -225,6 +256,8 @@
         private System.Windows.Forms.Button button売上日別;
         private System.Windows.Forms.Button button売上伝票;
         private UI.Uc売上一覧 uc売上一覧;
+        private System.Windows.Forms.Button button商品別;
+        private UI.Uc売上明細一覧 uc売上明細一覧;
     }
 }
 

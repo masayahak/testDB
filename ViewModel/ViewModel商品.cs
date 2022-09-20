@@ -123,5 +123,14 @@ namespace テストDB.ViewModel
             return 商品;
         }
 
+        public M商品 Get商品By商品名(string 商品名)
+        {
+            var 商品 = list商品
+                    .Single(it => it.商品名 == 商品名)
+                    ;
+
+            return 商品;
+        }
+
     }
 }
