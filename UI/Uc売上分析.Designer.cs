@@ -38,8 +38,6 @@
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.button期間カスタム = new System.Windows.Forms.Button();
-            this.dtp期間終了 = new System.Windows.Forms.DateTimePicker();
-            this.dtp期間開始 = new System.Windows.Forms.DateTimePicker();
             this.button期間本日 = new System.Windows.Forms.Button();
             this.button過去7日 = new System.Windows.Forms.Button();
             this.button過去30日 = new System.Windows.Forms.Button();
@@ -62,6 +60,8 @@
             this.chart売上上位得意先 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chart売上上位商品 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.button期間検索 = new System.Windows.Forms.Button();
+            this.dtp期間終了 = new テストDB.共通UI.CDateTimePicker();
+            this.dtp期間開始 = new テストDB.共通UI.CDateTimePicker();
             this.tableLayoutPanel件数.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -91,28 +91,6 @@
             this.button期間カスタム.Text = "カスタム";
             this.button期間カスタム.UseVisualStyleBackColor = false;
             this.button期間カスタム.Click += new System.EventHandler(this.button期間カスタム_Click);
-            // 
-            // dtp期間終了
-            // 
-            this.dtp期間終了.CustomFormat = "yyyy/MM/dd";
-            this.dtp期間終了.Enabled = false;
-            this.dtp期間終了.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtp期間終了.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp期間終了.Location = new System.Drawing.Point(175, 5);
-            this.dtp期間終了.Name = "dtp期間終了";
-            this.dtp期間終了.Size = new System.Drawing.Size(142, 31);
-            this.dtp期間終了.TabIndex = 10;
-            // 
-            // dtp期間開始
-            // 
-            this.dtp期間開始.CustomFormat = "yyyy/MM/dd";
-            this.dtp期間開始.Enabled = false;
-            this.dtp期間開始.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtp期間開始.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp期間開始.Location = new System.Drawing.Point(17, 5);
-            this.dtp期間開始.Name = "dtp期間開始";
-            this.dtp期間開始.Size = new System.Drawing.Size(142, 31);
-            this.dtp期間開始.TabIndex = 9;
             // 
             // button期間本日
             // 
@@ -173,11 +151,11 @@
             this.tableLayoutPanel件数.Controls.Add(this.panel2, 0, 0);
             this.tableLayoutPanel件数.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel件数.Controls.Add(this.panel3, 2, 0);
-            this.tableLayoutPanel件数.Location = new System.Drawing.Point(17, 42);
+            this.tableLayoutPanel件数.Location = new System.Drawing.Point(0, 42);
             this.tableLayoutPanel件数.Name = "tableLayoutPanel件数";
             this.tableLayoutPanel件数.RowCount = 1;
             this.tableLayoutPanel件数.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel件数.Size = new System.Drawing.Size(812, 100);
+            this.tableLayoutPanel件数.Size = new System.Drawing.Size(845, 100);
             this.tableLayoutPanel件数.TabIndex = 28;
             // 
             // panel2
@@ -187,10 +165,10 @@
             this.panel2.Controls.Add(this.label売上高);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(280, 10);
+            this.panel2.Location = new System.Drawing.Point(291, 10);
             this.panel2.Margin = new System.Windows.Forms.Padding(10);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(250, 80);
+            this.panel2.Size = new System.Drawing.Size(261, 80);
             this.panel2.TabIndex = 29;
             // 
             // pictureBox2
@@ -235,7 +213,7 @@
             this.panel1.Location = new System.Drawing.Point(10, 10);
             this.panel1.Margin = new System.Windows.Forms.Padding(10);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(250, 80);
+            this.panel1.Size = new System.Drawing.Size(261, 80);
             this.panel1.TabIndex = 28;
             // 
             // pictureBox1
@@ -277,10 +255,10 @@
             this.panel3.Controls.Add(this.label粗利益);
             this.panel3.Controls.Add(this.label12);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(550, 10);
+            this.panel3.Location = new System.Drawing.Point(572, 10);
             this.panel3.Margin = new System.Windows.Forms.Padding(10);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(252, 80);
+            this.panel3.Size = new System.Drawing.Size(263, 80);
             this.panel3.TabIndex = 27;
             // 
             // pictureBox3
@@ -324,12 +302,13 @@
             this.tableLayoutPanelG1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanelG1.Controls.Add(this.chart売上高, 0, 0);
             this.tableLayoutPanelG1.Controls.Add(this.tableLayoutPanelG2, 0, 1);
-            this.tableLayoutPanelG1.Location = new System.Drawing.Point(17, 148);
+            this.tableLayoutPanelG1.Location = new System.Drawing.Point(0, 148);
+            this.tableLayoutPanelG1.Margin = new System.Windows.Forms.Padding(10);
             this.tableLayoutPanelG1.Name = "tableLayoutPanelG1";
             this.tableLayoutPanelG1.RowCount = 2;
             this.tableLayoutPanelG1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanelG1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelG1.Size = new System.Drawing.Size(812, 581);
+            this.tableLayoutPanelG1.Size = new System.Drawing.Size(845, 581);
             this.tableLayoutPanelG1.TabIndex = 29;
             // 
             // chart売上高
@@ -370,7 +349,7 @@
             series1.LabelFormat = "{#,##0,}";
             series1.Name = "Series1";
             this.chart売上高.Series.Add(series1);
-            this.chart売上高.Size = new System.Drawing.Size(792, 270);
+            this.chart売上高.Size = new System.Drawing.Size(825, 270);
             this.chart売上高.TabIndex = 19;
             this.chart売上高.Text = "chartGrossRevenue";
             title1.Alignment = System.Drawing.ContentAlignment.TopLeft;
@@ -393,7 +372,7 @@
             this.tableLayoutPanelG2.Name = "tableLayoutPanelG2";
             this.tableLayoutPanelG2.RowCount = 1;
             this.tableLayoutPanelG2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelG2.Size = new System.Drawing.Size(806, 285);
+            this.tableLayoutPanelG2.Size = new System.Drawing.Size(839, 285);
             this.tableLayoutPanelG2.TabIndex = 20;
             // 
             // chart売上上位得意先
@@ -421,21 +400,21 @@
             chartArea2.Name = "ChartArea1";
             this.chart売上上位得意先.ChartAreas.Add(chartArea2);
             this.chart売上上位得意先.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chart売上上位得意先.Location = new System.Drawing.Point(413, 10);
+            this.chart売上上位得意先.Location = new System.Drawing.Point(429, 10);
             this.chart売上上位得意先.Margin = new System.Windows.Forms.Padding(10);
             this.chart売上上位得意先.Name = "chart売上上位得意先";
             series2.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
-            series2.BackSecondaryColor = System.Drawing.Color.GreenYellow;
+            series2.BackSecondaryColor = System.Drawing.Color.ForestGreen;
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
-            series2.Color = System.Drawing.Color.LightSkyBlue;
+            series2.Color = System.Drawing.Color.GreenYellow;
             series2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             series2.IsValueShownAsLabel = true;
             series2.LabelForeColor = System.Drawing.Color.White;
             series2.LabelFormat = "{#,##0,}";
             series2.Name = "Series1";
             this.chart売上上位得意先.Series.Add(series2);
-            this.chart売上上位得意先.Size = new System.Drawing.Size(383, 265);
+            this.chart売上上位得意先.Size = new System.Drawing.Size(400, 265);
             this.chart売上上位得意先.TabIndex = 29;
             this.chart売上上位得意先.Text = "chartTopProducts";
             title2.Alignment = System.Drawing.ContentAlignment.TopLeft;
@@ -481,7 +460,7 @@
             series3.LabelFormat = "{#,##0,}";
             series3.Name = "Series1";
             this.chart売上上位商品.Series.Add(series3);
-            this.chart売上上位商品.Size = new System.Drawing.Size(383, 265);
+            this.chart売上上位商品.Size = new System.Drawing.Size(399, 265);
             this.chart売上上位商品.TabIndex = 28;
             this.chart売上上位商品.Text = "chart1";
             title3.Alignment = System.Drawing.ContentAlignment.TopLeft;
@@ -499,13 +478,40 @@
             this.button期間検索.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(141)))), ((int)(((byte)(181)))));
             this.button期間検索.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button期間検索.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button期間検索.Image = global::テストDB.Properties.Resources.虫眼鏡のアイコン;
             this.button期間検索.Location = new System.Drawing.Point(332, 5);
-            this.button期間検索.Margin = new System.Windows.Forms.Padding(5);
+            this.button期間検索.Margin = new System.Windows.Forms.Padding(10);
             this.button期間検索.Name = "button期間検索";
             this.button期間検索.Size = new System.Drawing.Size(35, 35);
             this.button期間検索.TabIndex = 14;
             this.button期間検索.UseVisualStyleBackColor = false;
             this.button期間検索.Click += new System.EventHandler(this.button期間検索_Click);
+            // 
+            // dtp期間終了
+            // 
+            this.dtp期間終了.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.dtp期間終了.CustomFormat = "yyyy/MM/dd";
+            this.dtp期間終了.Enabled = false;
+            this.dtp期間終了.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtp期間終了.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp期間終了.Location = new System.Drawing.Point(175, 5);
+            this.dtp期間終了.Margin = new System.Windows.Forms.Padding(10);
+            this.dtp期間終了.Name = "dtp期間終了";
+            this.dtp期間終了.Size = new System.Drawing.Size(142, 31);
+            this.dtp期間終了.TabIndex = 10;
+            // 
+            // dtp期間開始
+            // 
+            this.dtp期間開始.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.dtp期間開始.CustomFormat = "yyyy/MM/dd";
+            this.dtp期間開始.Enabled = false;
+            this.dtp期間開始.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtp期間開始.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp期間開始.Location = new System.Drawing.Point(17, 5);
+            this.dtp期間開始.Margin = new System.Windows.Forms.Padding(10);
+            this.dtp期間開始.Name = "dtp期間開始";
+            this.dtp期間開始.Size = new System.Drawing.Size(142, 31);
+            this.dtp期間開始.TabIndex = 9;
             // 
             // Uc売上分析
             // 
@@ -547,8 +553,8 @@
 
         private System.Windows.Forms.Button button期間検索;
         private System.Windows.Forms.Button button期間カスタム;
-        private System.Windows.Forms.DateTimePicker dtp期間終了;
-        private System.Windows.Forms.DateTimePicker dtp期間開始;
+        private テストDB.共通UI.CDateTimePicker dtp期間終了;
+        private テストDB.共通UI.CDateTimePicker dtp期間開始;
         private System.Windows.Forms.Button button期間本日;
         private System.Windows.Forms.Button button過去7日;
         private System.Windows.Forms.Button button過去30日;

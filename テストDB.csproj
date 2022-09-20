@@ -78,7 +78,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataTable変換.cs" />
     <Compile Include="Models\M商品.cs" />
     <Compile Include="Models\M得意先.cs" />
     <Compile Include="Models\M社員.cs" />
@@ -133,6 +132,12 @@
     </Compile>
     <Compile Include="共通UI\CButton.Designer.cs">
       <DependentUpon>CButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="共通UI\CDateTimePicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="共通UI\CDateTimePicker.Designer.cs">
+      <DependentUpon>CDateTimePicker.cs</DependentUpon>
     </Compile>
     <Compile Include="共通UI\DAndDSizeChanger.cs" />
     <Compile Include="共通UI\CTextbox.cs">
@@ -225,6 +230,9 @@
     <EmbeddedResource Include="UI\Uc得意先メンテ.resx">
       <DependentUpon>Uc得意先メンテ.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="共通UI\CDateTimePicker.resx">
+      <DependentUpon>CDateTimePicker.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="共通UI\UcPager.resx">
       <DependentUpon>UcPager.cs</DependentUpon>
     </EmbeddedResource>
@@ -270,8 +278,14 @@
     <Content Include="Icon\EXCEL.png" />
     <Content Include="Icon\グラフ.png" />
     <Content Include="Icon\ノーマルの太さのバツアイコン.png" />
+    <Content Include="Icon\伝票.png" />
     <Content Include="Icon\円.png" />
+    <Content Include="Icon\分析.png" />
+    <Content Include="Icon\商品.png" />
+    <Content Include="Icon\得意先.png" />
     <Content Include="Icon\握手2.png" />
+    <Content Include="Icon\日別.png" />
+    <Content Include="Icon\社員.png" />
     <Content Include="Icon\虫眼鏡のアイコン.png" />
   </ItemGroup>
   <ItemGroup>

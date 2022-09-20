@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.Common;
 using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using static テストDB.UI.Uc売上明細一覧;
 using Excel = Microsoft.Office.Interop.Excel;
 
 
@@ -19,6 +17,13 @@ namespace テストDB.共通UI
         // -------------------------------------------------------
         // 公開プロパティ
         // -------------------------------------------------------
+
+        // 外部からDataGridViewを直接参照用
+        public DataGridView pagerDataGridView {
+            get {
+                return dataGridView;
+            }
+        }
 
         // こちらに全ページ分のDataSourceをセット
         private List<Object> fullDataSource;
@@ -366,10 +371,16 @@ namespace テストDB.共通UI
             Excel.Range range = CurrentSheet.UsedRange;
             range.NumberFormatLocal = "0";
 
+            // Z列を超える一覧は想定しない
+            if (dataGridView.Columns.Count > 26)
+            {
+                throw new Exception("列数が多すぎる。EXCELへの転送は26列までしか想定していない。");
+            }
+
             int c = 0;
+
             foreach (DataGridViewColumn column in dataGridView.Columns)
             {
-                // todo Z列を超える一覧は無いはず
                 char currentLetter = (char)(c + 65);
 
                 if (column.DefaultCellStyle.Format == "MM/dd")

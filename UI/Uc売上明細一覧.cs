@@ -98,7 +98,6 @@ namespace テストDB.UI
             this.dtp期間開始.Value = 期間開始;
             this.dtp期間終了.Value = 期間終了;
 
-            // todo はたして、外部から本当に指定が必要なのか
             this.userControl商品入力.Get商品by商品名(商品名);
             this.userControl得意先入力.M得意先一覧.得意先CD = 得意先CD;
 
@@ -110,7 +109,6 @@ namespace テストDB.UI
             期間開始 = this.dtp期間開始.Value.Date;
             期間終了 = this.dtp期間終了.Value.Date;
 
-            // todo はたして、外部から本当に指定が必要なのか
             商品名 = "";
             バーコード = this.userControl商品入力.M商品.バーコード;
             得意先CD = this.userControl得意先入力.M得意先一覧.得意先CD;
@@ -130,6 +128,8 @@ namespace テストDB.UI
             vm売上明細.LoadT売上明細(期間開始, 期間終了, 商品名, バーコード, 得意先CD);
 
             var list = vm売上明細.listV売上明細
+                .OrderBy(it => it.売上日)
+                .ThenBy(it => it.バーコード)
                 .Select((it, i) => new ds売上明細一覧
                 {
                     No = i + 1,
@@ -143,8 +143,6 @@ namespace テストDB.UI
                     数量 = it.販売数量,
                     売上高 = it.明細売上高,
                 })
-                .OrderBy(it => it.売上日)
-                .ThenBy(it => it.バーコード)
                .ToList()
                 ;
 
@@ -164,7 +162,7 @@ namespace テストDB.UI
         // グリッドの書式設定
         private void OnGrid_Format()
         {
-            DataGridView dg = this.ucPager.dataGridView;
+            DataGridView dg = this.ucPager.pagerDataGridView;
 
             // 書式
             dg.Columns[(int)ds売上明細一覧_Col.売上日].DefaultCellStyle.Format = "MM/dd";
@@ -182,7 +180,10 @@ namespace テストDB.UI
         // ----------------------------------------------------------------
         private void ucPager_SizeChanged(object sender, EventArgs e)
         {
-            DataGridView dg = this.ucPager.dataGridView;
+            DataGridView dg = this.ucPager.pagerDataGridView;
+
+            // データ0行ならなにもしない
+            if (dg.RowCount == 0) return;
 
             dg.Columns[(int)ds売上明細一覧_Col.商品名].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dg.Columns[(int)ds売上明細一覧_Col.得意先名].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;

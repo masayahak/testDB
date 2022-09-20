@@ -82,9 +82,11 @@
             this.textBoxバーコード.Size = new System.Drawing.Size(167, 31);
             this.textBoxバーコード.TabIndex = 57;
             this.textBoxバーコード.Text = "1234567890123";
+            this.textBoxバーコード.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxバーコード_KeyDown);
+            this.textBoxバーコード.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxバーコード_KeyPress);
             this.textBoxバーコード.Leave += new System.EventHandler(this.textBoxバーコード_Leave);
             // 
-            // UserControl商品入力
+            // Uc商品入力
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -93,7 +95,7 @@
             this.Controls.Add(this.textBox商品名);
             this.Controls.Add(this.button検索商品);
             this.Controls.Add(this.textBoxバーコード);
-            this.Name = "UserControl商品入力";
+            this.Name = "Uc商品入力";
             this.Size = new System.Drawing.Size(294, 78);
             this.ResumeLayout(false);
             this.PerformLayout();

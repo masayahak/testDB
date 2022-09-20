@@ -198,11 +198,12 @@ namespace テストDB.UI
         private void button期間検索_Click(object sender, EventArgs e)
         {
             LoadData();
+
+            SetDateMenuButtonsUI();
         }
 
         private void SetDateMenuButtonsUI()
         {
-            // todo datetimepickerにリードオンリーが無い
             dtp期間開始.Enabled = false;
             dtp期間終了.Enabled = false;
             button期間検索.Visible = false;

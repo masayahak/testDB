@@ -264,7 +264,7 @@
         private System.Windows.Forms.Label lblMaxCount;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblCurrentCount;
-        public System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.BindingSource bindingSource;
     }
 }
