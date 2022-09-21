@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
-using テストDB.Models;
 using テストDB.ViewModel;
 
 namespace テストDB.UI

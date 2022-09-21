@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            テストDB.Models.M社員 m社員1 = new テストDB.Models.M社員();
-            テストDB.Models.M得意先一覧 m得意先一覧1 = new テストDB.Models.M得意先一覧();
+            テストDB.Models.M社員 m社員2 = new テストDB.Models.M社員();
+            テストDB.Models.M得意先一覧 m得意先一覧2 = new テストDB.Models.M得意先一覧();
             this.dtp期間終了 = new テストDB.共通UI.CDateTimePicker();
             this.dtp期間開始 = new テストDB.共通UI.CDateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
@@ -145,10 +145,10 @@
             // 
             this.uc社員入力.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
             this.uc社員入力.Location = new System.Drawing.Point(186, 140);
-            m社員1.ID = -1;
-            m社員1.社員名 = "";
-            m社員1.社員番号 = "";
-            this.uc社員入力.M社員 = m社員1;
+            m社員2.ID = -1;
+            m社員2.社員名 = "";
+            m社員2.社員番号 = "";
+            this.uc社員入力.M社員 = m社員2;
             this.uc社員入力.Name = "uc社員入力";
             this.uc社員入力.ReadOnly社員番号 = false;
             this.uc社員入力.Size = new System.Drawing.Size(258, 78);
@@ -159,13 +159,13 @@
             // 
             this.uc得意先入力.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
             this.uc得意先入力.Location = new System.Drawing.Point(188, 49);
-            m得意先一覧1.ID = -1;
-            m得意先一覧1.得意先CD = "";
-            m得意先一覧1.得意先名 = "";
-            m得意先一覧1.担当社員ID = 0;
-            m得意先一覧1.担当社員名 = null;
-            m得意先一覧1.担当社員番号 = null;
-            this.uc得意先入力.M得意先一覧 = m得意先一覧1;
+            m得意先一覧2.ID = -1;
+            m得意先一覧2.得意先CD = "";
+            m得意先一覧2.得意先名 = "";
+            m得意先一覧2.担当社員ID = 0;
+            m得意先一覧2.担当社員名 = null;
+            m得意先一覧2.担当社員番号 = null;
+            this.uc得意先入力.M得意先一覧 = m得意先一覧2;
             this.uc得意先入力.Name = "uc得意先入力";
             this.uc得意先入力.ReadOnly得意先CD = false;
             this.uc得意先入力.Size = new System.Drawing.Size(294, 78);
@@ -174,9 +174,7 @@
             // 
             // ucPager
             // 
-            this.ucPager.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ucPager.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.ucPager.KeyColumn = 1;
             this.ucPager.Location = new System.Drawing.Point(0, 232);
             this.ucPager.Name = "ucPager";

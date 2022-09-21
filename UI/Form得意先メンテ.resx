@@ -117,44 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="EXCEL" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icon\excel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Loading_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icon\loading_icon.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="グラフ" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icon\グラフ.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ノーマルの太さのバツアイコン" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icon\ノーマルの太さのバツアイコン.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="伝票" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icon\伝票.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="円" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icon\円.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="分析" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icon\分析.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="商品" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icon\商品.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="得意先" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icon\得意先.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="握手2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icon\握手2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="日別" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icon\日別.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="社員" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icon\社員.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="虫眼鏡のアイコン" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icon\虫眼鏡のアイコン.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="button検索.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAANtJREFUOE+V
+        UtsNwjAMZBRG6Shs0lEYhc/SVqFSwn9HgVx8Lg7EBU6KWjm+h60cLMaQ+umWLvn7GENcr+F+HubU8drH
+        sCxHECzRCkGYrW1o87ubCKced1OIJ5ZraAPIILC8ATUxiCtLNSSiXHouEG8lLNCZ4eQtjKPkfTR2gXg4
+        +HcFmKCZUOfbSwDnMkJjR1s8jMFSBXX37gvUAUkQEyQKs57jc0wXttkeEPVF6qikfEL3gBQliWkGWUQl
+        Jcu/Q3elIvm7/7xbqEXK+V8E8V8CzvP+BjiXhc6pewIwlEaDPMdVggAAAABJRU5ErkJggg==
+</value>
   </data>
 </root>

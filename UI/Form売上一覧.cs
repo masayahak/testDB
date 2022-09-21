@@ -9,16 +9,14 @@ using static テストDB.共通UI.UcPager;
 
 namespace テストDB.UI
 {
-
-    public partial class Uc売上一覧 : UserControl
+    public partial class Form売上一覧 : Form
     {
-
         // ----------------------------------------------------------------
         // 表示する一覧の定義
         // ----------------------------------------------------------------
         public class ds売上一覧
         {
-            public int No { get; set;}
+            public int No { get; set; }
             public int ID { get; set; }
             public DateTime 売上日 { get; set; }
             public string 得意先CD { get; set; }
@@ -60,7 +58,7 @@ namespace テストDB.UI
             this.uc社員入力.M社員 = e.m社員;
         }
 
-        public Uc売上一覧()
+        public Form売上一覧()
         {
             InitializeComponent();
 
@@ -81,7 +79,7 @@ namespace テストDB.UI
 
         }
 
-        private void Uc売上一覧_Load(object sender, EventArgs e)
+        private void Form売上一覧_Load(object sender, EventArgs e)
         {
             this.uc売上伝票.Dock = DockStyle.Fill;
             this.uc売上伝票.Visible = false;
@@ -180,7 +178,7 @@ namespace テストDB.UI
         {
 
             DataGridView dg = this.ucPager.pagerDataGridView;
-            
+
             // データ0行ならなにもしない
             if (dg.RowCount == 0) return;
 

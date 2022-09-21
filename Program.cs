@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using テストDB.UI;
 
 namespace テストDB
 {
@@ -16,7 +17,7 @@ namespace テストDB
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new formダッシュボード());
+            Application.Run(new Formメイン());
         }
     }
 }
