@@ -53,12 +53,12 @@ namespace テストDB.UI
 
         private void On得意先CD_Selected(On得意先CDSelectedEventArgs e)
         {
-            this.userControl得意先入力.M得意先一覧 = e.m得意先一覧;
+            this.uc得意先入力.M得意先一覧 = e.m得意先一覧;
         }
 
         private void On社員番号_Selected(On社員番号SelectedEventArgs e)
         {
-            this.userControl社員入力.M社員 = e.m社員;
+            this.uc社員入力.M社員 = e.m社員;
         }
 
         public Uc売上一覧()
@@ -66,12 +66,12 @@ namespace テストDB.UI
             InitializeComponent();
 
             // 得意先検索イベント
-            this.userControl得意先入力.userControl得意先検索 = this.userControl得意先検索;
-            this.userControl得意先検索.On得意先CDSelected += On得意先CD_Selected;
+            this.uc得意先入力.uc得意先検索 = this.uc得意先検索;
+            this.uc得意先検索.On得意先CDSelected += On得意先CD_Selected;
 
             // 社員検索イベント
-            this.userControl社員入力.userControl社員検索 = this.userControl社員検索;
-            this.userControl社員検索.On社員番号Selected += On社員番号_Selected;
+            this.uc社員入力.uc社員検索 = this.uc社員検索;
+            this.uc社員検索.On社員番号Selected += On社員番号_Selected;
 
             // グリッドのフォーマットイベント
             this.ucPager.OnGridFormat += OnGrid_Format;
@@ -82,10 +82,10 @@ namespace テストDB.UI
 
         }
 
-        private void UserControl売上日別売上一覧_Load(object sender, EventArgs e)
+        private void Uc売上一覧_Load(object sender, EventArgs e)
         {
-            this.userControl売上伝票.Dock = DockStyle.Fill;
-            this.userControl売上伝票.Visible = false;
+            this.uc売上伝票.Dock = DockStyle.Fill;
+            this.uc売上伝票.Visible = false;
 
         }
 
@@ -97,8 +97,8 @@ namespace テストDB.UI
             this.dtp期間開始.Value = 期間開始;
             this.dtp期間終了.Value = 期間終了;
 
-            this.userControl得意先入力.M得意先一覧.得意先CD = 得意先CD;
-            this.userControl社員入力.M社員.社員番号 = 担当社員番号;
+            this.uc得意先入力.M得意先一覧.得意先CD = 得意先CD;
+            this.uc社員入力.M社員.社員番号 = 担当社員番号;
 
             LoadData();
         }
@@ -112,8 +112,8 @@ namespace テストDB.UI
             期間開始 = this.dtp期間開始.Value.Date;
             期間終了 = this.dtp期間終了.Value.Date;
 
-            得意先CD = this.userControl得意先入力.M得意先一覧.得意先CD;
-            担当社員番号 = this.userControl社員入力.M社員.社員番号;
+            得意先CD = this.uc得意先入力.M得意先一覧.得意先CD;
+            担当社員番号 = this.uc社員入力.M社員.社員番号;
 
             LoadData();
         }
@@ -218,10 +218,10 @@ namespace テストDB.UI
 
             int.TryParse(args.ID, out 売上ID);
 
-            this.userControl売上伝票.売上ID = 売上ID;
-            this.userControl売上伝票.LoadData();
-            this.userControl売上伝票.Visible = true;
-            this.userControl売上伝票.BringToFront();
+            this.uc売上伝票.売上ID = 売上ID;
+            this.uc売上伝票.LoadData();
+            this.uc売上伝票.Visible = true;
+            this.uc売上伝票.BringToFront();
         }
 
     }

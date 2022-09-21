@@ -142,15 +142,15 @@
             this.dataGridView商品一覧.TabIndex = 41;
             this.dataGridView商品一覧.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView商品一覧_CellDoubleClick);
             // 
-            // UserControl商品検索
+            // Uc商品検索
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.dataGridView商品一覧);
             this.Controls.Add(this.panel検索);
-            this.Name = "UserControl商品検索";
+            this.Name = "Uc商品検索";
             this.Size = new System.Drawing.Size(284, 262);
-            this.Load += new System.EventHandler(this.UserControl商品入力_Load);
+            this.Load += new System.EventHandler(this.Uc商品入力_Load);
             this.panel検索.ResumeLayout(false);
             this.panel検索.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView商品一覧)).EndInit();

@@ -83,7 +83,7 @@
             this.button追加作業中.UseVisualStyleBackColor = false;
             this.button追加作業中.Click += new System.EventHandler(this.button追加作業中_Click);
             // 
-            // UserControl処理モード
+            // Uc処理モード
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -91,7 +91,7 @@
             this.Controls.Add(this.button修正作業中);
             this.Controls.Add(this.label作業中);
             this.Controls.Add(this.button追加作業中);
-            this.Name = "UserControl処理モード";
+            this.Name = "Uc処理モード";
             this.Size = new System.Drawing.Size(121, 137);
             this.ResumeLayout(false);
 

@@ -8,12 +8,12 @@ namespace テストDB.共通UI
 {
     public partial class Uc商品入力 : UserControl
     {
-        private Uc商品検索 _userControl商品検索;
+        private Uc商品検索 _uc商品検索;
 
-        public Uc商品検索 userControl商品検索
+        public Uc商品検索 uc商品検索
         {
-            get { return _userControl商品検索; }
-            set { _userControl商品検索 = value; }
+            get { return _uc商品検索; }
+            set { _uc商品検索 = value; }
         }
 
         private M商品 _m商品;
@@ -70,12 +70,12 @@ namespace テストDB.共通UI
 
         private void button検索商品_Click(object sender, EventArgs e)
         {
-            userControl商品検索.Visible = !userControl商品検索.Visible;
+            uc商品検索.Visible = !uc商品検索.Visible;
 
-            if (userControl商品検索.Visible)
-                userControl商品検索.BringToFront();
+            if (uc商品検索.Visible)
+                uc商品検索.BringToFront();
 
-            userControl商品検索.バーコード = this.textBoxバーコード.Text;
+            uc商品検索.バーコード = this.textBoxバーコード.Text;
         }
 
         // ------------------------------------------------------------

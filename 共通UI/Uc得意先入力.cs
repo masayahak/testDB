@@ -8,12 +8,12 @@ namespace テストDB.共通UI
 {
     public partial class Uc得意先入力 : UserControl
     {
-        private Uc得意先検索 _userControl得意先検索;
+        private Uc得意先検索 _uc得意先検索;
 
-        public Uc得意先検索 userControl得意先検索
+        public Uc得意先検索 uc得意先検索
         {
-            get { return _userControl得意先検索; }
-            set { _userControl得意先検索 = value; }
+            get { return _uc得意先検索; }
+            set { _uc得意先検索 = value; }
         }
 
         private M得意先一覧 _m得意先一覧;
@@ -70,12 +70,12 @@ namespace テストDB.共通UI
 
         private void button検索得意先_Click(object sender, EventArgs e)
         {
-            userControl得意先検索.Visible = !userControl得意先検索.Visible;
+            uc得意先検索.Visible = !uc得意先検索.Visible;
 
-            if (userControl得意先検索.Visible)
-                userControl得意先検索.BringToFront();
+            if (uc得意先検索.Visible)
+                uc得意先検索.BringToFront();
 
-            userControl得意先検索.得意先CD = this.textBox得意先CD.Text;
+            uc得意先検索.得意先CD = this.textBox得意先CD.Text;
         }
 
         // ------------------------------------------------------------

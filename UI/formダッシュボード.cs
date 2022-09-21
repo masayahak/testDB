@@ -47,8 +47,8 @@ namespace テストDB
         {
             InitializeComponent();
 
-            this.userControl売上総合.On売上日Selected += On売上日_Selected;
-            this.userControl売上総合.On商品Selected += On商品_Selected;
+            this.uc売上分析.On売上日Selected += On売上日_Selected;
+            this.uc売上分析.On商品Selected += On商品_Selected;
 
 
             if (DesignMode) return;
@@ -65,7 +65,7 @@ namespace テストDB
             this.button売上総合.ForeColor = Color.WhiteSmoke;
             this.button売上総合.FlatAppearance.BorderColor = Color.WhiteSmoke;
 
-            this.userControl売上総合.Visible = true;
+            this.uc売上分析.Visible = true;
 
             ClearAllShow(表示コントロール.売上分析);
         }
@@ -98,7 +98,7 @@ namespace テストDB
             this.button社員.ForeColor = Color.WhiteSmoke;
             this.button社員.FlatAppearance.BorderColor = Color.WhiteSmoke;
 
-            this.userControl社員メンテ.Visible = true;
+            this.uc社員メンテ.Visible = true;
 
             ClearAllShow(表示コントロール.社員マスタ);
         }
@@ -109,7 +109,7 @@ namespace テストDB
             this.button得意先.ForeColor = Color.WhiteSmoke;
             this.button得意先.FlatAppearance.BorderColor = Color.WhiteSmoke;
 
-            this.userControl得意先メンテ.Visible = true;
+            this.uc得意先メンテ.Visible = true;
 
             ClearAllShow(表示コントロール.得意先マスタ);
         }
@@ -124,7 +124,7 @@ namespace テストDB
                 this.button売上総合.ForeColor = Color.FromArgb(123, 137, 163);
                 this.button売上総合.FlatAppearance.BorderColor = Color.FromArgb(123, 137, 163);
 
-                this.userControl売上総合.Visible = false;
+                this.uc売上分析.Visible = false;
             }
 
             if (sender != 表示コントロール.売上日別)
@@ -148,7 +148,7 @@ namespace テストDB
                 this.button社員.ForeColor = Color.FromArgb(123, 137, 163);
                 this.button社員.FlatAppearance.BorderColor = Color.FromArgb(123, 137, 163);
 
-                this.userControl社員メンテ.Visible = false;
+                this.uc社員メンテ.Visible = false;
             }
 
             if (sender != 表示コントロール.得意先マスタ)
@@ -156,7 +156,7 @@ namespace テストDB
                 this.button得意先.ForeColor = Color.FromArgb(123, 137, 163);
                 this.button得意先.FlatAppearance.BorderColor = Color.FromArgb(123, 137, 163);
 
-                this.userControl得意先メンテ.Visible = false;
+                this.uc得意先メンテ.Visible = false;
             }
         }
 

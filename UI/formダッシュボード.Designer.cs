@@ -35,9 +35,9 @@
             this.button得意先 = new System.Windows.Forms.Button();
             this.button社員 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.userControl売上総合 = new テストDB.UI.Uc売上分析();
-            this.userControl社員メンテ = new テストDB.UI.Uc社員メンテ();
-            this.userControl得意先メンテ = new テストDB.UI.Uc得意先メンテ();
+            this.uc売上分析 = new テストDB.UI.Uc売上分析();
+            this.uc社員メンテ = new テストDB.UI.Uc社員メンテ();
+            this.uc得意先メンテ = new テストDB.UI.Uc得意先メンテ();
             this.uc売上一覧 = new テストDB.UI.Uc売上一覧();
             this.uc売上明細一覧 = new テストDB.UI.Uc売上明細一覧();
             this.panel2.SuspendLayout();
@@ -159,9 +159,9 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
-            this.panel1.Controls.Add(this.userControl売上総合);
-            this.panel1.Controls.Add(this.userControl社員メンテ);
-            this.panel1.Controls.Add(this.userControl得意先メンテ);
+            this.panel1.Controls.Add(this.uc売上分析);
+            this.panel1.Controls.Add(this.uc社員メンテ);
+            this.panel1.Controls.Add(this.uc得意先メンテ);
             this.panel1.Controls.Add(this.uc売上一覧);
             this.panel1.Controls.Add(this.uc売上明細一覧);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -170,33 +170,33 @@
             this.panel1.Size = new System.Drawing.Size(845, 729);
             this.panel1.TabIndex = 7;
             // 
-            // userControl売上総合
+            // uc売上分析
             // 
-            this.userControl売上総合.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(67)))));
-            this.userControl売上総合.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.userControl売上総合.Location = new System.Drawing.Point(0, 0);
-            this.userControl売上総合.Name = "userControl売上総合";
-            this.userControl売上総合.Size = new System.Drawing.Size(845, 729);
-            this.userControl売上総合.TabIndex = 2;
+            this.uc売上分析.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(67)))));
+            this.uc売上分析.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uc売上分析.Location = new System.Drawing.Point(0, 0);
+            this.uc売上分析.Name = "uc売上分析";
+            this.uc売上分析.Size = new System.Drawing.Size(845, 729);
+            this.uc売上分析.TabIndex = 2;
             // 
-            // userControl社員メンテ
+            // uc社員メンテ
             // 
-            this.userControl社員メンテ.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
-            this.userControl社員メンテ.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.userControl社員メンテ.Location = new System.Drawing.Point(0, 0);
-            this.userControl社員メンテ.Name = "userControl社員メンテ";
-            this.userControl社員メンテ.Size = new System.Drawing.Size(845, 729);
-            this.userControl社員メンテ.TabIndex = 0;
+            this.uc社員メンテ.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
+            this.uc社員メンテ.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uc社員メンテ.Location = new System.Drawing.Point(0, 0);
+            this.uc社員メンテ.Name = "uc社員メンテ";
+            this.uc社員メンテ.Size = new System.Drawing.Size(845, 729);
+            this.uc社員メンテ.TabIndex = 0;
             // 
-            // userControl得意先メンテ
+            // uc得意先メンテ
             // 
-            this.userControl得意先メンテ.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
-            this.userControl得意先メンテ.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.userControl得意先メンテ.Location = new System.Drawing.Point(0, 0);
-            this.userControl得意先メンテ.Name = "userControl得意先メンテ";
-            this.userControl得意先メンテ.Size = new System.Drawing.Size(845, 729);
-            this.userControl得意先メンテ.TabIndex = 1;
-            this.userControl得意先メンテ.Visible = false;
+            this.uc得意先メンテ.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
+            this.uc得意先メンテ.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uc得意先メンテ.Location = new System.Drawing.Point(0, 0);
+            this.uc得意先メンテ.Name = "uc得意先メンテ";
+            this.uc得意先メンテ.Size = new System.Drawing.Size(845, 729);
+            this.uc得意先メンテ.TabIndex = 1;
+            this.uc得意先メンテ.Visible = false;
             // 
             // uc売上一覧
             // 
@@ -237,11 +237,11 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button社員;
         private System.Windows.Forms.Panel panel1;
-        private UI.Uc社員メンテ userControl社員メンテ;
-        private UI.Uc得意先メンテ userControl得意先メンテ;
+        private UI.Uc社員メンテ uc社員メンテ;
+        private UI.Uc得意先メンテ uc得意先メンテ;
         private System.Windows.Forms.Button button得意先;
         private System.Windows.Forms.Button button売上総合;
-        private UI.Uc売上分析 userControl売上総合;
+        private UI.Uc売上分析 uc売上分析;
         private System.Windows.Forms.Button button売上日別;
         private UI.Uc売上一覧 uc売上一覧;
         private System.Windows.Forms.Button button商品別;

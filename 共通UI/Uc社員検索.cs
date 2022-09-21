@@ -74,12 +74,11 @@ namespace テストDB.共通UI
 
         private void UserControl社員入力_Load(object sender, EventArgs e)
         {
+            if (DesignMode) return;
+
             sizeChanger = new DAndDSizeChanger(this.panel検索, this, DAndDArea.WithoutTop, 8);
 
-            if (!DesignMode)
-            {
-                DataLoad();
-            }
+            DataLoad();
         }
 
         private void DataLoad()

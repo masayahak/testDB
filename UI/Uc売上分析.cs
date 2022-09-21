@@ -124,7 +124,7 @@ namespace テストDB.UI
 
         }
 
-        private void UserControl売上総合_Load(object sender, EventArgs e)
+        private void Uc売上分析_Load(object sender, EventArgs e)
         {
             // 初期表示 過去7日
             this.mode期間 = Mode期間.過去7日;

@@ -30,17 +30,17 @@
         {
             テストDB.Models.M社員 m社員1 = new テストDB.Models.M社員();
             テストDB.Models.M得意先一覧 m得意先一覧1 = new テストDB.Models.M得意先一覧();
-            this.dtp期間終了 = new System.Windows.Forms.DateTimePicker();
-            this.dtp期間開始 = new System.Windows.Forms.DateTimePicker();
+            this.dtp期間終了 = new テストDB.共通UI.CDateTimePicker();
+            this.dtp期間開始 = new テストDB.共通UI.CDateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.cButton検索 = new テストDB.共通UI.CButton();
-            this.userControl売上伝票 = new テストDB.UI.Uc売上伝票();
-            this.userControl得意先検索 = new テストDB.共通UI.Uc得意先検索();
-            this.userControl社員検索 = new テストDB.共通UI.Uc社員検索();
-            this.userControl社員入力 = new テストDB.共通UI.Uc社員入力();
-            this.userControl得意先入力 = new テストDB.共通UI.Uc得意先入力();
+            this.uc売上伝票 = new テストDB.UI.Uc売上伝票();
+            this.uc得意先検索 = new テストDB.共通UI.Uc得意先検索();
+            this.uc社員検索 = new テストDB.共通UI.Uc社員検索();
+            this.uc社員入力 = new テストDB.共通UI.Uc社員入力();
+            this.uc得意先入力 = new テストDB.共通UI.Uc得意先入力();
             this.ucPager = new テストDB.共通UI.UcPager();
             this.SuspendLayout();
             // 
@@ -112,65 +112,65 @@
             this.cButton検索.UseVisualStyleBackColor = false;
             this.cButton検索.Click += new System.EventHandler(this.cButton検索_Click);
             // 
-            // userControl売上伝票
+            // uc売上伝票
             // 
-            this.userControl売上伝票.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(47)))), ((int)(((byte)(87)))));
-            this.userControl売上伝票.Location = new System.Drawing.Point(-51, 259);
-            this.userControl売上伝票.Name = "userControl売上伝票";
-            this.userControl売上伝票.Size = new System.Drawing.Size(845, 645);
-            this.userControl売上伝票.TabIndex = 55;
-            this.userControl売上伝票.Visible = false;
-            this.userControl売上伝票.売上ID = 1;
+            this.uc売上伝票.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(47)))), ((int)(((byte)(87)))));
+            this.uc売上伝票.Location = new System.Drawing.Point(-51, 259);
+            this.uc売上伝票.Name = "uc売上伝票";
+            this.uc売上伝票.Size = new System.Drawing.Size(845, 645);
+            this.uc売上伝票.TabIndex = 55;
+            this.uc売上伝票.Visible = false;
+            this.uc売上伝票.売上ID = 1;
             // 
-            // userControl得意先検索
+            // uc得意先検索
             // 
-            this.userControl得意先検索.Location = new System.Drawing.Point(220, 85);
-            this.userControl得意先検索.Name = "userControl得意先検索";
-            this.userControl得意先検索.Size = new System.Drawing.Size(514, 331);
-            this.userControl得意先検索.TabIndex = 62;
-            this.userControl得意先検索.Visible = false;
-            this.userControl得意先検索.得意先CD = null;
+            this.uc得意先検索.Location = new System.Drawing.Point(220, 85);
+            this.uc得意先検索.Name = "uc得意先検索";
+            this.uc得意先検索.Size = new System.Drawing.Size(514, 331);
+            this.uc得意先検索.TabIndex = 62;
+            this.uc得意先検索.Visible = false;
+            this.uc得意先検索.得意先CD = null;
             // 
-            // userControl社員検索
+            // uc社員検索
             // 
-            this.userControl社員検索.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.userControl社員検索.Location = new System.Drawing.Point(360, 140);
-            this.userControl社員検索.Name = "userControl社員検索";
-            this.userControl社員検索.Size = new System.Drawing.Size(284, 262);
-            this.userControl社員検索.TabIndex = 65;
-            this.userControl社員検索.Visible = false;
-            this.userControl社員検索.社員番号 = null;
+            this.uc社員検索.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.uc社員検索.Location = new System.Drawing.Point(360, 140);
+            this.uc社員検索.Name = "uc社員検索";
+            this.uc社員検索.Size = new System.Drawing.Size(284, 262);
+            this.uc社員検索.TabIndex = 65;
+            this.uc社員検索.Visible = false;
+            this.uc社員検索.社員番号 = null;
             // 
-            // userControl社員入力
+            // uc社員入力
             // 
-            this.userControl社員入力.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
-            this.userControl社員入力.Location = new System.Drawing.Point(186, 140);
+            this.uc社員入力.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
+            this.uc社員入力.Location = new System.Drawing.Point(186, 140);
             m社員1.ID = -1;
             m社員1.社員名 = "";
             m社員1.社員番号 = "";
-            this.userControl社員入力.M社員 = m社員1;
-            this.userControl社員入力.Name = "userControl社員入力";
-            this.userControl社員入力.ReadOnly社員番号 = false;
-            this.userControl社員入力.Size = new System.Drawing.Size(258, 78);
-            this.userControl社員入力.TabIndex = 63;
-            this.userControl社員入力.userControl社員検索 = null;
+            this.uc社員入力.M社員 = m社員1;
+            this.uc社員入力.Name = "uc社員入力";
+            this.uc社員入力.ReadOnly社員番号 = false;
+            this.uc社員入力.Size = new System.Drawing.Size(258, 78);
+            this.uc社員入力.TabIndex = 63;
+            this.uc社員入力.uc社員検索 = null;
             // 
-            // userControl得意先入力
+            // uc得意先入力
             // 
-            this.userControl得意先入力.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
-            this.userControl得意先入力.Location = new System.Drawing.Point(188, 49);
+            this.uc得意先入力.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
+            this.uc得意先入力.Location = new System.Drawing.Point(188, 49);
             m得意先一覧1.ID = -1;
             m得意先一覧1.得意先CD = "";
             m得意先一覧1.得意先名 = "";
             m得意先一覧1.担当社員ID = 0;
             m得意先一覧1.担当社員名 = null;
             m得意先一覧1.担当社員番号 = null;
-            this.userControl得意先入力.M得意先一覧 = m得意先一覧1;
-            this.userControl得意先入力.Name = "userControl得意先入力";
-            this.userControl得意先入力.ReadOnly得意先CD = false;
-            this.userControl得意先入力.Size = new System.Drawing.Size(294, 78);
-            this.userControl得意先入力.TabIndex = 60;
-            this.userControl得意先入力.userControl得意先検索 = null;
+            this.uc得意先入力.M得意先一覧 = m得意先一覧1;
+            this.uc得意先入力.Name = "uc得意先入力";
+            this.uc得意先入力.ReadOnly得意先CD = false;
+            this.uc得意先入力.Size = new System.Drawing.Size(294, 78);
+            this.uc得意先入力.TabIndex = 60;
+            this.uc得意先入力.uc得意先検索 = null;
             // 
             // ucPager
             // 
@@ -192,35 +192,35 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(47)))), ((int)(((byte)(87)))));
             this.Controls.Add(this.ucPager);
             this.Controls.Add(this.cButton検索);
-            this.Controls.Add(this.userControl売上伝票);
-            this.Controls.Add(this.userControl得意先検索);
-            this.Controls.Add(this.userControl社員検索);
+            this.Controls.Add(this.uc売上伝票);
+            this.Controls.Add(this.uc得意先検索);
+            this.Controls.Add(this.uc社員検索);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.userControl社員入力);
+            this.Controls.Add(this.uc社員入力);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.userControl得意先入力);
+            this.Controls.Add(this.uc得意先入力);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dtp期間終了);
             this.Controls.Add(this.dtp期間開始);
             this.Name = "Uc売上一覧";
             this.Size = new System.Drawing.Size(845, 729);
-            this.Load += new System.EventHandler(this.UserControl売上日別売上一覧_Load);
+            this.Load += new System.EventHandler(this.Uc売上一覧_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.DateTimePicker dtp期間終了;
-        private System.Windows.Forms.DateTimePicker dtp期間開始;
-        private Uc売上伝票 userControl売上伝票;
+        private テストDB.共通UI.CDateTimePicker dtp期間終了;
+        private テストDB.共通UI.CDateTimePicker dtp期間開始;
+        private Uc売上伝票 uc売上伝票;
         private System.Windows.Forms.Label label1;
-        private 共通UI.Uc得意先入力 userControl得意先入力;
+        private 共通UI.Uc得意先入力 uc得意先入力;
         private System.Windows.Forms.Label label3;
-        private 共通UI.Uc得意先検索 userControl得意先検索;
-        private 共通UI.Uc社員入力 userControl社員入力;
+        private 共通UI.Uc得意先検索 uc得意先検索;
+        private 共通UI.Uc社員入力 uc社員入力;
         private System.Windows.Forms.Label label2;
-        private 共通UI.Uc社員検索 userControl社員検索;
+        private 共通UI.Uc社員検索 uc社員検索;
         private 共通UI.CButton cButton検索;
         private 共通UI.UcPager ucPager;
     }

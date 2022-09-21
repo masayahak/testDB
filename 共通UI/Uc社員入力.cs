@@ -9,12 +9,12 @@ namespace テストDB.共通UI
     public partial class Uc社員入力 : UserControl
     {
 
-        private Uc社員検索 _userControl社員検索;
+        private Uc社員検索 _uc社員検索;
 
-        public Uc社員検索 userControl社員検索
+        public Uc社員検索 uc社員検索
         {
-            get { return _userControl社員検索; }
-            set { _userControl社員検索 = value; }
+            get { return _uc社員検索; }
+            set { _uc社員検索 = value; }
         }
 
         private M社員 _m社員;
@@ -69,12 +69,12 @@ namespace テストDB.共通UI
 
         private void button検索社員_Click(object sender, EventArgs e)
         {
-            userControl社員検索.Visible = !userControl社員検索.Visible;
+            uc社員検索.Visible = !uc社員検索.Visible;
 
-            if (userControl社員検索.Visible)
-                userControl社員検索.BringToFront();
+            if (uc社員検索.Visible)
+                uc社員検索.BringToFront();
 
-            userControl社員検索.社員番号 = this.textBox社員番号.Text;
+            uc社員検索.社員番号 = this.textBox社員番号.Text;
         }
 
 

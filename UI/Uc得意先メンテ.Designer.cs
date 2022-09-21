@@ -39,9 +39,9 @@
             this.button削除 = new テストDB.共通UI.CButton();
             this.userControl処理モード = new テストDB.UI.Uc処理モード();
             this.panel詳細 = new System.Windows.Forms.Panel();
-            this.userControl社員検索 = new テストDB.共通UI.Uc社員検索();
+            this.uc社員検索 = new テストDB.共通UI.Uc社員検索();
             this.textBox得意先ID = new System.Windows.Forms.TextBox();
-            this.userControl社員入力 = new テストDB.共通UI.Uc社員入力();
+            this.uc社員入力 = new テストDB.共通UI.Uc社員入力();
             this.textBox担当社員ID = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox得意先名 = new テストDB.共通UI.CTextBox();
@@ -136,9 +136,9 @@
             // 
             // panel詳細
             // 
-            this.panel詳細.Controls.Add(this.userControl社員検索);
+            this.panel詳細.Controls.Add(this.uc社員検索);
             this.panel詳細.Controls.Add(this.textBox得意先ID);
-            this.panel詳細.Controls.Add(this.userControl社員入力);
+            this.panel詳細.Controls.Add(this.uc社員入力);
             this.panel詳細.Controls.Add(this.textBox担当社員ID);
             this.panel詳細.Controls.Add(this.label3);
             this.panel詳細.Controls.Add(this.textBox得意先名);
@@ -150,14 +150,14 @@
             this.panel詳細.Size = new System.Drawing.Size(640, 418);
             this.panel詳細.TabIndex = 42;
             // 
-            // userControl社員検索
+            // uc社員検索
             // 
-            this.userControl社員検索.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.userControl社員検索.Location = new System.Drawing.Point(300, 123);
-            this.userControl社員検索.Name = "userControl社員検索";
-            this.userControl社員検索.Size = new System.Drawing.Size(284, 262);
-            this.userControl社員検索.TabIndex = 55;
-            this.userControl社員検索.社員番号 = null;
+            this.uc社員検索.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.uc社員検索.Location = new System.Drawing.Point(300, 123);
+            this.uc社員検索.Name = "uc社員検索";
+            this.uc社員検索.Size = new System.Drawing.Size(284, 262);
+            this.uc社員検索.TabIndex = 55;
+            this.uc社員検索.社員番号 = null;
             // 
             // textBox得意先ID
             // 
@@ -169,19 +169,19 @@
             this.textBox得意先ID.TabIndex = 57;
             this.textBox得意先ID.Visible = false;
             // 
-            // userControl社員入力
+            // uc社員入力
             // 
-            this.userControl社員入力.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
-            this.userControl社員入力.Location = new System.Drawing.Point(162, 119);
+            this.uc社員入力.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
+            this.uc社員入力.Location = new System.Drawing.Point(162, 119);
             m社員1.ID = -1;
             m社員1.社員名 = "";
             m社員1.社員番号 = "";
-            this.userControl社員入力.M社員 = m社員1;
-            this.userControl社員入力.Name = "userControl社員入力";
-            this.userControl社員入力.ReadOnly社員番号 = false;
-            this.userControl社員入力.Size = new System.Drawing.Size(258, 78);
-            this.userControl社員入力.TabIndex = 56;
-            this.userControl社員入力.userControl社員検索 = this.userControl社員検索;
+            this.uc社員入力.M社員 = m社員1;
+            this.uc社員入力.Name = "uc社員入力";
+            this.uc社員入力.ReadOnly社員番号 = false;
+            this.uc社員入力.Size = new System.Drawing.Size(258, 78);
+            this.uc社員入力.TabIndex = 56;
+            this.uc社員入力.uc社員検索 = this.uc社員検索;
             // 
             // textBox担当社員ID
             // 
@@ -372,8 +372,8 @@
         private System.Windows.Forms.Button button検索;
         private System.Windows.Forms.TextBox textBox担当社員ID;
         private System.Windows.Forms.DataGridView dataGridView得意先一覧;
-        private 共通UI.Uc社員検索 userControl社員検索;
-        private 共通UI.Uc社員入力 userControl社員入力;
+        private 共通UI.Uc社員検索 uc社員検索;
+        private 共通UI.Uc社員入力 uc社員入力;
         private System.Windows.Forms.TextBox textBox得意先ID;
     }
 }

@@ -404,7 +404,7 @@
             this.chart売上上位得意先.Margin = new System.Windows.Forms.Padding(10);
             this.chart売上上位得意先.Name = "chart売上上位得意先";
             series2.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
-            series2.BackSecondaryColor = System.Drawing.Color.ForestGreen;
+            series2.BackSecondaryColor = System.Drawing.Color.DarkGreen;
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
             series2.Color = System.Drawing.Color.GreenYellow;
@@ -529,7 +529,7 @@
             this.Controls.Add(this.dtp期間開始);
             this.Name = "Uc売上分析";
             this.Size = new System.Drawing.Size(845, 729);
-            this.Load += new System.EventHandler(this.UserControl売上総合_Load);
+            this.Load += new System.EventHandler(this.Uc売上分析_Load);
             this.tableLayoutPanel件数.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

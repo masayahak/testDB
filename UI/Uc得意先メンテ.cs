@@ -59,7 +59,7 @@ namespace テストDB.UI
             textBox得意先名.Text = 得意先.得意先名;
 
             textBox担当社員ID.Text = 得意先.担当社員ID.ToString();
-            userControl社員入力.M社員 = new M社員
+            uc社員入力.M社員 = new M社員
             {
                 ID = 得意先.担当社員ID,
                 社員番号 = 得意先.担当社員番号,
@@ -89,7 +89,7 @@ namespace テストDB.UI
             this.textBox得意先CD.Text = "";
             this.textBox得意先名.Text = "";
             this.textBox担当社員ID.Text = "";
-            userControl社員入力.M社員 = new M社員
+            uc社員入力.M社員 = new M社員
             {
                 ID = -1,
                 社員番号 = "",
@@ -98,7 +98,7 @@ namespace テストDB.UI
 
             this.textBox得意先CD.ReadOnly = false;
             this.textBox得意先名.ReadOnly = false;
-            this.userControl社員入力.ReadOnly社員番号 = false;
+            this.uc社員入力.ReadOnly社員番号 = false;
 
             button削除.Enabled = false;
             button保存.Enabled = true;
@@ -115,7 +115,7 @@ namespace テストDB.UI
         {
             this.textBox得意先CD.ReadOnly = false;
             this.textBox得意先名.ReadOnly = false;
-            this.userControl社員入力.ReadOnly社員番号 = false;
+            this.uc社員入力.ReadOnly社員番号 = false;
 
             button削除.Enabled = true;
             button保存.Enabled = true;
@@ -132,7 +132,7 @@ namespace テストDB.UI
         {
             this.textBox得意先CD.ReadOnly = true;
             this.textBox得意先名.ReadOnly = true;
-            this.userControl社員入力.ReadOnly社員番号 = true;
+            this.uc社員入力.ReadOnly社員番号 = true;
 
             button削除.Enabled = false;
             button保存.Enabled = false;
@@ -147,7 +147,7 @@ namespace テストDB.UI
 
         private void On社員番号_Selected(On社員番号SelectedEventArgs arg)
         {
-            userControl社員入力.M社員 = arg.m社員;
+            uc社員入力.M社員 = arg.m社員;
         }
 
 
@@ -165,8 +165,8 @@ namespace テストDB.UI
             userControl処理モード.ChangeMode_照会();
 
 
-            userControl社員検索.Visible = false;
-            userControl社員検索.On社員番号Selected += On社員番号_Selected;
+            uc社員検索.Visible = false;
+            uc社員検索.On社員番号Selected += On社員番号_Selected;
         }
 
 
@@ -351,7 +351,7 @@ namespace テストDB.UI
                 return true;
             }
 
-            if (userControl社員入力.M社員.ID <= 0)
+            if (uc社員入力.M社員.ID <= 0)
             {
                 MessageBox.Show("担当者は必須です。",
                     "エラー",
@@ -375,7 +375,7 @@ namespace テストDB.UI
             {
                 得意先CD = textBox得意先CD.Text,
                 得意先名 = textBox得意先名.Text,
-                担当社員ID = userControl社員入力.M社員.ID,
+                担当社員ID = uc社員入力.M社員.ID,
             };
 
             var ID = vm得意先.Add(追加得意先);
@@ -389,7 +389,7 @@ namespace テストDB.UI
                 ID = int.Parse(textBox得意先ID.Text),
                 得意先CD = textBox得意先CD.Text,
                 得意先名 = textBox得意先名.Text,
-                担当社員ID = userControl社員入力.M社員.ID,
+                担当社員ID = uc社員入力.M社員.ID,
             };
 
             vm得意先.Update(更新得意先);

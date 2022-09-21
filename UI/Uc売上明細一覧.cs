@@ -57,12 +57,12 @@ namespace テストDB.UI
 
         private void Onバーコード_Selected(OnバーコードSelectedEventArgs e)
         {
-            this.userControl商品入力.M商品 = e.m商品;
+            this.uc商品入力.M商品 = e.m商品;
         }
 
         private void On得意先CD_Selected(On得意先CDSelectedEventArgs e)
         {
-            this.userControl得意先入力.M得意先一覧 = e.m得意先一覧;
+            this.uc得意先入力.M得意先一覧 = e.m得意先一覧;
         }
 
         public Uc売上明細一覧()
@@ -70,12 +70,12 @@ namespace テストDB.UI
             InitializeComponent();
 
             // 商品検索イベント
-            this.userControl商品入力.userControl商品検索 = this.userControl商品検索;
-            this.userControl商品検索.OnバーコードSelected += Onバーコード_Selected;
+            this.uc商品入力.uc商品検索 = this.uc商品検索;
+            this.uc商品検索.OnバーコードSelected += Onバーコード_Selected;
 
             // 得意先検索イベント
-            this.userControl得意先入力.userControl得意先検索 = this.userControl得意先検索;
-            this.userControl得意先検索.On得意先CDSelected += On得意先CD_Selected;
+            this.uc得意先入力.uc得意先検索 = this.uc得意先検索;
+            this.uc得意先検索.On得意先CDSelected += On得意先CD_Selected;
 
             // グリッドのフォーマットイベント
             this.ucPager.OnGridFormat += OnGrid_Format;
@@ -98,8 +98,8 @@ namespace テストDB.UI
             this.dtp期間開始.Value = 期間開始;
             this.dtp期間終了.Value = 期間終了;
 
-            this.userControl商品入力.Get商品by商品名(商品名);
-            this.userControl得意先入力.M得意先一覧.得意先CD = 得意先CD;
+            this.uc商品入力.Get商品by商品名(商品名);
+            this.uc得意先入力.M得意先一覧.得意先CD = 得意先CD;
 
             LoadData();
         }
@@ -110,8 +110,8 @@ namespace テストDB.UI
             期間終了 = this.dtp期間終了.Value.Date;
 
             商品名 = "";
-            バーコード = this.userControl商品入力.M商品.バーコード;
-            得意先CD = this.userControl得意先入力.M得意先一覧.得意先CD;
+            バーコード = this.uc商品入力.M商品.バーコード;
+            得意先CD = this.uc得意先入力.M得意先一覧.得意先CD;
 
             LoadData();
         }
