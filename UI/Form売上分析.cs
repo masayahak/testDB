@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Drawing;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using テストDB.Models;
 using テストDB.ViewModel;
 
 namespace テストDB.UI
@@ -42,7 +44,7 @@ namespace テストDB.UI
                         this.button過去7日.ForeColor = Color.FromArgb(124, 141, 181);
                         this.button過去30日.ForeColor = Color.FromArgb(124, 141, 181);
 
-                        LoadData();
+                        DataLoad();
                         SetDateMenuButtonsUI();
                         break;
 
@@ -56,7 +58,7 @@ namespace テストDB.UI
                         this.button期間本日.ForeColor = Color.FromArgb(124, 141, 181);
                         this.button過去30日.ForeColor = Color.FromArgb(124, 141, 181);
 
-                        LoadData();
+                        DataLoad();
                         SetDateMenuButtonsUI();
                         break;
 
@@ -70,7 +72,7 @@ namespace テストDB.UI
                         this.button期間本日.ForeColor = Color.FromArgb(124, 141, 181);
                         this.button過去7日.ForeColor = Color.FromArgb(124, 141, 181);
 
-                        LoadData();
+                        DataLoad();
                         SetDateMenuButtonsUI();
                         break;
 
@@ -128,19 +130,26 @@ namespace テストDB.UI
             // 初期表示 過去7日
             this.mode期間 = Mode期間.過去7日;
 
-            LoadData();
-
+            DataLoad();
         }
 
         // ----------------------------------------------------------------
         // データ読み込み
         // ----------------------------------------------------------------
-        private void LoadData()
+        private async void DataLoad()
         {
             if (DesignMode) return;
 
+            // ロード中
+            ShowLoading();
+
             vm売上 = new ViewModel売上();
-            vm売上.Load売上分析(dtp期間開始.Value.Date, dtp期間終了.Value.Date);
+
+            // 非同期でデータ取得
+            await Task.Run(() =>
+            {
+                vm売上.Load売上分析(dtp期間開始.Value.Date, dtp期間終了.Value.Date);
+            });
 
             this.label取引件数.Text = vm売上.取引件数.ToString("#,##0 件");
 
@@ -153,9 +162,10 @@ namespace テストDB.UI
             chart売上高.DataSource = vm売上.売上高lists;
             chart売上高.Series[0].XValueMember = "売上日";
             chart売上高.Series[0].YValueMembers = "売上高";
+            chart売上高.Series[0].XValueType = ChartValueType.DateTime;
             chart売上高.DataBind();
-            chart売上高.ChartAreas[0].AxisX.LabelStyle.Format = "MM/dd";
             chart売上高.ChartAreas[0].AxisY.LabelStyle.Format = "{#,##0,}";
+            chart売上高.ChartAreas[0].AxisX.LabelStyle.Format = "MM/dd";
 
             chart売上上位商品.DataSource = vm売上.売上上位商品lists;
             chart売上上位商品.Series[0].XValueMember = "商品名";
@@ -167,7 +177,20 @@ namespace テストDB.UI
             chart売上上位得意先.Series[0].YValueMembers = "売上高";
             chart売上上位得意先.DataBind();
 
+            // ロード終了
+            OnLoaded();
 
+        }
+
+        // ロード中
+        private void ShowLoading()
+        {
+            this.ucロード中.Visible = true;
+        }
+
+        private void OnLoaded()
+        {
+            this.ucロード中.Visible = false;
         }
 
 
@@ -196,8 +219,7 @@ namespace テストDB.UI
 
         private void button期間検索_Click(object sender, EventArgs e)
         {
-            LoadData();
-
+            DataLoad();
             SetDateMenuButtonsUI();
         }
 

@@ -123,7 +123,7 @@ namespace テストDB.UI
             if (DesignMode) return;
 
             // ロード中
-            ShowWaitForm();
+            ShowLoading();
 
             // 非同期でデータ取得
             await Task.Run(() =>
@@ -150,23 +150,18 @@ namespace テストDB.UI
         }
 
         // ロード中
-        private void ShowWaitForm()
+        private void ShowLoading()
         {
-            this.panel検索.Visible = false;
-            this.panel詳細.Visible = false;
-            this.panel操作.Visible = false;
-
-            this.pictureBoxロード中.Visible = true;
+            this.ucロード中.Visible = true;
         }
 
         private void OnLoaded()
         {
-            this.pictureBoxロード中.Dock = DockStyle.None;
-            this.pictureBoxロード中.Visible = false;
+            this.ucロード中.Visible = false;
 
-            this.panel検索.Visible = true;
-            this.panel詳細.Visible = true;
-            this.panel操作.Visible = true;
+            //this.panel検索.Visible = true;
+            //this.panel詳細.Visible = true;
+            //this.panel操作.Visible = true;
         }
 
         // ------------------------------------------------------------

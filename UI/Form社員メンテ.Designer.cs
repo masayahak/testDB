@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form社員メンテ));
             this.panel詳細 = new System.Windows.Forms.Panel();
             this.textBox社員名 = new テストDB.共通UI.CTextBox();
@@ -48,22 +48,22 @@
             this.buttonExcel = new System.Windows.Forms.Button();
             this.textBox検索 = new System.Windows.Forms.TextBox();
             this.button検索 = new System.Windows.Forms.Button();
-            this.pictureBoxロード中 = new System.Windows.Forms.PictureBox();
+            this.ucロード中 = new テストDB.共通UI.Ucロード中();
             this.panel詳細.SuspendLayout();
             this.panel操作.SuspendLayout();
             this.panel検索.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView社員一覧)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxロード中)).BeginInit();
             this.SuspendLayout();
             // 
             // panel詳細
             // 
+            this.panel詳細.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel詳細.Controls.Add(this.textBox社員名);
             this.panel詳細.Controls.Add(this.textBox社員番号);
             this.panel詳細.Controls.Add(this.textBox社員ID);
             this.panel詳細.Controls.Add(this.label2);
             this.panel詳細.Controls.Add(this.label1);
-            this.panel詳細.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel詳細.Location = new System.Drawing.Point(327, 0);
             this.panel詳細.Name = "panel詳細";
             this.panel詳細.Size = new System.Drawing.Size(375, 690);
@@ -125,12 +125,13 @@
             // 
             // panel操作
             // 
+            this.panel操作.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel操作.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(225)))), ((int)(((byte)(232)))));
             this.panel操作.Controls.Add(this.buttonｷｬﾝｾﾙ);
             this.panel操作.Controls.Add(this.button保存);
             this.panel操作.Controls.Add(this.button削除);
             this.panel操作.Controls.Add(this.userControl処理モード);
-            this.panel操作.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel操作.Location = new System.Drawing.Point(702, 0);
             this.panel操作.Name = "panel操作";
             this.panel操作.Size = new System.Drawing.Size(127, 690);
@@ -201,11 +202,13 @@
             // 
             // panel検索
             // 
+            this.panel検索.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel検索.Controls.Add(this.dataGridView社員一覧);
             this.panel検索.Controls.Add(this.buttonExcel);
             this.panel検索.Controls.Add(this.textBox検索);
             this.panel検索.Controls.Add(this.button検索);
-            this.panel検索.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel検索.Location = new System.Drawing.Point(0, 0);
             this.panel検索.Name = "panel検索";
             this.panel検索.Size = new System.Drawing.Size(327, 690);
@@ -222,37 +225,37 @@
             this.dataGridView社員一覧.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView社員一覧.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dataGridView社員一覧.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(225)))), ((int)(((byte)(232)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(225)))), ((int)(((byte)(232)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView社員一覧.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(225)))), ((int)(((byte)(232)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(225)))), ((int)(((byte)(232)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView社員一覧.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView社員一覧.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView社員一覧.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(218)))), ((int)(((byte)(198)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView社員一覧.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(218)))), ((int)(((byte)(198)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView社員一覧.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView社員一覧.EnableHeadersVisualStyles = false;
             this.dataGridView社員一覧.Location = new System.Drawing.Point(3, 46);
             this.dataGridView社員一覧.MultiSelect = false;
             this.dataGridView社員一覧.Name = "dataGridView社員一覧";
             this.dataGridView社員一覧.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView社員一覧.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView社員一覧.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView社員一覧.RowHeadersVisible = false;
             this.dataGridView社員一覧.RowTemplate.Height = 36;
             this.dataGridView社員一覧.RowTemplate.ReadOnly = true;
@@ -272,7 +275,7 @@
             this.buttonExcel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(205)))), ((int)(((byte)(211)))));
             this.buttonExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonExcel.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.buttonExcel.Location = new System.Drawing.Point(291, 2);
+            this.buttonExcel.Location = new System.Drawing.Point(291, 6);
             this.buttonExcel.Name = "buttonExcel";
             this.buttonExcel.Size = new System.Drawing.Size(35, 35);
             this.buttonExcel.TabIndex = 35;
@@ -282,7 +285,7 @@
             // textBox検索
             // 
             this.textBox検索.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBox検索.Location = new System.Drawing.Point(3, 3);
+            this.textBox検索.Location = new System.Drawing.Point(3, 7);
             this.textBox検索.Name = "textBox検索";
             this.textBox検索.Size = new System.Drawing.Size(176, 31);
             this.textBox検索.TabIndex = 34;
@@ -297,26 +300,20 @@
             this.button検索.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(205)))), ((int)(((byte)(211)))));
             this.button検索.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button検索.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button検索.Location = new System.Drawing.Point(185, 1);
+            this.button検索.Location = new System.Drawing.Point(185, 5);
             this.button検索.Name = "button検索";
             this.button検索.Size = new System.Drawing.Size(35, 35);
             this.button検索.TabIndex = 33;
             this.button検索.UseVisualStyleBackColor = false;
             this.button検索.Click += new System.EventHandler(this.button検索_Click);
             // 
-            // pictureBoxロード中
+            // ucロード中
             // 
-            this.pictureBoxロード中.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxロード中.BackColor = System.Drawing.SystemColors.Control;
-            this.pictureBoxロード中.Image = global::テストDB.Properties.Resources.Loading_icon;
-            this.pictureBoxロード中.Location = new System.Drawing.Point(166, 193);
-            this.pictureBoxロード中.Name = "pictureBoxロード中";
-            this.pictureBoxロード中.Size = new System.Drawing.Size(441, 291);
-            this.pictureBoxロード中.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxロード中.TabIndex = 36;
-            this.pictureBoxロード中.TabStop = false;
+            this.ucロード中.BackColor = System.Drawing.Color.Black;
+            this.ucロード中.Location = new System.Drawing.Point(205, 276);
+            this.ucロード中.Name = "ucロード中";
+            this.ucロード中.Size = new System.Drawing.Size(340, 125);
+            this.ucロード中.TabIndex = 34;
             // 
             // Form社員メンテ
             // 
@@ -324,10 +321,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
             this.ClientSize = new System.Drawing.Size(829, 690);
-            this.Controls.Add(this.pictureBoxロード中);
             this.Controls.Add(this.panel詳細);
             this.Controls.Add(this.panel操作);
             this.Controls.Add(this.panel検索);
+            this.Controls.Add(this.ucロード中);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form社員メンテ";
             this.Text = "Form社員メンテ";
@@ -338,7 +335,6 @@
             this.panel検索.ResumeLayout(false);
             this.panel検索.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView社員一覧)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxロード中)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -361,6 +357,6 @@
         private System.Windows.Forms.Button buttonExcel;
         private System.Windows.Forms.TextBox textBox検索;
         private System.Windows.Forms.Button button検索;
-        private System.Windows.Forms.PictureBox pictureBoxロード中;
+        private 共通UI.Ucロード中 ucロード中;
     }
 }

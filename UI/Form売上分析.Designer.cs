@@ -62,6 +62,7 @@
             this.button期間本日 = new System.Windows.Forms.Button();
             this.button期間カスタム = new System.Windows.Forms.Button();
             this.dtp期間終了 = new テストDB.共通UI.CDateTimePicker();
+            this.ucロード中 = new テストDB.共通UI.Ucロード中();
             ((System.ComponentModel.ISupportInitialize)(this.chart売上上位得意先)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart売上上位商品)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart売上高)).BeginInit();
@@ -280,6 +281,7 @@
             this.tableLayoutPanelG1.RowCount = 2;
             this.tableLayoutPanelG1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanelG1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelG1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelG1.Size = new System.Drawing.Size(845, 581);
             this.tableLayoutPanelG1.TabIndex = 38;
             // 
@@ -513,12 +515,21 @@
             this.dtp期間終了.Size = new System.Drawing.Size(142, 31);
             this.dtp期間終了.TabIndex = 31;
             // 
+            // ucロード中
+            // 
+            this.ucロード中.BackColor = System.Drawing.Color.Black;
+            this.ucロード中.Location = new System.Drawing.Point(250, 271);
+            this.ucロード中.Name = "ucロード中";
+            this.ucロード中.Size = new System.Drawing.Size(340, 125);
+            this.ucロード中.TabIndex = 39;
+            // 
             // Form売上分析
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(29)))), ((int)(((byte)(67)))));
             this.ClientSize = new System.Drawing.Size(845, 729);
+            this.Controls.Add(this.ucロード中);
             this.Controls.Add(this.button期間検索);
             this.Controls.Add(this.dtp期間開始);
             this.Controls.Add(this.tableLayoutPanelG1);
@@ -578,5 +589,6 @@
         private System.Windows.Forms.Button button期間本日;
         private System.Windows.Forms.Button button期間カスタム;
         private 共通UI.CDateTimePicker dtp期間終了;
+        private 共通UI.Ucロード中 ucロード中;
     }
 }

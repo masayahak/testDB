@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace テストDB.共通UI
 {
-    public partial class Formロード中 : Form
+    public partial class Ucロード中 : UserControl
     {
-        public Formロード中()
+        public Ucロード中()
         {
             InitializeComponent();
         }

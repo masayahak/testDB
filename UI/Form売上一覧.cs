@@ -6,6 +6,7 @@ using static テストDB.共通UI.Uc社員検索;
 using static テストDB.共通UI.Uc得意先検索;
 using テストDB.ViewModel;
 using static テストDB.共通UI.UcPager;
+using System.Threading.Tasks;
 
 namespace テストDB.UI
 {
@@ -97,7 +98,7 @@ namespace テストDB.UI
             this.uc得意先入力.M得意先一覧.得意先CD = 得意先CD;
             this.uc社員入力.M社員.社員番号 = 担当社員番号;
 
-            LoadData();
+            DataLoad();
         }
 
 
@@ -112,19 +113,27 @@ namespace テストDB.UI
             得意先CD = this.uc得意先入力.M得意先一覧.得意先CD;
             担当社員番号 = this.uc社員入力.M社員.社員番号;
 
-            LoadData();
+            DataLoad();
         }
 
         // ----------------------------------------------------------------
         // データ読み込み
         // ----------------------------------------------------------------
-        private void LoadData()
+        private async void DataLoad()
         {
-
             if (DesignMode) return;
 
+            // ロード中
+            ShowLoading();
+
             vm売上 = new ViewModel売上();
-            vm売上.LoadT売上(期間開始, 期間終了, 得意先CD, 担当社員番号);
+
+            // 非同期でデータ取得
+            await Task.Run(() =>
+            {
+                vm売上.LoadT売上(期間開始, 期間終了, 得意先CD, 担当社員番号);
+
+            });
 
             var list = vm売上.list売上
                 .OrderBy(it => it.売上日)
@@ -151,6 +160,21 @@ namespace テストDB.UI
 
             this.ucPager.SetFullDatasource<ds売上一覧>(list);
             this.ucPager.ShowPage();
+
+            // ロード終了
+            OnLoaded();
+
+        }
+
+        // ロード中
+        private void ShowLoading()
+        {
+            this.ucロード中.Visible = true;
+        }
+
+        private void OnLoaded()
+        {
+            this.ucロード中.Visible = false;
         }
 
         // ----------------------------------------------------------------

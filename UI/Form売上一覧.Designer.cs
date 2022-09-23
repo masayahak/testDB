@@ -42,6 +42,7 @@
             this.dtp期間終了 = new テストDB.共通UI.CDateTimePicker();
             this.dtp期間開始 = new テストDB.共通UI.CDateTimePicker();
             this.uc売上伝票 = new テストDB.UI.Uc売上伝票();
+            this.ucロード中 = new テストDB.共通UI.Ucロード中();
             this.SuspendLayout();
             // 
             // ucPager
@@ -185,12 +186,22 @@
             this.uc売上伝票.Visible = false;
             this.uc売上伝票.売上ID = 1;
             // 
+            // ucロード中
+            // 
+            this.ucロード中.BackColor = System.Drawing.Color.Black;
+            this.ucロード中.Location = new System.Drawing.Point(257, 292);
+            this.ucロード中.Name = "ucロード中";
+            this.ucロード中.Size = new System.Drawing.Size(340, 125);
+            this.ucロード中.TabIndex = 81;
+            this.ucロード中.Visible = false;
+            // 
             // Form売上一覧
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(47)))), ((int)(((byte)(87)))));
             this.ClientSize = new System.Drawing.Size(845, 729);
+            this.Controls.Add(this.ucロード中);
             this.Controls.Add(this.cButton検索);
             this.Controls.Add(this.uc得意先検索);
             this.Controls.Add(this.uc社員検索);
@@ -226,5 +237,6 @@
         private 共通UI.CDateTimePicker dtp期間終了;
         private 共通UI.CDateTimePicker dtp期間開始;
         private Uc売上伝票 uc売上伝票;
+        private 共通UI.Ucロード中 ucロード中;
     }
 }

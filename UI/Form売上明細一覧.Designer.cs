@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            テストDB.Models.M得意先一覧 m得意先一覧2 = new テストDB.Models.M得意先一覧();
-            テストDB.Models.M商品 m商品2 = new テストDB.Models.M商品();
+            テストDB.Models.M得意先一覧 m得意先一覧1 = new テストDB.Models.M得意先一覧();
+            テストDB.Models.M商品 m商品1 = new テストDB.Models.M商品();
             this.cButton検索 = new テストDB.共通UI.CButton();
             this.ucPager = new テストDB.共通UI.UcPager();
             this.uc得意先検索 = new テストDB.共通UI.Uc得意先検索();
@@ -42,6 +42,7 @@
             this.dtp期間終了 = new テストDB.共通UI.CDateTimePicker();
             this.dtp期間開始 = new テストDB.共通UI.CDateTimePicker();
             this.uc売上伝票 = new テストDB.UI.Uc売上伝票();
+            this.ucロード中 = new テストDB.共通UI.Ucロード中();
             this.SuspendLayout();
             // 
             // cButton検索
@@ -96,13 +97,13 @@
             // 
             this.uc得意先入力.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
             this.uc得意先入力.Location = new System.Drawing.Point(186, 132);
-            m得意先一覧2.ID = -1;
-            m得意先一覧2.得意先CD = "";
-            m得意先一覧2.得意先名 = "";
-            m得意先一覧2.担当社員ID = 0;
-            m得意先一覧2.担当社員名 = null;
-            m得意先一覧2.担当社員番号 = null;
-            this.uc得意先入力.M得意先一覧 = m得意先一覧2;
+            m得意先一覧1.ID = -1;
+            m得意先一覧1.得意先CD = "";
+            m得意先一覧1.得意先名 = "";
+            m得意先一覧1.担当社員ID = 0;
+            m得意先一覧1.担当社員名 = null;
+            m得意先一覧1.担当社員番号 = null;
+            this.uc得意先入力.M得意先一覧 = m得意先一覧1;
             this.uc得意先入力.Name = "uc得意先入力";
             this.uc得意先入力.ReadOnly得意先CD = false;
             this.uc得意先入力.Size = new System.Drawing.Size(294, 78);
@@ -144,12 +145,12 @@
             // 
             this.uc商品入力.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
             this.uc商品入力.Location = new System.Drawing.Point(189, 51);
-            m商品2.ID = -1;
-            m商品2.バーコード = "";
-            m商品2.仕入単価 = 0;
-            m商品2.商品名 = "";
-            m商品2.販売単価 = 0;
-            this.uc商品入力.M商品 = m商品2;
+            m商品1.ID = -1;
+            m商品1.バーコード = "";
+            m商品1.仕入単価 = 0;
+            m商品1.商品名 = "";
+            m商品1.販売単価 = 0;
+            this.uc商品入力.M商品 = m商品1;
             this.uc商品入力.Name = "uc商品入力";
             this.uc商品入力.ReadOnlyバーコード = false;
             this.uc商品入力.Size = new System.Drawing.Size(258, 78);
@@ -185,12 +186,22 @@
             this.uc売上伝票.TabIndex = 85;
             this.uc売上伝票.売上ID = 1;
             // 
+            // ucロード中
+            // 
+            this.ucロード中.BackColor = System.Drawing.Color.Black;
+            this.ucロード中.Location = new System.Drawing.Point(241, 299);
+            this.ucロード中.Name = "ucロード中";
+            this.ucロード中.Size = new System.Drawing.Size(340, 125);
+            this.ucロード中.TabIndex = 86;
+            this.ucロード中.Visible = false;
+            // 
             // Form売上明細一覧
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(47)))), ((int)(((byte)(87)))));
             this.ClientSize = new System.Drawing.Size(845, 729);
+            this.Controls.Add(this.ucロード中);
             this.Controls.Add(this.cButton検索);
             this.Controls.Add(this.ucPager);
             this.Controls.Add(this.uc得意先検索);
@@ -226,5 +237,6 @@
         private 共通UI.CDateTimePicker dtp期間終了;
         private 共通UI.CDateTimePicker dtp期間開始;
         private Uc売上伝票 uc売上伝票;
+        private 共通UI.Ucロード中 ucロード中;
     }
 }

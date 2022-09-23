@@ -29,20 +29,24 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcPager));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelBottom = new System.Windows.Forms.Panel();
+            this.textBox検索 = new System.Windows.Forms.TextBox();
+            this.button検索 = new System.Windows.Forms.Button();
             this.buttonExcel = new System.Windows.Forms.Button();
-            this.btnLast = new テストDB.共通UI.CButton();
-            this.btnNext = new テストDB.共通UI.CButton();
-            this.btnBack = new テストDB.共通UI.CButton();
-            this.btnFirst = new テストDB.共通UI.CButton();
             this.lblMaxCount = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblCurrentCount = new System.Windows.Forms.Label();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnLast = new テストDB.共通UI.CButton();
+            this.btnNext = new テストDB.共通UI.CButton();
+            this.btnBack = new テストDB.共通UI.CButton();
+            this.btnFirst = new テストDB.共通UI.CButton();
             this.panelBottom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
@@ -51,6 +55,9 @@
             // panelBottom
             // 
             this.panelBottom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(225)))), ((int)(((byte)(232)))));
+            this.panelBottom.Controls.Add(this.label2);
+            this.panelBottom.Controls.Add(this.textBox検索);
+            this.panelBottom.Controls.Add(this.button検索);
             this.panelBottom.Controls.Add(this.buttonExcel);
             this.panelBottom.Controls.Add(this.btnLast);
             this.panelBottom.Controls.Add(this.btnNext);
@@ -64,6 +71,31 @@
             this.panelBottom.Name = "panelBottom";
             this.panelBottom.Size = new System.Drawing.Size(831, 37);
             this.panelBottom.TabIndex = 0;
+            // 
+            // textBox検索
+            // 
+            this.textBox検索.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBox検索.Location = new System.Drawing.Point(198, 3);
+            this.textBox検索.Name = "textBox検索";
+            this.textBox検索.Size = new System.Drawing.Size(132, 31);
+            this.textBox検索.TabIndex = 46;
+            this.textBox検索.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox検索_KeyDown);
+            this.textBox検索.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox検索_KeyPress);
+            // 
+            // button検索
+            // 
+            this.button検索.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
+            this.button検索.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button検索.BackgroundImage")));
+            this.button検索.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.button検索.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(205)))), ((int)(((byte)(211)))));
+            this.button検索.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button検索.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.button検索.Location = new System.Drawing.Point(335, 1);
+            this.button検索.Name = "button検索";
+            this.button検索.Size = new System.Drawing.Size(35, 35);
+            this.button検索.TabIndex = 45;
+            this.button検索.UseVisualStyleBackColor = false;
+            this.button検索.Click += new System.EventHandler(this.button検索_Click);
             // 
             // buttonExcel
             // 
@@ -79,76 +111,6 @@
             this.buttonExcel.TabIndex = 44;
             this.buttonExcel.UseVisualStyleBackColor = false;
             this.buttonExcel.Click += new System.EventHandler(this.buttonExcel_Click);
-            // 
-            // btnLast
-            // 
-            this.btnLast.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLast.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(47)))));
-            this.btnLast.BackColorSaved = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(47)))));
-            this.btnLast.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.btnLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLast.Font = new System.Drawing.Font("メイリオ", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btnLast.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnLast.Location = new System.Drawing.Point(792, 6);
-            this.btnLast.Name = "btnLast";
-            this.btnLast.Size = new System.Drawing.Size(37, 27);
-            this.btnLast.TabIndex = 43;
-            this.btnLast.Text = ">>";
-            this.btnLast.UseVisualStyleBackColor = false;
-            this.btnLast.Click += new System.EventHandler(this.btnLast_Click);
-            // 
-            // btnNext
-            // 
-            this.btnNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNext.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(47)))));
-            this.btnNext.BackColorSaved = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(47)))));
-            this.btnNext.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNext.Font = new System.Drawing.Font("メイリオ", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btnNext.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnNext.Location = new System.Drawing.Point(756, 6);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(37, 27);
-            this.btnNext.TabIndex = 42;
-            this.btnNext.Text = ">";
-            this.btnNext.UseVisualStyleBackColor = false;
-            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
-            // 
-            // btnBack
-            // 
-            this.btnBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(47)))));
-            this.btnBack.BackColorSaved = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(47)))));
-            this.btnBack.Enabled = false;
-            this.btnBack.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBack.Font = new System.Drawing.Font("メイリオ", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btnBack.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnBack.Location = new System.Drawing.Point(715, 6);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(37, 27);
-            this.btnBack.TabIndex = 41;
-            this.btnBack.Text = "<";
-            this.btnBack.UseVisualStyleBackColor = false;
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
-            // 
-            // btnFirst
-            // 
-            this.btnFirst.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFirst.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(47)))));
-            this.btnFirst.BackColorSaved = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(47)))));
-            this.btnFirst.Enabled = false;
-            this.btnFirst.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.btnFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFirst.Font = new System.Drawing.Font("メイリオ", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btnFirst.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnFirst.Location = new System.Drawing.Point(679, 6);
-            this.btnFirst.Name = "btnFirst";
-            this.btnFirst.Size = new System.Drawing.Size(37, 27);
-            this.btnFirst.TabIndex = 40;
-            this.btnFirst.Text = "<<";
-            this.btnFirst.UseVisualStyleBackColor = false;
-            this.btnFirst.Click += new System.EventHandler(this.btnFirst_Click);
             // 
             // lblMaxCount
             // 
@@ -238,6 +200,88 @@
             // 
             this.bindingSource.AllowNew = false;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(77, 6);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(106, 24);
+            this.label2.TabIndex = 47;
+            this.label2.Text = "ページ内検索";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // btnLast
+            // 
+            this.btnLast.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLast.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(47)))));
+            this.btnLast.BackColorSaved = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(47)))));
+            this.btnLast.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLast.Font = new System.Drawing.Font("メイリオ", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btnLast.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLast.Location = new System.Drawing.Point(792, 6);
+            this.btnLast.Name = "btnLast";
+            this.btnLast.Size = new System.Drawing.Size(37, 27);
+            this.btnLast.TabIndex = 43;
+            this.btnLast.Text = ">>";
+            this.btnLast.UseVisualStyleBackColor = false;
+            this.btnLast.Click += new System.EventHandler(this.btnLast_Click);
+            // 
+            // btnNext
+            // 
+            this.btnNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNext.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(47)))));
+            this.btnNext.BackColorSaved = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(47)))));
+            this.btnNext.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNext.Font = new System.Drawing.Font("メイリオ", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btnNext.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnNext.Location = new System.Drawing.Point(756, 6);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(37, 27);
+            this.btnNext.TabIndex = 42;
+            this.btnNext.Text = ">";
+            this.btnNext.UseVisualStyleBackColor = false;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
+            // btnBack
+            // 
+            this.btnBack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(47)))));
+            this.btnBack.BackColorSaved = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(47)))));
+            this.btnBack.Enabled = false;
+            this.btnBack.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBack.Font = new System.Drawing.Font("メイリオ", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btnBack.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnBack.Location = new System.Drawing.Point(715, 6);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(37, 27);
+            this.btnBack.TabIndex = 41;
+            this.btnBack.Text = "<";
+            this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
+            // btnFirst
+            // 
+            this.btnFirst.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFirst.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(47)))));
+            this.btnFirst.BackColorSaved = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(47)))));
+            this.btnFirst.Enabled = false;
+            this.btnFirst.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.btnFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFirst.Font = new System.Drawing.Font("メイリオ", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btnFirst.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnFirst.Location = new System.Drawing.Point(679, 6);
+            this.btnFirst.Name = "btnFirst";
+            this.btnFirst.Size = new System.Drawing.Size(37, 27);
+            this.btnFirst.TabIndex = 40;
+            this.btnFirst.Text = "<<";
+            this.btnFirst.UseVisualStyleBackColor = false;
+            this.btnFirst.Click += new System.EventHandler(this.btnFirst_Click);
+            // 
             // UcPager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -247,6 +291,7 @@
             this.Name = "UcPager";
             this.Size = new System.Drawing.Size(831, 545);
             this.panelBottom.ResumeLayout(false);
+            this.panelBottom.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -266,5 +311,8 @@
         private System.Windows.Forms.Label lblCurrentCount;
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.BindingSource bindingSource;
+        private System.Windows.Forms.TextBox textBox検索;
+        private System.Windows.Forms.Button button検索;
+        private System.Windows.Forms.Label label2;
     }
 }

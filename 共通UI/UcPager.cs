@@ -7,6 +7,8 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using テストDB.Models;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Excel = Microsoft.Office.Interop.Excel;
 
 
@@ -398,6 +400,94 @@ namespace テストDB.共通UI
             }
 
         }
+
+        // ------------------------------------------------------------
+        // Grid内のデータ検索
+        // ------------------------------------------------------------
+        private void textBox検索_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //EnterやEscapeキーでビープ音が鳴らないようにする
+            if (e.KeyChar == (char)Keys.Enter || e.KeyChar == (char)Keys.Escape)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBox検索_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Set検索対象行();
+            }
+
+        }
+
+        private void button検索_Click(object sender, EventArgs e)
+        {
+
+            Set検索対象行();
+        }
+
+        // キーワードを検索
+        private void Set検索対象行()
+        {
+            // 入力値
+            var キーワード = this.textBox検索.Text;
+            if (string.IsNullOrWhiteSpace(キーワード)) return;
+
+            // 複数ページにまたがる一覧の可能性はあるが、表示しているページ内だけで検索する
+            // Datasourceから検索することも考えたが、テーブルの構造もわからないので、
+            // 直接DataGridView内を検索する事にした。
+
+            int currentRow = dataGridView.SelectedRows[0].Index+1;
+
+            var キーワードRow = GetRowByキーワード(キーワード, currentRow);
+
+            if(キーワードRow >= 0)
+            {
+                SelectAndShowRow(キーワードRow);
+            }
+            else
+            {
+                // 先頭から検索し直し
+                キーワードRow = GetRowByキーワード(キーワード, 0);
+                if (キーワードRow >= 0)
+                {
+                    SelectAndShowRow(キーワードRow);
+                }
+            }
+
+        }
+
+        private int GetRowByキーワード(string キーワード, int startRow)
+        {
+            for (int i = startRow; i < dataGridView.Rows.Count; i++)
+            {
+                for (int j = 0; j < dataGridView.ColumnCount; j++)
+                {
+                    var cellVal = dataGridView.Rows[i].Cells[j].Value.ToString();
+                    if (cellVal.Contains(キーワード))
+                    {
+                        return i;
+                    }
+                }
+            }
+
+            return -1;
+        }
+
+        private void SelectAndShowRow(int row)
+        {
+            dataGridView.Rows[row].Selected = true;
+            if (!dataGridView.SelectedRows[0].Displayed)
+            {
+                // 対象行が画面内に表示されて居ないときだけ、表示範囲を切り替える
+                dataGridView.FirstDisplayedScrollingRowIndex = row;
+            }
+        }
+
+
+
 
     }
 }

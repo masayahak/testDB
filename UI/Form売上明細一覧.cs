@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using テストDB.ViewModel;
 using static テストDB.共通UI.UcPager;
@@ -42,7 +43,7 @@ namespace テストDB.UI
             売上高 = 9,
         }
 
-        private ViewModel売上明細 vm売上明細;
+        private ViewModel売上 vm売上明細;
 
 
         // ----------------------------------------------------------------
@@ -100,7 +101,7 @@ namespace テストDB.UI
             this.uc商品入力.Get商品by商品名(商品名);
             this.uc得意先入力.M得意先一覧.得意先CD = 得意先CD;
 
-            LoadData();
+            DataLoad();
         }
 
         private void cButton検索_Click(object sender, EventArgs e)
@@ -112,19 +113,27 @@ namespace テストDB.UI
             バーコード = this.uc商品入力.M商品.バーコード;
             得意先CD = this.uc得意先入力.M得意先一覧.得意先CD;
 
-            LoadData();
+            DataLoad();
         }
 
         // ----------------------------------------------------------------
         // データ読み込み
         // ----------------------------------------------------------------
-        private void LoadData()
+        private async void DataLoad()
         {
 
             if (DesignMode) return;
 
-            vm売上明細 = new ViewModel売上明細();
-            vm売上明細.LoadT売上明細(期間開始, 期間終了, 商品名, バーコード, 得意先CD);
+            // ロード中
+            ShowLoading();
+
+            vm売上明細 = new ViewModel売上();
+
+            // 非同期でデータ取得
+            await Task.Run(() =>
+            {
+                vm売上明細.LoadT売上明細(期間開始, 期間終了, 商品名, バーコード, 得意先CD);
+            });
 
             var list = vm売上明細.listV売上明細
                 .OrderBy(it => it.売上日)
@@ -153,7 +162,23 @@ namespace テストDB.UI
 
             this.ucPager.SetFullDatasource<ds売上明細一覧>(list);
             this.ucPager.ShowPage();
+
+            // ロード終了
+            OnLoaded();
+
         }
+
+        // ロード中
+        private void ShowLoading()
+        {
+            this.ucロード中.Visible = true;
+        }
+
+        private void OnLoaded()
+        {
+            this.ucロード中.Visible = false;
+        }
+
 
         // ----------------------------------------------------------------
         // グリッドの書式
