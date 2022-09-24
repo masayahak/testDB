@@ -130,6 +130,9 @@
   <data name="ノーマルの太さのバツアイコン" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\icon\ノーマルの太さのバツアイコン.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="メニュー" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icon\メニュー.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="伝票" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\icon\伝票.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

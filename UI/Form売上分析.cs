@@ -186,6 +186,7 @@ namespace テストDB.UI
         private void ShowLoading()
         {
             this.ucロード中.Visible = true;
+            this.ucロード中.BringToFront();
         }
 
         private void OnLoaded()

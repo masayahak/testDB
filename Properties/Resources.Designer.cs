@@ -103,6 +103,16 @@ namespace テストDB.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
+        internal static System.Drawing.Bitmap メニュー {
+            get {
+                object obj = ResourceManager.GetObject("メニュー", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
         internal static System.Drawing.Bitmap 伝票 {
             get {
                 object obj = ResourceManager.GetObject("伝票", resourceCulture);

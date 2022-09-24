@@ -67,7 +67,17 @@ namespace テストDB.共通UI
                 SwitchButtonEnabled();
             }
         }
-        public int RowsInPage = 100;
+
+        private int rowsInPage = 100;
+
+        public int RowsInPage
+        {
+            get { return rowsInPage; }
+            set 
+            { 
+                rowsInPage = value;
+            }
+        }
 
         private int rowCount;
         public int RowCount
@@ -485,9 +495,5 @@ namespace テストDB.共通UI
                 dataGridView.FirstDisplayedScrollingRowIndex = row;
             }
         }
-
-
-
-
     }
 }

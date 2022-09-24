@@ -172,6 +172,7 @@ namespace テストDB.UI
         private void ShowLoading()
         {
             this.ucロード中.Visible = true;
+            this.ucロード中.BringToFront();
         }
 
         private void OnLoaded()
@@ -250,7 +251,7 @@ namespace テストDB.UI
             int.TryParse(args.ID, out 売上ID);
 
             this.uc売上伝票.売上ID = 売上ID;
-            this.uc売上伝票.LoadData();
+            this.uc売上伝票.DataLoad();
             this.uc売上伝票.Visible = true;
             this.uc売上伝票.BringToFront();
         }

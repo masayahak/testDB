@@ -82,6 +82,7 @@ namespace テストDB.UI
 
         private void button売上日別_Click(object sender, EventArgs e)
         {
+            form売上一覧 = new Form売上一覧();
             ShowFormInPanel(form売上一覧);
 
             this.button売上日別.ForeColor = Color.WhiteSmoke;
@@ -92,6 +93,7 @@ namespace テストDB.UI
 
         private void button商品別_Click(object sender, EventArgs e)
         {
+            form売上明細一覧 = new Form売上明細一覧();
             ShowFormInPanel(form売上明細一覧);
 
             this.button商品別.ForeColor = Color.WhiteSmoke;

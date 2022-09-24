@@ -170,6 +170,7 @@ namespace テストDB.UI
         private void ShowLoading()
         {
             this.ucロード中.Visible = true;
+            this.ucロード中.BringToFront();
         }
 
         private void OnLoaded()
@@ -189,6 +190,7 @@ namespace テストDB.UI
             dg.Columns[(int)ds売上一覧_Col.売上日].DefaultCellStyle.Format = "MM/dd";
             dg.Columns[(int)ds売上一覧_Col.売上高].DefaultCellStyle.Format = "C";
 
+            // ヘッダー
             dg.Columns[(int)ds売上一覧_Col.ID].HeaderText = "伝票№";
 
             ucPager_SizeChanged(this, null);
@@ -219,6 +221,7 @@ namespace テストDB.UI
                 dg.Columns[(int)ds売上一覧_Col.ID].Visible = true;
                 dg.Columns[(int)ds売上一覧_Col.得意先CD].Visible = true;
                 dg.Columns[(int)ds売上一覧_Col.担当社員番号].Visible = true;
+
                 dg.Columns[(int)ds売上一覧_Col.得意先名].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
             else
@@ -226,6 +229,7 @@ namespace テストDB.UI
                 dg.Columns[(int)ds売上一覧_Col.ID].Visible = false;
                 dg.Columns[(int)ds売上一覧_Col.得意先CD].Visible = false;
                 dg.Columns[(int)ds売上一覧_Col.担当社員番号].Visible = false;
+
                 dg.Columns[(int)ds売上一覧_Col.得意先名].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
         }
@@ -240,7 +244,7 @@ namespace テストDB.UI
             int.TryParse(args.ID, out 売上ID);
 
             this.uc売上伝票.売上ID = 売上ID;
-            this.uc売上伝票.LoadData();
+            this.uc売上伝票.DataLoad();
             this.uc売上伝票.Visible = true;
             this.uc売上伝票.BringToFront();
         }

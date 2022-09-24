@@ -1,74 +1,44 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 using テストDB.Models;
-using テストDB.共通UI;
 using static テストDB.共通UI.Uc社員検索;
 using テストDB.ViewModel;
 using System.Threading.Tasks;
+using static テストDB.UI.Form社員メンテ;
+using static テストDB.共通UI.UcPager;
+using static テストDB.UI.Form売上一覧;
 
 namespace テストDB.UI
 {
     public partial class Form得意先メンテ : Form
     {
-        // ------------------------------------------------------------
-        // ViewModel
-        // ------------------------------------------------------------
+        // ----------------------------------------------------------------
+        // 表示する一覧の定義
+        // ----------------------------------------------------------------
+        public class ds得意先一覧
+        {
+            public int No { get; set; }
+            public int ID { get; set; }
+            public string 得意先CD { get; set; }
+            public string 得意先名 { get; set; }
+            public int 担当社員ID { get; set; }
+            public string 担当社員番号 { get; set; }
+            public string 担当社員名 { get; set; }
+        }
+
+        public enum ds得意先一覧_Col
+        {
+            No = 0,
+            ID = 1,
+            得意先CD = 2,
+            得意先名 = 3,
+            担当社員ID = 4,
+            担当社員番号 = 5,
+            担当社員名 = 6,
+        }
+
         private ViewModel得意先 vm得意先;
-
-        // ------------------------------------------------------------
-        // 作業中の行
-        // ------------------------------------------------------------
-        private int _currentRow = -1;
-        private int currentRow
-        {
-            get { return _currentRow; }
-            set
-            {
-                _currentRow = value;
-
-                dataGridView得意先一覧.Rows[_currentRow].Selected = true;
-
-                // 選択行が表示されているかを判定すると、ギリギリ一部が表示されているだけで
-                // 表示されている判定される。これでは困る。
-                // 選択行の1行下が表示されているか判定する。
-                var currentRowPlus1 = _currentRow + 1;
-
-                if (currentRowPlus1 >= dataGridView得意先一覧.RowCount)
-                {
-                    currentRowPlus1 -= 1;
-                }
-
-                if (!dataGridView得意先一覧.Rows[currentRowPlus1].Displayed)
-                {
-                    // 対象行が画面内に表示されて居ないときだけ、表示範囲を切り替える
-                    dataGridView得意先一覧.FirstDisplayedScrollingRowIndex = _currentRow;
-                }
-
-
-                var 得意先 = vm得意先.list得意先一覧[_currentRow];
-
-                // 行を表示する
-                ShowRow(得意先);
-
-            }
-        }
-
-        private void ShowRow(M得意先一覧 得意先)
-        {
-            textBox得意先ID.Text = 得意先.ID.ToString();
-            textBox得意先CD.Text = 得意先.得意先CD;
-            textBox得意先名.Text = 得意先.得意先名;
-
-            textBox担当社員ID.Text = 得意先.担当社員ID.ToString();
-            uc社員入力.M社員 = new M社員
-            {
-                ID = 得意先.担当社員ID,
-                社員番号 = 得意先.担当社員番号,
-                社員名 = 得意先.担当社員名,
-            };
-        }
-
-
 
         // ------------------------------------------------------------
         //  処理モードの変更
@@ -76,9 +46,6 @@ namespace テストDB.UI
         private void buttonｷｬﾝｾﾙ_Click(object sender, EventArgs e)
         {
             userControl処理モード.ChangeMode_照会();
-
-            // 作業中の内容を破棄し、選択されているデータで再描画
-            this.currentRow = this.currentRow;
         }
 
         // ------------------------------------------------------------
@@ -89,7 +56,6 @@ namespace テストDB.UI
             this.textBox得意先ID.Text = "-1";
             this.textBox得意先CD.Text = "";
             this.textBox得意先名.Text = "";
-            this.textBox担当社員ID.Text = "";
             uc社員入力.M社員 = new M社員
             {
                 ID = -1,
@@ -105,10 +71,7 @@ namespace テストDB.UI
             button保存.Enabled = true;
             buttonｷｬﾝｾﾙ.Enabled = true;
 
-            this.panel検索.Visible = false;
-            this.dataGridView得意先一覧.Visible = false;
-            this.panel詳細.Visible = true;
-
+            panel詳細.BringToFront();
         }
 
         private void ChangeMode_修正()
@@ -121,10 +84,7 @@ namespace テストDB.UI
             button保存.Enabled = true;
             buttonｷｬﾝｾﾙ.Enabled = true;
 
-            this.panel検索.Visible = false;
-            this.dataGridView得意先一覧.Visible = false;
-            this.panel詳細.Visible = true;
-
+            panel詳細.BringToFront();
         }
 
         private void ChangeMode_照会()
@@ -137,10 +97,7 @@ namespace テストDB.UI
             button保存.Enabled = false;
             buttonｷｬﾝｾﾙ.Enabled = false;
 
-            this.panel検索.Visible = true;
-            this.dataGridView得意先一覧.Visible = true;
-            this.panel詳細.Visible = false;
-
+            ucPager.BringToFront();
         }
 
         private void On社員番号_Selected(On社員番号SelectedEventArgs arg)
@@ -162,9 +119,14 @@ namespace テストDB.UI
 
             userControl処理モード.ChangeMode_照会();
 
-
             uc社員検索.Visible = false;
             uc社員検索.On社員番号Selected += On社員番号_Selected;
+
+            // グリッドのフォーマットイベント
+            this.ucPager.OnGridFormat += OnGrid_Format;
+
+            // グリッドのダブルクリック
+            this.ucPager.OnGridDoubleClick += OnGrid_DoubleClick;
         }
 
 
@@ -172,7 +134,13 @@ namespace テストDB.UI
         // コントロール表示時に全データを読み込み
         //      ただし、デザインモードではデータを読み込まない
         // ------------------------------------------------------------
-        private async void Form得意先メンテ_Load(object sender, EventArgs e)
+        private void Form得意先メンテ_Load(object sender, EventArgs e)
+        {
+            DataLoad();
+
+        }
+
+        private async void DataLoad()
         {
             if (DesignMode) return;
 
@@ -182,33 +150,42 @@ namespace テストDB.UI
             // 非同期でデータ取得
             await Task.Run(() =>
             {
-                DataLoad();
+                vm得意先 = new ViewModel得意先();
             });
 
-            // 先頭行を初期表示
-            dataGridView得意先一覧.DataSource = vm得意先.list得意先一覧;
+            var list = vm得意先.list得意先一覧
+                .OrderBy(it => it.得意先CD)
+                .Select((it, i) => new ds得意先一覧
+                {
+                    No = i + 1,
+                    ID = it.ID,
+                    得意先CD = it.得意先CD,
+                    得意先名 = it.得意先名,
+                    担当社員ID = it.担当社員ID,
+                    担当社員番号 = it.担当社員番号,
+                    担当社員名 = it.担当社員名,
+                })
+                .ToList()
+                ;
 
-            // 列幅の設定:
-            dataGridView得意先一覧.Columns[0].Visible = false;
-            dataGridView得意先一覧.Columns[3].Visible = false;
-            dataGridView得意先一覧.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridView得意先一覧.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridView得意先一覧.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            this.currentRow = 0;
+            this.ucPager.RowsInPage = 100;
+            this.ucPager.KeyColumn = (int)ds得意先一覧_Col.ID;
+
+            this.ucPager.RowCount = list.Count();
+
+            this.ucPager.SetFullDatasource<ds得意先一覧>(list);
+            this.ucPager.ShowPage();
 
             // ロード終了
             OnLoaded();
         }
 
-        private void DataLoad()
-        {
-            vm得意先 = new ViewModel得意先();
-        }
 
         // ロード中
         private void ShowLoading()
         {
             this.ucロード中.Visible = true;
+            this.ucロード中.BringToFront();
         }
 
         private void OnLoaded()
@@ -216,85 +193,92 @@ namespace テストDB.UI
             this.ucロード中.Visible = false;
         }
 
-        // ------------------------------------------------------------
-        // Grid内のデータ検索
-        // ------------------------------------------------------------
-        private void textBox検索_KeyPress(object sender, KeyPressEventArgs e)
+        // ----------------------------------------------------------------
+        // グリッドの書式
+        // ----------------------------------------------------------------
+        // グリッドの書式設定
+        private void OnGrid_Format()
         {
-            //EnterやEscapeキーでビープ音が鳴らないようにする
-            if (e.KeyChar == (char)Keys.Enter || e.KeyChar == (char)Keys.Escape)
+            DataGridView dg = this.ucPager.pagerDataGridView;
+
+            dg.Columns[(int)ds得意先一覧_Col.ID].Visible = false;
+            dg.Columns[(int)ds得意先一覧_Col.担当社員ID].Visible = false;
+
+            ucPager_SizeChanged(this, null);
+        }
+
+        // ----------------------------------------------------------------
+        // 一覧のサイズ変更
+        // ----------------------------------------------------------------
+        private void ucPager_SizeChanged(object sender, EventArgs e)
+        {
+
+            DataGridView dg = this.ucPager.pagerDataGridView;
+
+            // データ0行ならなにもしない
+            if (dg.RowCount == 0) return;
+
+            dg.Columns[(int)ds得意先一覧_Col.得意先名].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            int ColWidthSum = 0;
+            foreach (DataGridViewColumn column in dg.Columns)
             {
-                e.Handled = true;
+                ColWidthSum += column.Width;
+            }
+
+            if (dg.Width > ColWidthSum)
+            {
+                dg.Columns[(int)ds得意先一覧_Col.担当社員番号].Visible = true;
+
+                dg.Columns[(int)ds得意先一覧_Col.得意先名].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
+            else
+            {
+                dg.Columns[(int)ds得意先一覧_Col.担当社員番号].Visible = false;
+
+                dg.Columns[(int)ds得意先一覧_Col.得意先名].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
         }
 
-        private void textBox検索_KeyDown(object sender, KeyEventArgs e)
+
+        // ----------------------------------------------------------------
+        // 一覧のダブルクリック
+        // ----------------------------------------------------------------
+        private void OnGrid_DoubleClick(OnGridDoubleClickArgs args)
         {
-            if (e.KeyCode == Keys.Enter)
+            int 得意先ID;
+
+            int.TryParse(args.ID, out 得意先ID);
+
+            var item = vm得意先.list得意先一覧
+                .Select((it, i) => new ds得意先一覧
+                {
+                    No = i + 1,
+                    ID = it.ID,
+                    得意先CD = it.得意先CD,
+                    得意先名 = it.得意先名,
+                    担当社員ID = it.担当社員ID,
+                    担当社員番号 = it.担当社員番号,
+                    担当社員名 = it.担当社員名,
+                })
+                .Where(it => it.ID == 得意先ID)
+                .First()
+                ;
+
+            this.textBox得意先ID.Text = item.ID.ToString();
+            this.textBox得意先CD.Text = item.得意先CD;
+            this.textBox得意先名.Text = item.得意先名;
+            uc社員入力.M社員 = new M社員
             {
-                Set検索対象行();
-            }
+                ID = item.担当社員ID,
+                社員番号 = item.担当社員番号,
+                社員名 = item.担当社員名,
+            };
 
-        }
-
-        private void button検索_Click(object sender, EventArgs e)
-        {
-
-            Set検索対象行();
-        }
-
-        // キーワードを検索
-        private void Set検索対象行()
-        {
-            // 入力値
-            var キーワード = this.textBox検索.Text;
-            if (string.IsNullOrWhiteSpace(キーワード)) return;
-
-            // 現在行より下を検索
-            var selectedRow = dataGridView得意先一覧.SelectedRows[0].Index;
-
-            var row = vm得意先.FindRow得意先一覧(キーワード, selectedRow + 1);
-            if (row == 0)
-            {
-                row = vm得意先.FindRow得意先一覧(キーワード, 0);
-
-            }
-            // 最初に見つかった検索結果行を表示
-            this.currentRow = row;
-        }
-
-        // ------------------------------------------------------------
-        // Grid内の選択データを表示
-        // ------------------------------------------------------------
-        private void dataGridView得意先一覧_SelectionChanged(object sender, EventArgs e)
-        {
-            dataGrid_Selected();
-        }
-
-        private void dataGridView得意先一覧_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            dataGrid_Selected();
-        }
-
-        private void dataGrid_Selected()
-        {
-            // 照会中以外はなにもしない
-            if (userControl処理モード.状態 != 処理モード.状態.照会中)
-                return;
-
-            // 選択行を表示
-            if (dataGridView得意先一覧.SelectedRows.Count > 0)
-                this.currentRow = dataGridView得意先一覧.SelectedRows[0].Index;
-        }
-
-        // ------------------------------------------------------------
-        // Grid内の選択データをダブルクリックして直接修正モード
-        // ------------------------------------------------------------
-        private void dataGridView得意先一覧_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            dataGrid_Selected();
+            // 修正モードへ
             userControl処理モード.ChangeMode_修正();
         }
+
 
         // ------------------------------------------------------------
         // 保存ボタン
@@ -332,7 +316,6 @@ namespace テストDB.UI
 
             // データ再取得
             DataLoad();
-            this.currentRow = vm得意先.FindRowByID(ID);
 
         }
 

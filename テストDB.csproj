@@ -286,6 +286,7 @@
     <Content Include="Icon\Loading_icon.gif" />
     <Content Include="Icon\グラフ.png" />
     <Content Include="Icon\ノーマルの太さのバツアイコン.png" />
+    <Content Include="Icon\メニュー.png" />
     <Content Include="Icon\伝票.png" />
     <Content Include="Icon\円.png" />
     <Content Include="Icon\分析.png" />

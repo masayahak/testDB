@@ -1,43 +1,35 @@
 ﻿using System;
-using System.Drawing;
-using System.Runtime.InteropServices;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using テストDB.Models;
 using テストDB.ViewModel;
-using Excel = Microsoft.Office.Interop.Excel;
+using static テストDB.共通UI.UcPager;
 
 namespace テストDB.UI
 {
     public partial class Form社員メンテ : Form
     {
-        // ------------------------------------------------------------
-        // ViewModel
-        // ------------------------------------------------------------
-        private ViewModel社員 vm社員;
-
-        // ------------------------------------------------------------
-        // 作業中の行
-        // ------------------------------------------------------------
-        private int _currentRow = -1;
-        private int currentRow
+        // ----------------------------------------------------------------
+        // 表示する一覧の定義
+        // ----------------------------------------------------------------
+        public class ds社員一覧
         {
-            get { return _currentRow; }
-            set
-            {
-                _currentRow = value;
-
-                dataGridView社員一覧.Rows[_currentRow].Selected = true;
-                if (!dataGridView社員一覧.SelectedRows[0].Displayed)
-                {
-                    // 対象行が画面内に表示されて居ないときだけ、表示範囲を切り替える
-                    dataGridView社員一覧.FirstDisplayedScrollingRowIndex = _currentRow;
-                }
-
-                var 社員 = vm社員.list社員[_currentRow];
-                ShowRow(社員);
-            }
+            public int No { get; set; }
+            public int ID { get; set; }
+            public string 社員番号 { get; set; }
+            public string 社員名 { get; set; }
         }
+
+        public enum ds社員一覧_Col
+        {
+            No = 0,
+            ID = 1,
+            社員番号 = 2,
+            社員名 = 3,
+        }
+
+        private ViewModel社員 vm社員;
 
         private void ShowRow(M社員 社員)
         {
@@ -52,9 +44,6 @@ namespace テストDB.UI
         private void buttonｷｬﾝｾﾙ_Click(object sender, EventArgs e)
         {
             userControl処理モード.ChangeMode_照会();
-
-            // 作業中の内容を破棄し、選択されているデータで再描画
-            this.currentRow = this.currentRow;
         }
 
         // ------------------------------------------------------------
@@ -73,6 +62,7 @@ namespace テストDB.UI
             button保存.Enabled = true;
             buttonｷｬﾝｾﾙ.Enabled = true;
 
+            panel詳細.BringToFront();
         }
 
         private void ChangeMode_修正()
@@ -84,6 +74,7 @@ namespace テストDB.UI
             button保存.Enabled = true;
             buttonｷｬﾝｾﾙ.Enabled = true;
 
+            panel詳細.BringToFront();
         }
 
         private void ChangeMode_照会()
@@ -95,7 +86,7 @@ namespace テストDB.UI
             button保存.Enabled = false;
             buttonｷｬﾝｾﾙ.Enabled = false;
 
-
+            ucPager.BringToFront();
         }
 
         // ------------------------------------------------------------
@@ -111,14 +102,23 @@ namespace テストDB.UI
 
             userControl処理モード.ChangeMode_照会();
 
-        }
+            // グリッドのフォーマットイベント
+            this.ucPager.OnGridFormat += OnGrid_Format;
 
+            // グリッドのダブルクリック
+            this.ucPager.OnGridDoubleClick += OnGrid_DoubleClick;
+        }
 
         // ------------------------------------------------------------
         // コントロール表示時に全データを読み込み
         //      ただし、デザインモードではデータを読み込まない
         // ------------------------------------------------------------
-        private async void Form社員メンテ_Load(object sender, EventArgs e)
+        private void Form社員メンテ_Load(object sender, EventArgs e)
+        {
+            DataLoad();
+        }
+
+        private async void DataLoad()
         {
             if (DesignMode) return;
 
@@ -128,121 +128,96 @@ namespace テストDB.UI
             // 非同期でデータ取得
             await Task.Run(() =>
             {
-                DataLoad();
+                vm社員 = new ViewModel社員();
             });
 
-            // データ表示
-            dataGridView社員一覧.DataSource = vm社員.list社員;
+            var list = vm社員.list社員
+                .OrderBy(it => it.社員番号)
+                .Select((it, i) => new ds社員一覧
+                {
+                    No = i + 1,
+                    ID = it.ID,
+                    社員番号 = it.社員番号,
+                    社員名 = it.社員名,
+                })
+                .ToList()
+                ;
 
-            // 列幅の設定:
-            dataGridView社員一覧.Columns[0].Visible = false;
-            dataGridView社員一覧.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridView社員一覧.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            this.currentRow = 0;
+            this.ucPager.RowsInPage = 100;
+            this.ucPager.KeyColumn = (int)ds社員一覧_Col.ID;
+
+            this.ucPager.RowCount = list.Count();
+
+            this.ucPager.SetFullDatasource<ds社員一覧>(list);
+            this.ucPager.ShowPage();
 
             // ロード終了
             OnLoaded();
         }
 
-        private void DataLoad()
-        {
-            vm社員 = new ViewModel社員();
-        }
 
         // ロード中
         private void ShowLoading()
         {
             this.ucロード中.Visible = true;
+            this.ucロード中.BringToFront();
         }
 
         private void OnLoaded()
         {
             this.ucロード中.Visible = false;
 
-            //this.panel検索.Visible = true;
-            //this.panel詳細.Visible = true;
-            //this.panel操作.Visible = true;
         }
 
-        // ------------------------------------------------------------
-        // Grid内のデータ検索
-        // ------------------------------------------------------------
-        private void textBox検索_KeyPress(object sender, KeyPressEventArgs e)
+        // ----------------------------------------------------------------
+        // グリッドの書式
+        // ----------------------------------------------------------------
+        // グリッドの書式設定
+        private void OnGrid_Format()
         {
-            //EnterやEscapeキーでビープ音が鳴らないようにする
-            if (e.KeyChar == (char)Keys.Enter || e.KeyChar == (char)Keys.Escape)
-            {
-                e.Handled = true;
-            }
+            DataGridView dg = this.ucPager.pagerDataGridView;
+
+            dg.Columns[(int)ds社員一覧_Col.ID].Visible = false;
+            dg.Columns[(int)ds社員一覧_Col.社員名].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            ucPager_SizeChanged(this, null);
         }
 
-        private void textBox検索_KeyDown(object sender, KeyEventArgs e)
+        // ----------------------------------------------------------------
+        // 一覧のサイズ変更
+        // ----------------------------------------------------------------
+        private void ucPager_SizeChanged(object sender, EventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                Set検索対象行();
-            }
-
+            // 処理なし
         }
 
-        private void button検索_Click(object sender, EventArgs e)
+
+        // ----------------------------------------------------------------
+        // 一覧のダブルクリック
+        // ----------------------------------------------------------------
+        private void OnGrid_DoubleClick(OnGridDoubleClickArgs args)
         {
+            int 社員ID;
 
-            Set検索対象行();
-        }
+            int.TryParse(args.ID, out 社員ID);
 
-        // キーワードを検索
-        private void Set検索対象行()
-        {
-            // 入力値
-            var キーワード = this.textBox検索.Text;
-            if (string.IsNullOrWhiteSpace(キーワード)) return;
+            var item = vm社員.list社員
+                .Select((it, i) => new ds社員一覧
+                {
+                    No = i + 1,
+                    ID = it.ID,
+                    社員番号 = it.社員番号,
+                    社員名 = it.社員名,
+                })
+                .Where(it => it.ID == 社員ID)
+                .First()
+                ;
 
-            // 現在行より下を検索
-            var selectedRow = dataGridView社員一覧.SelectedRows[0].Index;
+            this.textBox社員ID.Text = item.ID.ToString();
+            this.textBox社員番号.Text = item.社員番号;
+            this.textBox社員名.Text = item.社員名;
 
-            // 社員名と社員番号から検索
-            var row = vm社員.FindRow社員(キーワード, selectedRow + 1);
-            if (row == 0)
-            {
-                // 先頭より検索社員名と社員番号から検索
-                row = vm社員.FindRow社員(キーワード, 0);
-
-            }
-            // 最初に見つかった検索結果行を表示
-            this.currentRow = row;
-        }
-
-        // ------------------------------------------------------------
-        // Grid内の選択データを表示
-        // ------------------------------------------------------------
-        private void dataGridView社員一覧_SelectionChanged(object sender, EventArgs e)
-        {
-            dataGrid_Selected();
-        }
-
-        private void dataGridView社員一覧_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            dataGrid_Selected();
-        }
-
-        private void dataGrid_Selected()
-        {
-            // 照会中以外はなにもしない
-            if (userControl処理モード.状態 != 処理モード.状態.照会中)
-                return;
-
-            // 選択行を表示
-            if (dataGridView社員一覧.SelectedRows.Count > 0)
-                this.currentRow = dataGridView社員一覧.SelectedRows[0].Index;
-        }
-
-        // ------------------------------------------------------------
-        // Grid内の選択データをダブルクリックして直接修正モード
-        // ------------------------------------------------------------
-        private void dataGridView社員一覧_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            dataGrid_Selected();
+            // 修正モードへ
             userControl処理モード.ChangeMode_修正();
         }
 
@@ -282,7 +257,6 @@ namespace テストDB.UI
 
             // データ再取得
             DataLoad();
-            this.currentRow = vm社員.FindRowByID(ID);
 
         }
 
@@ -408,86 +382,5 @@ namespace テストDB.UI
             // １つ前を表示すると、なぜそれが選択されているのか直感的にわからない。
         }
 
-        // ------------------------------------------------------------
-        // EXCELボタン
-        // ------------------------------------------------------------
-        private void buttonExcel_Click(object sender, EventArgs e)
-        {
-            // ボタンを連続でクリックできなくする
-            this.buttonExcel.Enabled = false;
-
-            //Excelオブジェクトの初期化
-            Excel.Application ExcelApp = null;
-            Excel.Workbooks exCurrentBooks = null;
-            Excel.Workbook exCurrentBook = null;
-            Excel.Worksheet exCurrentSheet = null;
-
-            try
-            {
-                //Excelシートのインスタンスを作る
-                ExcelApp = new Excel.Application();
-
-                exCurrentBooks = ExcelApp.Workbooks;
-                exCurrentBook = ExcelApp.Workbooks.Add();
-                exCurrentSheet = exCurrentBook.Sheets[1];
-
-                exCurrentSheet.Select(Type.Missing);
-
-                // ヘッダー
-                exCurrentSheet.Cells[1, 1].Value2 = "ID";
-                exCurrentSheet.Cells[1, 2].Value2 = "社員番号";
-                exCurrentSheet.Cells[1, 3].Value2 = "社員名";
-                Excel.Range range = exCurrentSheet.Range[exCurrentSheet.Cells[1, 1], exCurrentSheet.Cells[1, 3]];
-                range.Interior.Color = Color.DarkBlue;
-                range.Font.Color = Color.White;
-                range.Font.Bold = true;
-
-                var row = 1;
-
-                // エクセルファイルにデータをセットする
-                foreach (var 社員 in vm社員.list社員)
-                {
-                    row++;
-
-                    // 行
-                    exCurrentSheet.Cells[row, 1].Value2 = 社員.ID;
-                    exCurrentSheet.Cells[row, 2].Value2 = 社員.社員番号;
-                    exCurrentSheet.Cells[row, 3].Value2 = 社員.社員名;
-                }
-
-            }
-            finally
-            {
-                exCurrentSheet.Cells.Columns.AutoFit();
-
-                //excel表示
-                ExcelApp.Visible = true;
-
-                // Excelオブジェクトの開放
-                Marshal.ReleaseComObject(exCurrentSheet);
-                exCurrentSheet = null;
-                Marshal.ReleaseComObject(exCurrentBook);
-                exCurrentBook = null;
-                Marshal.ReleaseComObject(exCurrentBooks);
-                exCurrentBooks = null;
-
-                // アプリケーションの終了前にガベージ コレクトを強制します。
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
-                GC.Collect();
-
-                // Application オブジェクトを破棄します。
-                Marshal.ReleaseComObject(ExcelApp);
-                ExcelApp = null;
-
-                // Application オブジェクトのガベージ コレクトを強制します。
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
-                GC.Collect();
-
-                // ボタンを連続でクリックできなくする
-                this.buttonExcel.Enabled = true;
-            }
-        }
     }
 }
