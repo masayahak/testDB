@@ -5,7 +5,7 @@ using System.Windows.Forms;
 using static テストDB.共通UI.Uc社員検索;
 using static テストDB.共通UI.Uc得意先検索;
 using テストDB.ViewModel;
-using static テストDB.共通UI.UcPager;
+using static テストDB.共通UI.UcBasePager;
 using System.Threading.Tasks;
 
 namespace テストDB.UI
@@ -51,7 +51,7 @@ namespace テストDB.UI
 
         private void On得意先CD_Selected(On得意先CDSelectedEventArgs e)
         {
-            this.uc得意先入力.M得意先一覧 = e.m得意先一覧;
+            this.uc得意先入力.M得意先J担当者 = e.m得意先一覧;
         }
 
         private void On社員番号_Selected(On社員番号SelectedEventArgs e)
@@ -95,7 +95,7 @@ namespace テストDB.UI
             this.dtp期間開始.Value = 期間開始;
             this.dtp期間終了.Value = 期間終了;
 
-            this.uc得意先入力.M得意先一覧.得意先CD = 得意先CD;
+            this.uc得意先入力.M得意先J担当者.得意先CD = 得意先CD;
             this.uc社員入力.M社員.社員番号 = 担当社員番号;
 
             DataLoad();
@@ -110,7 +110,7 @@ namespace テストDB.UI
             期間開始 = this.dtp期間開始.Value.Date;
             期間終了 = this.dtp期間終了.Value.Date;
 
-            得意先CD = this.uc得意先入力.M得意先一覧.得意先CD;
+            得意先CD = this.uc得意先入力.M得意先J担当者.得意先CD;
             担当社員番号 = this.uc社員入力.M社員.社員番号;
 
             DataLoad();
@@ -154,8 +154,6 @@ namespace テストDB.UI
 
 
             this.ucPager.RowsInPage = 100;
-            this.ucPager.KeyColumn = (int)ds売上一覧_Col.ID;
-
             this.ucPager.RowCount = list.Count();
 
             this.ucPager.SetFullDatasource<ds売上一覧>(list);
@@ -239,11 +237,10 @@ namespace テストDB.UI
         // ----------------------------------------------------------------
         private void OnGrid_DoubleClick(OnGridDoubleClickArgs args)
         {
-            int 売上ID;
+            if (!(args.Row is ds売上一覧)) return;
+            var ds = (ds売上一覧)args.Row;
 
-            int.TryParse(args.ID, out 売上ID);
-
-            this.uc売上伝票.売上ID = 売上ID;
+            this.uc売上伝票.売上ID = ds.ID;
             this.uc売上伝票.DataLoad();
             this.uc売上伝票.Visible = true;
             this.uc売上伝票.BringToFront();

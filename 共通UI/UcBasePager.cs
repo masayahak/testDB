@@ -7,14 +7,12 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using テストDB.Models;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Excel = Microsoft.Office.Interop.Excel;
 
 
 namespace テストDB.共通UI
 {
-    public partial class UcPager : UserControl
+    public partial class UcBasePager : UserControl
     {
         // -------------------------------------------------------
         // 公開プロパティ
@@ -33,15 +31,6 @@ namespace テストDB.共通UI
         public void SetFullDatasource<T>(List<T> list)
         {
             fullDataSource = list.Cast<Object>().ToList();
-        }
-
-        // ダブルクリック時に必要キー列
-        private int keyColumn = 1;
-
-        public int KeyColumn
-        {
-            get { return keyColumn; }
-            set { keyColumn = value; }
         }
 
         // -------------------------------------------------------
@@ -131,13 +120,13 @@ namespace テストDB.共通UI
 
         public class OnGridDoubleClickArgs : EventArgs
         {
-            public string ID;
+            public object Row;
         }
 
         // -------------------------------------------------------
         // コンストラクタ
         // -------------------------------------------------------
-        public UcPager()
+        public UcBasePager()
         {
             InitializeComponent();
         }
@@ -221,15 +210,12 @@ namespace テストDB.共通UI
         // ----------------------------------------------------------------
         private void dataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            string ID;
-
             try
             {
-                // どの列を引数で渡すかは、keyColumnプロパティで公開している。
-                ID = dataGridView.Rows[e.RowIndex].Cells[keyColumn].Value.ToString();
+                var row = dataGridView.Rows[e.RowIndex].DataBoundItem;
                 var arg = new OnGridDoubleClickArgs()
                 {
-                    ID = ID
+                    Row = row
                 };
 
                 OnGridDoubleClick(arg);

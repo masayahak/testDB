@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -8,7 +9,7 @@ using static テストDB.共通UI.UcBasePager;
 
 namespace テストDB.UI
 {
-    public partial class Form社員メンテ : Form
+    public partial class Form社員Mメンテ : Form
     {
         // ----------------------------------------------------------------
         // 表示する一覧の定義
@@ -32,40 +33,31 @@ namespace テストDB.UI
         private ViewModel社員 vm社員;
 
         // ------------------------------------------------------------
-        //  処理モードの変更
-        // ------------------------------------------------------------
-        private void buttonｷｬﾝｾﾙ_Click(object sender, EventArgs e)
-        {
-            userControl処理モード.ChangeMode_照会();
-        }
-
-        // ------------------------------------------------------------
         //  処理モード変更時
         // ------------------------------------------------------------
         private void ChangeMode_追加()
         {
-            this.textBox社員ID.Text = "-1";
-            this.textBox社員番号.Text = "";
-            this.textBox社員名.Text = "";
+            ds社員一覧 newItem = new ds社員一覧()
+            {
+                ID = -1,
+                社員番号 = "",
+                社員名 = "",
+            };
+            ShowDetail(newItem);
 
             this.textBox社員番号.ReadOnly = false;
             this.textBox社員名.ReadOnly = false;
-
-            button削除.Enabled = false;
-            button保存.Enabled = true;
-            buttonｷｬﾝｾﾙ.Enabled = true;
 
             panel詳細.BringToFront();
         }
 
         private void ChangeMode_修正()
         {
+            ds社員一覧 currentItem = (ds社員一覧)ucPager.pagerDataGridView.SelectedRows[0].DataBoundItem;
+            ShowDetail(currentItem);
+
             this.textBox社員番号.ReadOnly = false;
             this.textBox社員名.ReadOnly = false;
-
-            button削除.Enabled = true;
-            button保存.Enabled = true;
-            buttonｷｬﾝｾﾙ.Enabled = true;
 
             panel詳細.BringToFront();
         }
@@ -75,25 +67,31 @@ namespace テストDB.UI
             this.textBox社員番号.ReadOnly = true;
             this.textBox社員名.ReadOnly = true;
 
-            button削除.Enabled = false;
-            button保存.Enabled = false;
-            buttonｷｬﾝｾﾙ.Enabled = false;
-
             ucPager.BringToFront();
+        }
+
+        private void ShowDetail(ds社員一覧 社員)
+        {
+            textBox社員ID.Text = 社員.ID.ToString();
+            textBox社員番号.Text = 社員.社員番号;
+            textBox社員名.Text = 社員.社員名;
         }
 
         // ------------------------------------------------------------
         //  初期化
         // ------------------------------------------------------------
-        public Form社員メンテ()
+        public Form社員Mメンテ()
         {
             InitializeComponent();
 
-            userControl処理モード.ChangeMode追加 += ChangeMode_追加;
-            userControl処理モード.ChangeMode修正 += ChangeMode_修正;
-            userControl処理モード.ChangeMode照会 += ChangeMode_照会;
+            ucCRUD.ChangeMode追加 += ChangeMode_追加;
+            ucCRUD.ChangeMode修正 += ChangeMode_修正;
+            ucCRUD.ChangeMode照会 += ChangeMode_照会;
+            ucCRUD.ChangeMode_照会();
 
-            userControl処理モード.ChangeMode_照会();
+            ucCRUD.On削除Click += On削除Click;
+            ucCRUD.On保存Click += On保存Click;
+            ucCRUD.OnキャンセルClick += OnキャンセルClick;
 
             // グリッドのフォーマットイベント
             this.ucPager.OnGridFormat += OnGrid_Format;
@@ -188,46 +186,21 @@ namespace テストDB.UI
         // ----------------------------------------------------------------
         private void OnGrid_DoubleClick(OnGridDoubleClickArgs args)
         {
-            if (!(args.Row is ds社員一覧)) return; 
-
-            var ds = (ds社員一覧)args.Row;
-
-            var item = vm社員.list社員
-                .Select((it, i) => new ds社員一覧
-                {
-                    No = i + 1,
-                    ID = it.ID,
-                    社員番号 = it.社員番号,
-                    社員名 = it.社員名,
-                })
-                .Where(it => it.ID == ds.ID)
-                .First()
-                ;
-
-            ShowRow(item);
-
             // 修正モードへ
-            userControl処理モード.ChangeMode_修正();
-        }
-
-        private void ShowRow(ds社員一覧 社員)
-        {
-            textBox社員ID.Text = 社員.ID.ToString();
-            textBox社員番号.Text = 社員.社員番号;
-            textBox社員名.Text = 社員.社員名;
+            ucCRUD.ChangeMode_修正();
         }
 
         // ------------------------------------------------------------
         // 保存ボタン
         // ------------------------------------------------------------
-        private void button保存_Click(object sender, EventArgs e)
+        private void On保存Click()
         {
 
             if (IsInputCheckError()) return;
 
             try
             {
-                if (userControl処理モード.状態 == 処理モード.状態.追加中)
+                if (ucCRUD.状態 == 処理モード.状態.追加中)
                 {
                     社員Add();
                 }
@@ -248,7 +221,7 @@ namespace テストDB.UI
 
 
             // 追加 or 修正が終わったら照会モードへ
-            userControl処理モード.ChangeMode_照会();
+            ucCRUD.ChangeMode_照会();
 
             // データ再取得
             DataLoad();
@@ -317,7 +290,7 @@ namespace テストDB.UI
         // ------------------------------------------------------------
         // 削除ボタン
         // ------------------------------------------------------------
-        private void button削除_Click(object sender, EventArgs e)
+        private void On削除Click()
         {
 
             var ID = int.Parse(textBox社員ID.Text);
@@ -359,7 +332,7 @@ namespace テストDB.UI
             }
 
             // 削除が終わったら照会モードへ
-            userControl処理モード.ChangeMode_照会();
+            ucCRUD.ChangeMode_照会();
             // データ再取得
             DataLoad();
 
@@ -369,6 +342,16 @@ namespace テストDB.UI
         {
             vm社員.Delete(ID);
         }
+
+        // ------------------------------------------------------------
+        // キャンセルボタン
+        // ------------------------------------------------------------
+        private void OnキャンセルClick()
+        {
+            ucCRUD.ChangeMode_照会();
+        }
+
+
 
     }
 }

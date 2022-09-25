@@ -16,19 +16,19 @@ namespace テストDB.共通UI
             set { _uc得意先検索 = value; }
         }
 
-        private M得意先一覧 _m得意先一覧;
+        private M得意先J担当者 _m得意先J担当者;
 
-        public M得意先一覧 M得意先一覧
+        public M得意先J担当者 M得意先J担当者
         {
 
-            get { return _m得意先一覧; }
+            get { return _m得意先J担当者; }
             set
             {
-                _m得意先一覧 = value;
+                _m得意先J担当者 = value;
 
-                if (_m得意先一覧 == null)
+                if (_m得意先J担当者 == null)
                 {
-                    _m得意先一覧 = new M得意先一覧
+                    _m得意先J担当者 = new M得意先J担当者
                     {
                         ID = -1,
                         得意先CD = "",
@@ -36,11 +36,11 @@ namespace テストDB.共通UI
                     };
                 }
 
-                this.textBox得意先ID.Text = _m得意先一覧.ID.ToString();
-                this.textBox得意先CD.Text = _m得意先一覧.得意先CD;
-                this.textBox得意先名.Text = _m得意先一覧.得意先名;
+                this.textBox得意先ID.Text = _m得意先J担当者.ID.ToString();
+                this.textBox得意先CD.Text = _m得意先J担当者.得意先CD;
+                this.textBox得意先名.Text = _m得意先J担当者.得意先名;
 
-                if (_m得意先一覧.ID == -1)
+                if (_m得意先J担当者.ID == -1)
                 {
                     this.textBox得意先名.ForeColor = Color.Red;
                 }
@@ -107,7 +107,7 @@ namespace テストDB.共通UI
             var 得意先CD = this.textBox得意先CD.Text;
             if (string.IsNullOrWhiteSpace(得意先CD))
             {
-                this.M得意先一覧 = new M得意先一覧
+                this.M得意先J担当者 = new M得意先J担当者
                 {
                     ID = -1,
                     得意先CD = "",
@@ -119,12 +119,12 @@ namespace テストDB.共通UI
             try
             {
                 var vm得意先 = new ViewModel得意先();
-                this.M得意先一覧 = vm得意先.Get得意先By得意先CD(得意先CD);
+                this.M得意先J担当者 = vm得意先.Get得意先By得意先CD(得意先CD);
             }
             catch
             {
                 // 得意先を発見できない
-                this.M得意先一覧 = new M得意先一覧
+                this.M得意先J担当者 = new M得意先J担当者
                 {
                     ID = -1,
                     得意先CD = textBox得意先CD.Text,

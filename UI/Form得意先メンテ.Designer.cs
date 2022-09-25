@@ -44,7 +44,7 @@
             this.button削除 = new テストDB.共通UI.CButton();
             this.userControl処理モード = new テストDB.UI.Uc処理モード();
             this.ucロード中 = new テストDB.共通UI.Ucロード中();
-            this.ucPager = new テストDB.共通UI.UcPager();
+            this.ucPager = new テストDB.共通UI.UcBasePager();
             this.panel詳細.SuspendLayout();
             this.panel操作.SuspendLayout();
             this.SuspendLayout();
@@ -234,8 +234,9 @@
             // 
             // ucロード中
             // 
+            this.ucロード中.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ucロード中.BackColor = System.Drawing.Color.Black;
-            this.ucロード中.Location = new System.Drawing.Point(204, 267);
+            this.ucロード中.Location = new System.Drawing.Point(245, 300);
             this.ucロード中.Name = "ucロード中";
             this.ucロード中.Size = new System.Drawing.Size(340, 125);
             this.ucロード中.TabIndex = 37;
@@ -245,7 +246,6 @@
             this.ucPager.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ucPager.KeyColumn = 1;
             this.ucPager.Location = new System.Drawing.Point(0, 0);
             this.ucPager.Name = "ucPager";
             this.ucPager.RowCount = 0;
@@ -262,8 +262,8 @@
             this.ClientSize = new System.Drawing.Size(829, 690);
             this.Controls.Add(this.ucロード中);
             this.Controls.Add(this.panel操作);
-            this.Controls.Add(this.ucPager);
             this.Controls.Add(this.panel詳細);
+            this.Controls.Add(this.ucPager);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form得意先メンテ";
             this.Text = "Form得意先メンテ";
@@ -291,6 +291,6 @@
         private System.Windows.Forms.Panel panel詳細;
         private System.Windows.Forms.Panel panel操作;
         private 共通UI.Ucロード中 ucロード中;
-        private 共通UI.UcPager ucPager;
+        private 共通UI.UcBasePager ucPager;
     }
 }

@@ -38,11 +38,8 @@ namespace テストDB.UI
                         dtp期間開始.Value = DateTime.Today;
                         dtp期間終了.Value = DateTime.Today;
 
+                        ClearSelectedButton();
                         this.button期間本日.ForeColor = Color.White;
-
-                        this.button期間カスタム.ForeColor = Color.FromArgb(124, 141, 181);
-                        this.button過去7日.ForeColor = Color.FromArgb(124, 141, 181);
-                        this.button過去30日.ForeColor = Color.FromArgb(124, 141, 181);
 
                         DataLoad();
                         SetDateMenuButtonsUI();
@@ -52,11 +49,8 @@ namespace テストDB.UI
                         dtp期間開始.Value = DateTime.Today.AddDays(-7);
                         dtp期間終了.Value = DateTime.Today;
 
+                        ClearSelectedButton();
                         this.button過去7日.ForeColor = Color.White;
-
-                        this.button期間カスタム.ForeColor = Color.FromArgb(124, 141, 181);
-                        this.button期間本日.ForeColor = Color.FromArgb(124, 141, 181);
-                        this.button過去30日.ForeColor = Color.FromArgb(124, 141, 181);
 
                         DataLoad();
                         SetDateMenuButtonsUI();
@@ -66,11 +60,8 @@ namespace テストDB.UI
                         dtp期間開始.Value = DateTime.Today.AddDays(-30);
                         dtp期間終了.Value = DateTime.Today;
 
+                        ClearSelectedButton();
                         this.button過去30日.ForeColor = Color.White;
-
-                        this.button期間カスタム.ForeColor = Color.FromArgb(124, 141, 181);
-                        this.button期間本日.ForeColor = Color.FromArgb(124, 141, 181);
-                        this.button過去7日.ForeColor = Color.FromArgb(124, 141, 181);
 
                         DataLoad();
                         SetDateMenuButtonsUI();
@@ -80,16 +71,21 @@ namespace テストDB.UI
                         dtp期間開始.Enabled = true;
                         dtp期間終了.Enabled = true;
 
+                        ClearSelectedButton();
                         this.button期間カスタム.ForeColor = Color.White;
-
-                        this.button期間本日.ForeColor = Color.FromArgb(124, 141, 181);
-                        this.button過去7日.ForeColor = Color.FromArgb(124, 141, 181);
-                        this.button過去30日.ForeColor = Color.FromArgb(124, 141, 181);
 
                         button期間検索.Visible = true;
                         break;
                 }
             }
+        }
+
+        private void ClearSelectedButton()
+        {
+            this.button期間カスタム.ForeColor = Color.FromArgb(124, 141, 181);
+            this.button期間本日.ForeColor = Color.FromArgb(124, 141, 181);
+            this.button過去7日.ForeColor = Color.FromArgb(124, 141, 181);
+            this.button過去30日.ForeColor = Color.FromArgb(124, 141, 181);
         }
 
 

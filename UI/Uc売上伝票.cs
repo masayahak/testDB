@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using テストDB.ViewModel;
 using static テストDB.UI.Form売上一覧;
-using static テストDB.共通UI.UcPager;
+using static テストDB.共通UI.UcBasePager;
 
 namespace テストDB.UI
 {
@@ -93,8 +93,6 @@ namespace テストDB.UI
                             ;
 
             this.ucPager.RowsInPage = 100;
-            this.ucPager.KeyColumn = (int)売上明細list_Col.バーコード;
-
             this.ucPager.RowCount = 売上明細lists.Count();
 
             this.ucPager.SetFullDatasource<売上明細list>(売上明細lists);

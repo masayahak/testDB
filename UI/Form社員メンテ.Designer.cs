@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel詳細 = new System.Windows.Forms.Panel();
+            this.textBox社員名 = new テストDB.共通UI.CTextBox();
+            this.textBox社員番号 = new テストDB.共通UI.CTextBox();
             this.textBox社員ID = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -38,9 +40,7 @@
             this.button削除 = new テストDB.共通UI.CButton();
             this.userControl処理モード = new テストDB.UI.Uc処理モード();
             this.ucロード中 = new テストDB.共通UI.Ucロード中();
-            this.ucPager = new テストDB.共通UI.UcPager();
-            this.textBox社員名 = new テストDB.共通UI.CTextBox();
-            this.textBox社員番号 = new テストDB.共通UI.CTextBox();
+            this.ucPager = new テストDB.共通UI.UcBasePager();
             this.panel詳細.SuspendLayout();
             this.panel操作.SuspendLayout();
             this.SuspendLayout();
@@ -52,11 +52,32 @@
             this.panel詳細.Controls.Add(this.textBox社員ID);
             this.panel詳細.Controls.Add(this.label2);
             this.panel詳細.Controls.Add(this.label1);
-            this.panel詳細.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel詳細.Location = new System.Drawing.Point(0, 0);
             this.panel詳細.Name = "panel詳細";
-            this.panel詳細.Size = new System.Drawing.Size(845, 729);
+            this.panel詳細.Size = new System.Drawing.Size(725, 729);
             this.panel詳細.TabIndex = 33;
+            // 
+            // textBox社員名
+            // 
+            this.textBox社員名.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.textBox社員名.Font = new System.Drawing.Font("MS UI Gothic", 18F);
+            this.textBox社員名.Location = new System.Drawing.Point(120, 61);
+            this.textBox社員名.MaxLength = 256;
+            this.textBox社員名.Name = "textBox社員名";
+            this.textBox社員名.ReadOnly = true;
+            this.textBox社員名.Size = new System.Drawing.Size(251, 31);
+            this.textBox社員名.TabIndex = 33;
+            // 
+            // textBox社員番号
+            // 
+            this.textBox社員番号.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.textBox社員番号.Font = new System.Drawing.Font("MS UI Gothic", 18F);
+            this.textBox社員番号.Location = new System.Drawing.Point(120, 16);
+            this.textBox社員番号.MaxLength = 20;
+            this.textBox社員番号.Name = "textBox社員番号";
+            this.textBox社員番号.ReadOnly = true;
+            this.textBox社員番号.Size = new System.Drawing.Size(168, 31);
+            this.textBox社員番号.TabIndex = 32;
             // 
             // textBox社員ID
             // 
@@ -168,8 +189,9 @@
             // 
             // ucロード中
             // 
+            this.ucロード中.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ucロード中.BackColor = System.Drawing.Color.Black;
-            this.ucロード中.Location = new System.Drawing.Point(205, 276);
+            this.ucロード中.Location = new System.Drawing.Point(245, 300);
             this.ucロード中.Name = "ucロード中";
             this.ucロード中.Size = new System.Drawing.Size(340, 125);
             this.ucロード中.TabIndex = 34;
@@ -177,7 +199,6 @@
             // ucPager
             // 
             this.ucPager.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucPager.KeyColumn = 1;
             this.ucPager.Location = new System.Drawing.Point(0, 0);
             this.ucPager.Name = "ucPager";
             this.ucPager.RowCount = 0;
@@ -185,28 +206,6 @@
             this.ucPager.Size = new System.Drawing.Size(845, 729);
             this.ucPager.TabIndex = 35;
             this.ucPager.SizeChanged += new System.EventHandler(this.ucPager_SizeChanged);
-            // 
-            // textBox社員名
-            // 
-            this.textBox社員名.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.textBox社員名.Font = new System.Drawing.Font("MS UI Gothic", 18F);
-            this.textBox社員名.Location = new System.Drawing.Point(120, 61);
-            this.textBox社員名.MaxLength = 256;
-            this.textBox社員名.Name = "textBox社員名";
-            this.textBox社員名.ReadOnly = true;
-            this.textBox社員名.Size = new System.Drawing.Size(251, 31);
-            this.textBox社員名.TabIndex = 33;
-            // 
-            // textBox社員番号
-            // 
-            this.textBox社員番号.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.textBox社員番号.Font = new System.Drawing.Font("MS UI Gothic", 18F);
-            this.textBox社員番号.Location = new System.Drawing.Point(120, 16);
-            this.textBox社員番号.MaxLength = 20;
-            this.textBox社員番号.Name = "textBox社員番号";
-            this.textBox社員番号.ReadOnly = true;
-            this.textBox社員番号.Size = new System.Drawing.Size(168, 31);
-            this.textBox社員番号.TabIndex = 32;
             // 
             // Form社員メンテ
             // 
@@ -216,8 +215,8 @@
             this.ClientSize = new System.Drawing.Size(845, 729);
             this.Controls.Add(this.panel操作);
             this.Controls.Add(this.ucロード中);
-            this.Controls.Add(this.panel詳細);
             this.Controls.Add(this.ucPager);
+            this.Controls.Add(this.panel詳細);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form社員メンテ";
             this.Text = "Form社員メンテ";
@@ -243,6 +242,6 @@
         private 共通UI.CButton button削除;
         private Uc処理モード userControl処理モード;
         private 共通UI.Ucロード中 ucロード中;
-        private 共通UI.UcPager ucPager;
+        private 共通UI.UcBasePager ucPager;
     }
 }

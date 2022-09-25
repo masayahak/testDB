@@ -29,34 +29,64 @@
         private void InitializeComponent()
         {
             テストDB.Models.M社員 m社員1 = new テストDB.Models.M社員();
-            テストDB.Models.M得意先一覧 m得意先一覧1 = new テストDB.Models.M得意先一覧();
-            this.ucPager = new テストDB.共通UI.UcPager();
+            テストDB.Models.M得意先J担当者 m得意先一覧1 = new テストDB.Models.M得意先J担当者();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ucロード中 = new テストDB.共通UI.Ucロード中();
             this.cButton検索 = new テストDB.共通UI.CButton();
             this.uc得意先検索 = new テストDB.共通UI.Uc得意先検索();
             this.uc社員検索 = new テストDB.共通UI.Uc社員検索();
-            this.label2 = new System.Windows.Forms.Label();
             this.uc社員入力 = new テストDB.共通UI.Uc社員入力();
-            this.label3 = new System.Windows.Forms.Label();
             this.uc得意先入力 = new テストDB.共通UI.Uc得意先入力();
-            this.label1 = new System.Windows.Forms.Label();
             this.dtp期間終了 = new テストDB.共通UI.CDateTimePicker();
             this.dtp期間開始 = new テストDB.共通UI.CDateTimePicker();
+            this.ucPager = new テストDB.共通UI.UcBasePager();
             this.uc売上伝票 = new テストDB.UI.Uc売上伝票();
-            this.ucロード中 = new テストDB.共通UI.Ucロード中();
             this.SuspendLayout();
             // 
-            // ucPager
+            // label2
             // 
-            this.ucPager.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ucPager.KeyColumn = 1;
-            this.ucPager.Location = new System.Drawing.Point(0, 232);
-            this.ucPager.Name = "ucPager";
-            this.ucPager.RowCount = 0;
-            this.ucPager.Size = new System.Drawing.Size(845, 497);
-            this.ucPager.TabIndex = 69;
-            this.ucPager.SizeChanged += new System.EventHandler(this.ucPager_SizeChanged);
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label2.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.label2.Location = new System.Drawing.Point(13, 144);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(106, 24);
+            this.label2.TabIndex = 77;
+            this.label2.Text = "担当社員";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label3.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.label3.Location = new System.Drawing.Point(13, 58);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(82, 24);
+            this.label3.TabIndex = 74;
+            this.label3.Text = "得意先";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label1.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.label1.Location = new System.Drawing.Point(14, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(82, 24);
+            this.label1.TabIndex = 72;
+            this.label1.Text = "売上日";
+            // 
+            // ucロード中
+            // 
+            this.ucロード中.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ucロード中.BackColor = System.Drawing.Color.Black;
+            this.ucロード中.Location = new System.Drawing.Point(245, 300);
+            this.ucロード中.Name = "ucロード中";
+            this.ucロード中.Size = new System.Drawing.Size(340, 125);
+            this.ucロード中.TabIndex = 81;
+            this.ucロード中.Visible = false;
             // 
             // cButton検索
             // 
@@ -92,17 +122,6 @@
             this.uc社員検索.Visible = false;
             this.uc社員検索.社員番号 = null;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label2.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label2.Location = new System.Drawing.Point(13, 144);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(106, 24);
-            this.label2.TabIndex = 77;
-            this.label2.Text = "担当社員";
-            // 
             // uc社員入力
             // 
             this.uc社員入力.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
@@ -117,17 +136,6 @@
             this.uc社員入力.TabIndex = 76;
             this.uc社員入力.uc社員検索 = null;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label3.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label3.Location = new System.Drawing.Point(13, 58);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 24);
-            this.label3.TabIndex = 74;
-            this.label3.Text = "得意先";
-            // 
             // uc得意先入力
             // 
             this.uc得意先入力.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
@@ -138,23 +146,12 @@
             m得意先一覧1.担当社員ID = 0;
             m得意先一覧1.担当社員名 = null;
             m得意先一覧1.担当社員番号 = null;
-            this.uc得意先入力.M得意先一覧 = m得意先一覧1;
+            this.uc得意先入力.M得意先J担当者 = m得意先一覧1;
             this.uc得意先入力.Name = "uc得意先入力";
             this.uc得意先入力.ReadOnly得意先CD = false;
             this.uc得意先入力.Size = new System.Drawing.Size(294, 78);
             this.uc得意先入力.TabIndex = 73;
             this.uc得意先入力.uc得意先検索 = null;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label1.Location = new System.Drawing.Point(14, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 24);
-            this.label1.TabIndex = 72;
-            this.label1.Text = "売上日";
             // 
             // dtp期間終了
             // 
@@ -176,6 +173,19 @@
             this.dtp期間開始.Size = new System.Drawing.Size(142, 31);
             this.dtp期間開始.TabIndex = 70;
             // 
+            // ucPager
+            // 
+            this.ucPager.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ucPager.Location = new System.Drawing.Point(0, 232);
+            this.ucPager.Name = "ucPager";
+            this.ucPager.RowCount = 0;
+            this.ucPager.RowsInPage = 100;
+            this.ucPager.Size = new System.Drawing.Size(845, 497);
+            this.ucPager.TabIndex = 69;
+            this.ucPager.SizeChanged += new System.EventHandler(this.ucPager_SizeChanged);
+            // 
             // uc売上伝票
             // 
             this.uc売上伝票.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(47)))), ((int)(((byte)(87)))));
@@ -185,15 +195,6 @@
             this.uc売上伝票.TabIndex = 80;
             this.uc売上伝票.Visible = false;
             this.uc売上伝票.売上ID = 1;
-            // 
-            // ucロード中
-            // 
-            this.ucロード中.BackColor = System.Drawing.Color.Black;
-            this.ucロード中.Location = new System.Drawing.Point(257, 292);
-            this.ucロード中.Name = "ucロード中";
-            this.ucロード中.Size = new System.Drawing.Size(340, 125);
-            this.ucロード中.TabIndex = 81;
-            this.ucロード中.Visible = false;
             // 
             // Form売上一覧
             // 
@@ -225,7 +226,7 @@
 
         #endregion
 
-        private 共通UI.UcPager ucPager;
+        private 共通UI.UcBasePager ucPager;
         private 共通UI.CButton cButton検索;
         private 共通UI.Uc得意先検索 uc得意先検索;
         private 共通UI.Uc社員検索 uc社員検索;

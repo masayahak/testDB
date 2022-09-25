@@ -7,7 +7,7 @@ namespace テストDB.ViewModel
 {
     internal class ViewModel得意先
     {
-        public List<M得意先一覧> list得意先一覧 { get; private set; }
+        public List<M得意先J担当者> list得意先一覧 { get; private set; }
 
         public ViewModel得意先()
         {
@@ -19,7 +19,7 @@ namespace テストDB.ViewModel
                                     db.M社員s,
                                     得意先 => 得意先.担当社員ID,
                                     社員 => 社員.ID,
-                                    (得意先, 社員) => new M得意先一覧
+                                    (得意先, 社員) => new M得意先J担当者
                                     {
                                         ID =得意先.ID,
                                         得意先CD = 得意先.得意先CD,
@@ -128,7 +128,7 @@ namespace テストDB.ViewModel
 
         }
 
-        public M得意先一覧 Get得意先ByID(int ID)
+        public M得意先J担当者 Get得意先ByID(int ID)
         {
             var 得意先 = list得意先一覧
                     .Single(it => it.ID == ID)
@@ -137,7 +137,7 @@ namespace テストDB.ViewModel
             return 得意先;
 
         }
-        public M得意先一覧 Get得意先By得意先CD(string 得意先CD)
+        public M得意先J担当者 Get得意先By得意先CD(string 得意先CD)
         {
             var 得意先 = list得意先一覧
                     .Single(it => it.得意先CD == 得意先CD)

@@ -18,7 +18,7 @@ namespace テストDB.Models
     }
 
 
-    public class M得意先一覧
+    public class M得意先J担当者
     {
         public int ID { get; set; }
 

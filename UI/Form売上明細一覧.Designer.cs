@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            テストDB.Models.M得意先一覧 m得意先一覧1 = new テストDB.Models.M得意先一覧();
+            テストDB.Models.M得意先J担当者 m得意先一覧1 = new テストDB.Models.M得意先J担当者();
             テストDB.Models.M商品 m商品1 = new テストDB.Models.M商品();
             this.cButton検索 = new テストDB.共通UI.CButton();
-            this.ucPager = new テストDB.共通UI.UcPager();
+            this.ucPager = new テストDB.共通UI.UcBasePager();
             this.uc得意先検索 = new テストDB.共通UI.Uc得意先検索();
             this.label3 = new System.Windows.Forms.Label();
             this.uc得意先入力 = new テストDB.共通UI.Uc得意先入力();
@@ -65,10 +65,10 @@
             this.ucPager.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ucPager.KeyColumn = 1;
             this.ucPager.Location = new System.Drawing.Point(0, 216);
             this.ucPager.Name = "ucPager";
             this.ucPager.RowCount = 0;
+            this.ucPager.RowsInPage = 100;
             this.ucPager.Size = new System.Drawing.Size(845, 513);
             this.ucPager.TabIndex = 83;
             this.ucPager.SizeChanged += new System.EventHandler(this.ucPager_SizeChanged);
@@ -103,7 +103,7 @@
             m得意先一覧1.担当社員ID = 0;
             m得意先一覧1.担当社員名 = null;
             m得意先一覧1.担当社員番号 = null;
-            this.uc得意先入力.M得意先一覧 = m得意先一覧1;
+            this.uc得意先入力.M得意先J担当者 = m得意先一覧1;
             this.uc得意先入力.Name = "uc得意先入力";
             this.uc得意先入力.ReadOnly得意先CD = false;
             this.uc得意先入力.Size = new System.Drawing.Size(294, 78);
@@ -188,8 +188,9 @@
             // 
             // ucロード中
             // 
+            this.ucロード中.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ucロード中.BackColor = System.Drawing.Color.Black;
-            this.ucロード中.Location = new System.Drawing.Point(241, 299);
+            this.ucロード中.Location = new System.Drawing.Point(245, 300);
             this.ucロード中.Name = "ucロード中";
             this.ucロード中.Size = new System.Drawing.Size(340, 125);
             this.ucロード中.TabIndex = 86;
@@ -226,7 +227,7 @@
         #endregion
 
         private 共通UI.CButton cButton検索;
-        private 共通UI.UcPager ucPager;
+        private 共通UI.UcBasePager ucPager;
         private 共通UI.Uc得意先検索 uc得意先検索;
         private System.Windows.Forms.Label label3;
         private 共通UI.Uc得意先入力 uc得意先入力;

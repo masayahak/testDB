@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using テストDB.ViewModel;
-using static テストDB.共通UI.UcPager;
+using static テストDB.共通UI.UcBasePager;
 using static テストDB.共通UI.Uc商品検索;
 using static テストDB.共通UI.Uc得意先検索;
 
@@ -62,7 +62,7 @@ namespace テストDB.UI
 
         private void On得意先CD_Selected(On得意先CDSelectedEventArgs e)
         {
-            this.uc得意先入力.M得意先一覧 = e.m得意先一覧;
+            this.uc得意先入力.M得意先J担当者 = e.m得意先一覧;
         }
 
         public Form売上明細一覧()
@@ -99,7 +99,7 @@ namespace テストDB.UI
             this.dtp期間終了.Value = 期間終了;
 
             this.uc商品入力.Get商品by商品名(商品名);
-            this.uc得意先入力.M得意先一覧.得意先CD = 得意先CD;
+            this.uc得意先入力.M得意先J担当者.得意先CD = 得意先CD;
 
             DataLoad();
         }
@@ -111,7 +111,7 @@ namespace テストDB.UI
 
             商品名 = "";
             バーコード = this.uc商品入力.M商品.バーコード;
-            得意先CD = this.uc得意先入力.M得意先一覧.得意先CD;
+            得意先CD = this.uc得意先入力.M得意先J担当者.得意先CD;
 
             DataLoad();
         }
@@ -156,8 +156,6 @@ namespace テストDB.UI
 
 
             this.ucPager.RowsInPage = 100;
-            this.ucPager.KeyColumn = (int)ds売上明細一覧_Col.ID;
-
             this.ucPager.RowCount = list.Count();
 
             this.ucPager.SetFullDatasource<ds売上明細一覧>(list);
@@ -246,11 +244,11 @@ namespace テストDB.UI
         // ----------------------------------------------------------------
         private void OnGrid_DoubleClick(OnGridDoubleClickArgs args)
         {
-            int 売上ID;
+            if (!(args.Row is ds売上明細一覧)) return;
 
-            int.TryParse(args.ID, out 売上ID);
+            var ds = (ds売上明細一覧)args.Row;
 
-            this.uc売上伝票.売上ID = 売上ID;
+            this.uc売上伝票.売上ID = ds.ID;
             this.uc売上伝票.DataLoad();
             this.uc売上伝票.Visible = true;
             this.uc売上伝票.BringToFront();

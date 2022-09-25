@@ -56,7 +56,7 @@
             // 
             this.button商品別.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(47)))));
             this.button商品別.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button商品別.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(137)))), ((int)(((byte)(163)))));
+            this.button商品別.FlatAppearance.BorderSize = 2;
             this.button商品別.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button商品別.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.button商品別.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(137)))), ((int)(((byte)(163)))));
@@ -75,7 +75,7 @@
             // 
             this.button売上日別.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(47)))));
             this.button売上日別.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button売上日別.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(137)))), ((int)(((byte)(163)))));
+            this.button売上日別.FlatAppearance.BorderSize = 2;
             this.button売上日別.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button売上日別.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.button売上日別.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(137)))), ((int)(((byte)(163)))));
@@ -94,7 +94,7 @@
             // 
             this.button売上総合.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(47)))));
             this.button売上総合.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button売上総合.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.button売上総合.FlatAppearance.BorderSize = 2;
             this.button売上総合.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button売上総合.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.button売上総合.ForeColor = System.Drawing.Color.WhiteSmoke;
@@ -115,7 +115,7 @@
             this.button得意先.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button得意先.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(47)))));
             this.button得意先.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button得意先.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(137)))), ((int)(((byte)(163)))));
+            this.button得意先.FlatAppearance.BorderSize = 2;
             this.button得意先.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button得意先.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.button得意先.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(137)))), ((int)(((byte)(163)))));
@@ -135,7 +135,7 @@
             this.button社員.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button社員.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(47)))));
             this.button社員.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button社員.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(137)))), ((int)(((byte)(163)))));
+            this.button社員.FlatAppearance.BorderSize = 2;
             this.button社員.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button社員.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.button社員.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(137)))), ((int)(((byte)(163)))));
@@ -168,7 +168,7 @@
             this.Controls.Add(this.panel2);
             this.Name = "Formメイン";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Formメイン";
+            this.Text = "ダッシュボード";
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 

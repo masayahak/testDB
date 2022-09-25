@@ -37,7 +37,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.ucPager = new テストDB.共通UI.UcPager();
+            this.ucPager = new テストDB.共通UI.UcBasePager();
             this.buttonｷｬﾝｾﾙ = new テストDB.共通UI.CButton();
             this.textBox仕入高 = new テストDB.共通UI.CTextBox();
             this.textBox消費税額 = new テストDB.共通UI.CTextBox();
@@ -154,7 +154,6 @@
             this.ucPager.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ucPager.KeyColumn = 1;
             this.ucPager.Location = new System.Drawing.Point(0, 311);
             this.ucPager.Name = "ucPager";
             this.ucPager.RowCount = 0;
@@ -336,6 +335,6 @@
         private 共通UI.CTextBox textBox仕入高;
         private System.Windows.Forms.Label label9;
         private 共通UI.CButton buttonｷｬﾝｾﾙ;
-        private 共通UI.UcPager ucPager;
+        private 共通UI.UcBasePager ucPager;
     }
 }

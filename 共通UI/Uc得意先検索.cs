@@ -58,7 +58,7 @@ namespace テストDB.共通UI
 
         public class On得意先CDSelectedEventArgs : EventArgs
         {
-            public M得意先一覧 m得意先一覧;
+            public M得意先J担当者 m得意先一覧;
         }
 
         // 親へ選択した得意先CDをデリゲート

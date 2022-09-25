@@ -1,15 +1,16 @@
 ﻿using System;
+using System.Data;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using テストDB.Models;
-using static テストDB.共通UI.Uc社員検索;
 using テストDB.ViewModel;
-using System.Threading.Tasks;
 using static テストDB.共通UI.UcBasePager;
+using static テストDB.共通UI.Uc社員検索;
 
 namespace テストDB.UI
 {
-    public partial class Form得意先メンテ : Form
+    public partial class Form得意先Mメンテ : Form
     {
         // ----------------------------------------------------------------
         // 表示する一覧の定義
@@ -39,48 +40,37 @@ namespace テストDB.UI
         private ViewModel得意先 vm得意先;
 
         // ------------------------------------------------------------
-        //  処理モードの変更
-        // ------------------------------------------------------------
-        private void buttonｷｬﾝｾﾙ_Click(object sender, EventArgs e)
-        {
-            userControl処理モード.ChangeMode_照会();
-        }
-
-        // ------------------------------------------------------------
         //  処理モード変更時
         // ------------------------------------------------------------
         private void ChangeMode_追加()
         {
-            this.textBox得意先ID.Text = "-1";
-            this.textBox得意先CD.Text = "";
-            this.textBox得意先名.Text = "";
-            uc社員入力.M社員 = new M社員
+
+            ds得意先一覧 newItem = new ds得意先一覧()
             {
                 ID = -1,
-                社員番号 = "",
-                社員名 = "",
+                得意先CD = "",
+                得意先名 = "",
+                担当社員ID = -1,
+                担当社員番号 = "",
+                担当社員名 = "",
             };
+            ShowDetail(newItem);
 
             this.textBox得意先CD.ReadOnly = false;
             this.textBox得意先名.ReadOnly = false;
             this.uc社員入力.ReadOnly社員番号 = false;
-
-            button削除.Enabled = false;
-            button保存.Enabled = true;
-            buttonｷｬﾝｾﾙ.Enabled = true;
 
             panel詳細.BringToFront();
         }
 
         private void ChangeMode_修正()
         {
+            ds得意先一覧 currentItem = (ds得意先一覧)ucPager.pagerDataGridView.SelectedRows[0].DataBoundItem;
+            ShowDetail(currentItem);
+
             this.textBox得意先CD.ReadOnly = false;
             this.textBox得意先名.ReadOnly = false;
             this.uc社員入力.ReadOnly社員番号 = false;
-
-            button削除.Enabled = true;
-            button保存.Enabled = true;
-            buttonｷｬﾝｾﾙ.Enabled = true;
 
             panel詳細.BringToFront();
         }
@@ -91,11 +81,21 @@ namespace テストDB.UI
             this.textBox得意先名.ReadOnly = true;
             this.uc社員入力.ReadOnly社員番号 = true;
 
-            button削除.Enabled = false;
-            button保存.Enabled = false;
-            buttonｷｬﾝｾﾙ.Enabled = false;
-
             ucPager.BringToFront();
+        }
+
+        private void ShowDetail(ds得意先一覧 得意先)
+        {
+            textBox得意先ID.Text = 得意先.ID.ToString();
+            textBox得意先CD.Text = 得意先.得意先CD;
+            textBox得意先名.Text = 得意先.得意先名;
+
+            uc社員入力.M社員 = new M社員
+            {
+                ID = 得意先.担当社員ID,
+                社員番号 = 得意先.担当社員番号,
+                社員名 = 得意先.担当社員名,
+            };
         }
 
         private void On社員番号_Selected(On社員番号SelectedEventArgs arg)
@@ -103,19 +103,21 @@ namespace テストDB.UI
             uc社員入力.M社員 = arg.m社員;
         }
 
-
         // ------------------------------------------------------------
         //  初期化
         // ------------------------------------------------------------
-        public Form得意先メンテ()
+        public Form得意先Mメンテ()
         {
             InitializeComponent();
 
-            userControl処理モード.ChangeMode追加 += ChangeMode_追加;
-            userControl処理モード.ChangeMode修正 += ChangeMode_修正;
-            userControl処理モード.ChangeMode照会 += ChangeMode_照会;
+            ucCRUD.ChangeMode追加 += ChangeMode_追加;
+            ucCRUD.ChangeMode修正 += ChangeMode_修正;
+            ucCRUD.ChangeMode照会 += ChangeMode_照会;
+            ucCRUD.ChangeMode_照会();
 
-            userControl処理モード.ChangeMode_照会();
+            ucCRUD.On削除Click += On削除Click;
+            ucCRUD.On保存Click += On保存Click;
+            ucCRUD.OnキャンセルClick += OnキャンセルClick;
 
             uc社員検索.Visible = false;
             uc社員検索.On社員番号Selected += On社員番号_Selected;
@@ -126,8 +128,6 @@ namespace テストDB.UI
             // グリッドのダブルクリック
             this.ucPager.OnGridDoubleClick += OnGrid_DoubleClick;
         }
-
-
         // ------------------------------------------------------------
         // コントロール表示時に全データを読み込み
         //      ただし、デザインモードではデータを読み込まない
@@ -242,34 +242,20 @@ namespace テストDB.UI
         private void OnGrid_DoubleClick(OnGridDoubleClickArgs args)
         {
             // 修正モードへ
-            userControl処理モード.ChangeMode_修正();
-        }
-
-
-        private void ShowRow(ds得意先一覧 得意先)
-        {
-            this.textBox得意先ID.Text = 得意先.ID.ToString();
-            this.textBox得意先CD.Text = 得意先.得意先CD;
-            this.textBox得意先名.Text = 得意先.得意先名;
-            uc社員入力.M社員 = new M社員
-            {
-                ID = 得意先.担当社員ID,
-                社員番号 = 得意先.担当社員番号,
-                社員名 = 得意先.担当社員名,
-            };
+            ucCRUD.ChangeMode_修正();
         }
 
         // ------------------------------------------------------------
         // 保存ボタン
         // ------------------------------------------------------------
-        private void button保存_Click(object sender, EventArgs e)
+        private void On保存Click()
         {
 
             if (IsInputCheckError()) return;
 
             try
             {
-                if (userControl処理モード.状態 == 処理モード.状態.追加中)
+                if (ucCRUD.状態 == 処理モード.状態.追加中)
                 {
                     得意先Add();
                 }
@@ -290,7 +276,7 @@ namespace テストDB.UI
 
 
             // 追加 or 修正が終わったら照会モードへ
-            userControl処理モード.ChangeMode_照会();
+            ucCRUD.ChangeMode_照会();
 
             // データ再取得
             DataLoad();
@@ -371,7 +357,7 @@ namespace テストDB.UI
         // ------------------------------------------------------------
         // 削除ボタン
         // ------------------------------------------------------------
-        private void button削除_Click(object sender, EventArgs e)
+        private void On削除Click()
         {
 
             var ID = int.Parse(textBox得意先ID.Text);
@@ -400,7 +386,7 @@ namespace テストDB.UI
             }
 
             // 削除が終わったら照会モードへ
-            userControl処理モード.ChangeMode_照会();
+            ucCRUD.ChangeMode_照会();
             // データ再取得
             DataLoad();
         }
@@ -409,5 +395,14 @@ namespace テストDB.UI
         {
             vm得意先.Delete(ID);
         }
+
+        // ------------------------------------------------------------
+        // キャンセルボタン
+        // ------------------------------------------------------------
+        private void OnキャンセルClick()
+        {
+            ucCRUD.ChangeMode_照会();
+        }
+
     }
 }
