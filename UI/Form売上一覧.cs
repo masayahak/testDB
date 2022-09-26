@@ -7,6 +7,7 @@ using static テストDB.共通UI.Uc得意先検索;
 using テストDB.ViewModel;
 using static テストDB.共通UI.UcBasePager;
 using System.Threading.Tasks;
+using テストDB.Models;
 
 namespace テストDB.UI
 {
@@ -47,6 +48,7 @@ namespace テストDB.UI
         public DateTime 期間開始 = DateTime.Today;
         public DateTime 期間終了 = DateTime.Today;
         public string 得意先CD;
+        public string 得意先名;
         public string 担当社員番号;
 
         private void On得意先CD_Selected(On得意先CDSelectedEventArgs e)
@@ -95,8 +97,8 @@ namespace テストDB.UI
             this.dtp期間開始.Value = 期間開始;
             this.dtp期間終了.Value = 期間終了;
 
-            this.uc得意先入力.M得意先J担当者.得意先CD = 得意先CD;
-            this.uc社員入力.M社員.社員番号 = 担当社員番号;
+            this.uc得意先入力.Get得意先by得意先名(得意先名);
+            得意先CD = this.uc得意先入力.M得意先J担当者.得意先CD;
 
             DataLoad();
         }
@@ -154,8 +156,6 @@ namespace テストDB.UI
 
 
             this.ucPager.RowsInPage = 100;
-            this.ucPager.RowCount = list.Count();
-
             this.ucPager.SetFullDatasource<ds売上一覧>(list);
             this.ucPager.ShowPage();
 

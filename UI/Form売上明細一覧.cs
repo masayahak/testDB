@@ -99,7 +99,7 @@ namespace テストDB.UI
             this.dtp期間終了.Value = 期間終了;
 
             this.uc商品入力.Get商品by商品名(商品名);
-            this.uc得意先入力.M得意先J担当者.得意先CD = 得意先CD;
+            バーコード = this.uc商品入力.M商品.バーコード;
 
             DataLoad();
         }
@@ -132,7 +132,7 @@ namespace テストDB.UI
             // 非同期でデータ取得
             await Task.Run(() =>
             {
-                vm売上明細.LoadT売上明細(期間開始, 期間終了, 商品名, バーコード, 得意先CD);
+                vm売上明細.LoadT売上明細(期間開始, 期間終了, バーコード, 得意先CD);
             });
 
             var list = vm売上明細.listV売上明細
@@ -154,10 +154,7 @@ namespace テストDB.UI
                .ToList()
                 ;
 
-
             this.ucPager.RowsInPage = 100;
-            this.ucPager.RowCount = list.Count();
-
             this.ucPager.SetFullDatasource<ds売上明細一覧>(list);
             this.ucPager.ShowPage();
 

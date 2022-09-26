@@ -134,5 +134,35 @@ namespace テストDB.共通UI
 
         }
 
+        public void Get得意先by得意先名(string 得意先名)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(得意先名))
+                {
+                    this.M得意先J担当者 = new M得意先J担当者
+                    {
+                        ID = -1,
+                        得意先CD = "",
+                        得意先名 = "",
+                    };
+                    return;
+                }
+
+                var vm得意先 = new ViewModel得意先();
+                this.M得意先J担当者 = vm得意先.Get得意先By得意先名(得意先名);
+            }
+            catch
+            {
+                // 得意先を発見できない
+                this.M得意先J担当者 = new M得意先J担当者
+                {
+                    ID = -1,
+                    得意先CD = textBox得意先CD.Text,
+                    得意先名 = "※ 該当得意先なし",
+                };
+            }
+        }
+
     }
 }

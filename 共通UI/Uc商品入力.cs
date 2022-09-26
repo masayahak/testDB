@@ -138,6 +138,17 @@ namespace テストDB.共通UI
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(商品名))
+                {
+                    this.M商品 = new M商品
+                    {
+                        ID = -1,
+                        バーコード = "",
+                        商品名 = "",
+                    };
+                    return;
+                }
+
                 var vm商品 = new ViewModel商品();
                 this.M商品 = vm商品.Get商品By商品名(商品名);
             }

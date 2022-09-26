@@ -67,7 +67,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ucPager.Location = new System.Drawing.Point(0, 216);
             this.ucPager.Name = "ucPager";
-            this.ucPager.RowCount = 0;
             this.ucPager.RowsInPage = 100;
             this.ucPager.Size = new System.Drawing.Size(845, 513);
             this.ucPager.TabIndex = 83;

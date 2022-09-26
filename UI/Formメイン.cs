@@ -39,6 +39,19 @@ namespace テストDB.UI
         }
 
         // -----------------------------------------------------------
+        // グラフで得意先をダブルクリック
+        // -----------------------------------------------------------
+        private void On得意先_Selected(On得意先SelectedEventArgs arg)
+        {
+            button売上日別_Click(this, null);
+
+            form売上一覧.期間開始 = arg.期間開始;
+            form売上一覧.期間終了 = arg.期間終了;
+            form売上一覧.得意先名 = arg.得意先名;
+            form売上一覧.LoadDataWithParama();
+        }
+
+        // -----------------------------------------------------------
         // コンストラクタ
         // -----------------------------------------------------------
         public Formメイン()
@@ -47,6 +60,7 @@ namespace テストDB.UI
 
             form売上分析.On売上日Selected += On売上日_Selected;
             form売上分析.On商品Selected += On商品_Selected;
+            form売上分析.On得意先Selected += On得意先_Selected;
 
             if (DesignMode) return;
 
@@ -66,7 +80,6 @@ namespace テストDB.UI
 
         private void button売上日別_Click(object sender, EventArgs e)
         {
-            form売上一覧 = new Form売上一覧();
             ShowFormInPanel(form売上一覧);
 
             ClearAllButton();
@@ -75,7 +88,6 @@ namespace テストDB.UI
 
         private void button商品別_Click(object sender, EventArgs e)
         {
-            form売上明細一覧 = new Form売上明細一覧();
             ShowFormInPanel(form売上明細一覧);
 
             ClearAllButton();

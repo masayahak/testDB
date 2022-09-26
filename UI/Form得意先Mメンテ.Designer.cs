@@ -34,6 +34,10 @@
             this.ucPager = new テストDB.共通UI.UcBasePager();
             this.panel詳細 = new System.Windows.Forms.Panel();
             this.uc社員検索 = new テストDB.共通UI.Uc社員検索();
+            this.labelLineRight = new System.Windows.Forms.Label();
+            this.labelLineBottom = new System.Windows.Forms.Label();
+            this.labelLineLeft = new System.Windows.Forms.Label();
+            this.labelLineTop = new System.Windows.Forms.Label();
             this.textBox得意先ID = new System.Windows.Forms.TextBox();
             this.uc社員入力 = new テストDB.共通UI.Uc社員入力();
             this.label3 = new System.Windows.Forms.Label();
@@ -70,7 +74,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ucPager.Location = new System.Drawing.Point(0, 0);
             this.ucPager.Name = "ucPager";
-            this.ucPager.RowCount = 0;
             this.ucPager.RowsInPage = 100;
             this.ucPager.Size = new System.Drawing.Size(715, 729);
             this.ucPager.TabIndex = 50;
@@ -81,7 +84,12 @@
             this.panel詳細.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel詳細.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(47)))));
             this.panel詳細.Controls.Add(this.uc社員検索);
+            this.panel詳細.Controls.Add(this.labelLineRight);
+            this.panel詳細.Controls.Add(this.labelLineBottom);
+            this.panel詳細.Controls.Add(this.labelLineLeft);
+            this.panel詳細.Controls.Add(this.labelLineTop);
             this.panel詳細.Controls.Add(this.textBox得意先ID);
             this.panel詳細.Controls.Add(this.uc社員入力);
             this.panel詳細.Controls.Add(this.label3);
@@ -89,19 +97,59 @@
             this.panel詳細.Controls.Add(this.textBox得意先CD);
             this.panel詳細.Controls.Add(this.label2);
             this.panel詳細.Controls.Add(this.label1);
-            this.panel詳細.Location = new System.Drawing.Point(0, 0);
+            this.panel詳細.Location = new System.Drawing.Point(36, 55);
             this.panel詳細.Name = "panel詳細";
-            this.panel詳細.Size = new System.Drawing.Size(715, 729);
+            this.panel詳細.Size = new System.Drawing.Size(656, 605);
             this.panel詳細.TabIndex = 51;
             // 
             // uc社員検索
             // 
             this.uc社員検索.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.uc社員検索.Location = new System.Drawing.Point(300, 123);
+            this.uc社員検索.Location = new System.Drawing.Point(298, 121);
             this.uc社員検索.Name = "uc社員検索";
             this.uc社員検索.Size = new System.Drawing.Size(284, 262);
             this.uc社員検索.TabIndex = 55;
             this.uc社員検索.社員番号 = null;
+            // 
+            // labelLineRight
+            // 
+            this.labelLineRight.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelLineRight.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.labelLineRight.Location = new System.Drawing.Point(651, 0);
+            this.labelLineRight.Name = "labelLineRight";
+            this.labelLineRight.Size = new System.Drawing.Size(5, 605);
+            this.labelLineRight.TabIndex = 61;
+            // 
+            // labelLineBottom
+            // 
+            this.labelLineBottom.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelLineBottom.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.labelLineBottom.Location = new System.Drawing.Point(0, 600);
+            this.labelLineBottom.Name = "labelLineBottom";
+            this.labelLineBottom.Size = new System.Drawing.Size(656, 5);
+            this.labelLineBottom.TabIndex = 60;
+            // 
+            // labelLineLeft
+            // 
+            this.labelLineLeft.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelLineLeft.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.labelLineLeft.Location = new System.Drawing.Point(0, 0);
+            this.labelLineLeft.Name = "labelLineLeft";
+            this.labelLineLeft.Size = new System.Drawing.Size(5, 605);
+            this.labelLineLeft.TabIndex = 59;
+            // 
+            // labelLineTop
+            // 
+            this.labelLineTop.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelLineTop.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.labelLineTop.Location = new System.Drawing.Point(0, 0);
+            this.labelLineTop.Name = "labelLineTop";
+            this.labelLineTop.Size = new System.Drawing.Size(656, 5);
+            this.labelLineTop.TabIndex = 58;
             // 
             // textBox得意先ID
             // 
@@ -115,7 +163,7 @@
             // 
             // uc社員入力
             // 
-            this.uc社員入力.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
+            this.uc社員入力.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(47)))));
             this.uc社員入力.Location = new System.Drawing.Point(162, 119);
             m社員1.ID = -1;
             m社員1.社員名 = "";
@@ -146,7 +194,7 @@
             this.textBox得意先名.MaxLength = 256;
             this.textBox得意先名.Name = "textBox得意先名";
             this.textBox得意先名.ReadOnly = true;
-            this.textBox得意先名.Size = new System.Drawing.Size(251, 31);
+            this.textBox得意先名.Size = new System.Drawing.Size(379, 31);
             this.textBox得意先名.TabIndex = 45;
             // 
             // textBox得意先CD
@@ -188,10 +236,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
             this.ClientSize = new System.Drawing.Size(845, 729);
-            this.Controls.Add(this.ucロード中);
             this.Controls.Add(this.ucCRUD);
-            this.Controls.Add(this.ucPager);
             this.Controls.Add(this.panel詳細);
+            this.Controls.Add(this.ucロード中);
+            this.Controls.Add(this.ucPager);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form得意先Mメンテ";
             this.Text = "Form得意先Mメンテ";
@@ -216,5 +264,9 @@
         private 共通UI.CTextBox textBox得意先CD;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelLineRight;
+        private System.Windows.Forms.Label labelLineBottom;
+        private System.Windows.Forms.Label labelLineLeft;
+        private System.Windows.Forms.Label labelLineTop;
     }
 }

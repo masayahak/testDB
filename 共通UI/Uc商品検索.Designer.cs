@@ -77,6 +77,8 @@
             this.textBox検索.Name = "textBox検索";
             this.textBox検索.Size = new System.Drawing.Size(176, 31);
             this.textBox検索.TabIndex = 40;
+            this.textBox検索.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox検索_KeyDown);
+            this.textBox検索.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox検索_KeyPress);
             // 
             // button検索
             // 

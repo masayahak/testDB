@@ -93,8 +93,6 @@ namespace テストDB.UI
                             ;
 
             this.ucPager.RowsInPage = 100;
-            this.ucPager.RowCount = 売上明細lists.Count();
-
             this.ucPager.SetFullDatasource<売上明細list>(売上明細lists);
             this.ucPager.ShowPage();
 

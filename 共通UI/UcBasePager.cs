@@ -31,6 +31,7 @@ namespace テストDB.共通UI
         public void SetFullDatasource<T>(List<T> list)
         {
             fullDataSource = list.Cast<Object>().ToList();
+            RowCount = fullDataSource.Count;
         }
 
         // -------------------------------------------------------
@@ -69,7 +70,7 @@ namespace テストDB.共通UI
         }
 
         private int rowCount;
-        public int RowCount
+        private int RowCount
         {
             get { return rowCount; }
             set

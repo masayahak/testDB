@@ -49,6 +49,7 @@ namespace テストDB.UI
             this.textBox社員名.ReadOnly = false;
 
             panel詳細.BringToFront();
+            ucPager.Enabled = false;
         }
 
         private void ChangeMode_修正()
@@ -60,6 +61,7 @@ namespace テストDB.UI
             this.textBox社員名.ReadOnly = false;
 
             panel詳細.BringToFront();
+            ucPager.Enabled = false;
         }
 
         private void ChangeMode_照会()
@@ -67,7 +69,8 @@ namespace テストDB.UI
             this.textBox社員番号.ReadOnly = true;
             this.textBox社員名.ReadOnly = true;
 
-            ucPager.BringToFront();
+            panel詳細.SendToBack();
+            ucPager.Enabled = true;
         }
 
         private void ShowDetail(ds社員一覧 社員)
@@ -135,8 +138,6 @@ namespace テストDB.UI
                 ;
 
             this.ucPager.RowsInPage = 100;
-            this.ucPager.RowCount = list.Count();
-
             this.ucPager.SetFullDatasource<ds社員一覧>(list);
             this.ucPager.ShowPage();
 

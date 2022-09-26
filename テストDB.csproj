@@ -169,12 +169,6 @@
     <Compile Include="共通UI\Ucロード中.Designer.cs">
       <DependentUpon>Ucロード中.cs</DependentUpon>
     </Compile>
-    <Compile Include="共通UI\Uc処理モード.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="共通UI\Uc処理モード.Designer.cs">
-      <DependentUpon>Uc処理モード.cs</DependentUpon>
-    </Compile>
     <Compile Include="共通UI\Uc商品入力.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -254,9 +248,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="共通UI\Ucロード中.resx">
       <DependentUpon>Ucロード中.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="共通UI\Uc処理モード.resx">
-      <DependentUpon>Uc処理モード.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="共通UI\Uc商品入力.resx">
       <DependentUpon>Uc商品入力.cs</DependentUpon>

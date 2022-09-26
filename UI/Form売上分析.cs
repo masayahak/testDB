@@ -101,7 +101,7 @@ namespace テストDB.UI
         }
 
 
-        // 親へ選択した売上日をデリゲート
+        // 親へ選択した商品をデリゲート
         public delegate void On商品SelectedEventHandler(On商品SelectedEventArgs e);
         public event On商品SelectedEventHandler On商品Selected;
         public class On商品SelectedEventArgs : EventArgs
@@ -109,6 +109,16 @@ namespace テストDB.UI
             public DateTime 期間開始;
             public DateTime 期間終了;
             public string 商品名;
+        }
+
+        // 親へ選択した得意先をデリゲート
+        public delegate void On得意先SelectedEventHandler(On得意先SelectedEventArgs e);
+        public event On得意先SelectedEventHandler On得意先Selected;
+        public class On得意先SelectedEventArgs : EventArgs
+        {
+            public DateTime 期間開始;
+            public DateTime 期間終了;
+            public string 得意先名;
         }
 
 
@@ -270,6 +280,30 @@ namespace テストDB.UI
                 };
 
                 On商品Selected(arg);
+            }
+        }
+
+        // ----------------------------------------------------------------
+        // グラフのダブルクリック
+        // ----------------------------------------------------------------
+        private void chart売上上位得意先_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
+            var result = chart売上上位得意先.HitTest(e.X, e.Y);
+
+            if (result.ChartElementType == ChartElementType.DataPoint)
+            {
+                var selectedRow = chart売上上位得意先.Series[0].Points[result.PointIndex];
+                var 得意先名 = selectedRow.AxisLabel;
+
+                var arg = new On得意先SelectedEventArgs
+                {
+                    期間開始 = dtp期間開始.Value,
+                    期間終了 = dtp期間終了.Value,
+                    得意先名 = 得意先名
+                };
+
+                On得意先Selected(arg);
             }
         }
     }

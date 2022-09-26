@@ -61,6 +61,7 @@ namespace テストDB.UI
             this.uc社員入力.ReadOnly社員番号 = false;
 
             panel詳細.BringToFront();
+            ucPager.Enabled = false;
         }
 
         private void ChangeMode_修正()
@@ -73,6 +74,7 @@ namespace テストDB.UI
             this.uc社員入力.ReadOnly社員番号 = false;
 
             panel詳細.BringToFront();
+            ucPager.Enabled = false;
         }
 
         private void ChangeMode_照会()
@@ -81,7 +83,8 @@ namespace テストDB.UI
             this.textBox得意先名.ReadOnly = true;
             this.uc社員入力.ReadOnly社員番号 = true;
 
-            ucPager.BringToFront();
+            panel詳細.SendToBack();
+            ucPager.Enabled = true;
         }
 
         private void ShowDetail(ds得意先一覧 得意先)
@@ -167,8 +170,6 @@ namespace テストDB.UI
                 ;
 
             this.ucPager.RowsInPage = 100;
-            this.ucPager.RowCount = list.Count();
-
             this.ucPager.SetFullDatasource<ds得意先一覧>(list);
             this.ucPager.ShowPage();
 

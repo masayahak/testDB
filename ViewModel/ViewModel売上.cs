@@ -135,7 +135,7 @@ namespace テストDB.ViewModel
         // -------------------------------------------------------------------------
         // T売上明細の読み込み
         // -------------------------------------------------------------------------
-        public void LoadT売上明細(DateTime 期間開始, DateTime 期間終了, string 商品名 = "", string バーコード = "", string 得意先CD = "")
+        public void LoadT売上明細(DateTime 期間開始, DateTime 期間終了, string バーコード = "", string 得意先CD = "")
         {
             using (var db = new テストDBContext())
             {
@@ -159,13 +159,6 @@ namespace テストDB.ViewModel
                                 })
                             .ToArray()
                             ;
-
-                if (!string.IsNullOrWhiteSpace(商品名))
-                {
-                    listV売上明細 = listV売上明細
-                                .Where(it => it.商品名 == 商品名)
-                                .ToArray();
-                }
 
                 if (!string.IsNullOrWhiteSpace(バーコード))
                 {

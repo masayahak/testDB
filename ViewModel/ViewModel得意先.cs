@@ -146,7 +146,17 @@ namespace テストDB.ViewModel
             return 得意先;
 
         }
-        
+
+        public M得意先J担当者 Get得意先By得意先名(string 得意先名)
+        {
+            var 得意先 = list得意先一覧
+                    .Single(it => it.得意先名 == 得意先名)
+                    ;
+
+            return 得意先;
+
+        }
+
 
         public int GetCount担当得意先(int 社員ID)
         {
