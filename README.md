@@ -1,4 +1,4 @@
-# トレーニング用サンプルアプリ
+# C# SQLServer Windows Form サンプルアプリ
 
 ![1](https://user-images.githubusercontent.com/96961556/193945323-394c33f7-5d40-4462-8949-e8944535e8fc.png)
 ![2](https://user-images.githubusercontent.com/96961556/193945294-c037bc13-1edf-4162-baa7-2b1f5dbcacb5.png)
