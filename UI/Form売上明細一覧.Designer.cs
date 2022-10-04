@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            テストDB.Models.M得意先J担当者 m得意先一覧1 = new テストDB.Models.M得意先J担当者();
+            テストDB.Models.M得意先J担当者 m得意先J担当者1 = new テストDB.Models.M得意先J担当者();
             テストDB.Models.M商品 m商品1 = new テストDB.Models.M商品();
             this.cButton検索 = new 共通UI.CButton();
             this.ucGridPager = new 共通UI.UcGridPager();
@@ -67,6 +67,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ucGridPager.Location = new System.Drawing.Point(0, 216);
             this.ucGridPager.Name = "ucGridPager";
+            this.ucGridPager.RowsInPage = 10000;
             this.ucGridPager.Size = new System.Drawing.Size(845, 513);
             this.ucGridPager.TabIndex = 83;
             this.ucGridPager.SizeChanged += new System.EventHandler(this.ucGridPager_SizeChanged);
@@ -93,15 +94,15 @@
             // 
             // uc得意先入力
             // 
-            this.uc得意先入力.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
+            this.uc得意先入力.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(91)))), ((int)(((byte)(108)))));
             this.uc得意先入力.Location = new System.Drawing.Point(186, 132);
-            m得意先一覧1.ID = -1;
-            m得意先一覧1.得意先CD = "";
-            m得意先一覧1.得意先名 = "";
-            m得意先一覧1.担当社員ID = 0;
-            m得意先一覧1.担当社員名 = null;
-            m得意先一覧1.担当社員番号 = null;
-            this.uc得意先入力.M得意先J担当者 = m得意先一覧1;
+            m得意先J担当者1.ID = -1;
+            m得意先J担当者1.得意先CD = "";
+            m得意先J担当者1.得意先名 = "";
+            m得意先J担当者1.担当社員ID = 0;
+            m得意先J担当者1.担当社員名 = null;
+            m得意先J担当者1.担当社員番号 = null;
+            this.uc得意先入力.M得意先J担当者 = m得意先J担当者1;
             this.uc得意先入力.Name = "uc得意先入力";
             this.uc得意先入力.ReadOnly得意先CD = false;
             this.uc得意先入力.Size = new System.Drawing.Size(294, 78);
@@ -141,7 +142,7 @@
             // 
             // uc商品入力
             // 
-            this.uc商品入力.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
+            this.uc商品入力.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(91)))), ((int)(((byte)(108)))));
             this.uc商品入力.Location = new System.Drawing.Point(189, 51);
             m商品1.ID = -1;
             m商品1.バーコード = "";
@@ -177,7 +178,7 @@
             // 
             // uc売上伝票
             // 
-            this.uc売上伝票.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(47)))), ((int)(((byte)(87)))));
+            this.uc売上伝票.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(91)))), ((int)(((byte)(108)))));
             this.uc売上伝票.Location = new System.Drawing.Point(135, 70);
             this.uc売上伝票.Name = "uc売上伝票";
             this.uc売上伝票.Size = new System.Drawing.Size(845, 729);
@@ -198,7 +199,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(47)))), ((int)(((byte)(87)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(91)))), ((int)(((byte)(108)))));
             this.ClientSize = new System.Drawing.Size(845, 729);
             this.Controls.Add(this.ucロード中);
             this.Controls.Add(this.cButton検索);

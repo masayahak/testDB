@@ -37,7 +37,7 @@
             // 
             // button検索社員
             // 
-            this.button検索社員.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
+            this.button検索社員.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(91)))), ((int)(((byte)(108)))));
             this.button検索社員.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button検索社員.BackgroundImage")));
             this.button検索社員.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.button検索社員.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(205)))), ((int)(((byte)(211)))));
@@ -52,7 +52,7 @@
             // 
             // textBox社員名
             // 
-            this.textBox社員名.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.textBox社員名.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.textBox社員名.Font = new System.Drawing.Font("MS UI Gothic", 18F);
             this.textBox社員名.Location = new System.Drawing.Point(3, 44);
             this.textBox社員名.MaxLength = 256;
@@ -63,7 +63,7 @@
             // 
             // textBox社員番号
             // 
-            this.textBox社員番号.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.textBox社員番号.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.textBox社員番号.Font = new System.Drawing.Font("MS UI Gothic", 18F);
             this.textBox社員番号.Location = new System.Drawing.Point(3, 3);
             this.textBox社員番号.MaxLength = 20;
@@ -85,16 +85,16 @@
             this.textBox社員ID.TabIndex = 56;
             this.textBox社員ID.Visible = false;
             // 
-            // UserControl社員入力
+            // Uc社員入力
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(91)))), ((int)(((byte)(108)))));
             this.Controls.Add(this.textBox社員ID);
             this.Controls.Add(this.textBox社員名);
             this.Controls.Add(this.button検索社員);
             this.Controls.Add(this.textBox社員番号);
-            this.Name = "UserControl社員入力";
+            this.Name = "Uc社員入力";
             this.Size = new System.Drawing.Size(258, 78);
             this.ResumeLayout(false);
             this.PerformLayout();

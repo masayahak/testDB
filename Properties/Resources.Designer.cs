@@ -103,9 +103,9 @@ namespace テストDB.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap 円 {
+        internal static System.Drawing.Bitmap 取引件数 {
             get {
-                object obj = ResourceManager.GetObject("円", resourceCulture);
+                object obj = ResourceManager.GetObject("取引件数", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,16 +143,6 @@ namespace テストDB.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap 握手2 {
-            get {
-                object obj = ResourceManager.GetObject("握手2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
-        /// </summary>
         internal static System.Drawing.Bitmap 日別 {
             get {
                 object obj = ResourceManager.GetObject("日別", resourceCulture);
@@ -166,6 +156,16 @@ namespace テストDB.Properties {
         internal static System.Drawing.Bitmap 社員 {
             get {
                 object obj = ResourceManager.GetObject("社員", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap 粗利益 {
+            get {
+                object obj = ResourceManager.GetObject("粗利益", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

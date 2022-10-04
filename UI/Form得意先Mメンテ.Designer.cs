@@ -52,7 +52,7 @@
             // 
             this.ucCRUD.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ucCRUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(225)))), ((int)(((byte)(232)))));
+            this.ucCRUD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(91)))), ((int)(((byte)(108)))));
             this.ucCRUD.Location = new System.Drawing.Point(715, 0);
             this.ucCRUD.Name = "ucCRUD";
             this.ucCRUD.Size = new System.Drawing.Size(127, 729);
@@ -74,6 +74,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ucGridPager.Location = new System.Drawing.Point(0, 0);
             this.ucGridPager.Name = "ucGridPager";
+            this.ucGridPager.RowsInPage = 10000;
             this.ucGridPager.Size = new System.Drawing.Size(715, 729);
             this.ucGridPager.TabIndex = 50;
             this.ucGridPager.SizeChanged += new System.EventHandler(this.ucGridPager_SizeChanged);
@@ -103,7 +104,7 @@
             // 
             // uc社員検索
             // 
-            this.uc社員検索.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.uc社員検索.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(91)))), ((int)(((byte)(108)))));
             this.uc社員検索.Location = new System.Drawing.Point(298, 121);
             this.uc社員検索.Name = "uc社員検索";
             this.uc社員検索.Size = new System.Drawing.Size(284, 262);

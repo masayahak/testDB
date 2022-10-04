@@ -90,8 +90,8 @@ namespace 共通UI
 
             // 列幅の設定:
             dataGridView商品一覧.Columns[0].Visible = false;
-            dataGridView商品一覧.Columns[1].Width = 100;
-            dataGridView商品一覧.Columns[2].Width = 100;
+            dataGridView商品一覧.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dataGridView商品一覧.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridView商品一覧.Columns[3].Visible = false;
             dataGridView商品一覧.Columns[4].Visible = false;
         }

@@ -283,16 +283,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\分析.PNG" />
-    <None Include="Resources\取引件数.PNG" />
-    <None Include="Resources\売上高.PNG" />
-    <None Include="Resources\粗利益.PNG" />
-    <None Include="Resources\日別.PNG" />
-    <None Include="Resources\商品別.PNG" />
-    <None Include="Resources\社員.PNG" />
-    <None Include="Resources\得意先.PNG" />
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
@@ -308,16 +298,18 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\EXCEL.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Loading_icon.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ノーマルの太さのバツアイコン.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\虫眼鏡のアイコン.png" />
+    <Content Include="icons\EXCEL.png" />
+    <Content Include="icons\Loading_icon.gif" />
+    <Content Include="icons\ノーマルの太さのバツアイコン.png" />
+    <Content Include="icons\分析.PNG" />
+    <Content Include="icons\取引件数.PNG" />
+    <Content Include="icons\商品別.PNG" />
+    <Content Include="icons\売上高.PNG" />
+    <Content Include="icons\得意先.PNG" />
+    <Content Include="icons\日別.PNG" />
+    <Content Include="icons\社員.PNG" />
+    <Content Include="icons\粗利益.PNG" />
+    <Content Include="icons\虫眼鏡のアイコン.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

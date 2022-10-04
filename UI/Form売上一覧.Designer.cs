@@ -124,7 +124,7 @@
             // 
             // uc社員入力
             // 
-            this.uc社員入力.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
+            this.uc社員入力.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(91)))), ((int)(((byte)(108)))));
             this.uc社員入力.Location = new System.Drawing.Point(186, 140);
             m社員1.ID = -1;
             m社員1.社員名 = "";
@@ -138,7 +138,7 @@
             // 
             // uc得意先入力
             // 
-            this.uc得意先入力.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
+            this.uc得意先入力.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(91)))), ((int)(((byte)(108)))));
             this.uc得意先入力.Location = new System.Drawing.Point(188, 49);
             m得意先J担当者1.ID = -1;
             m得意先J担当者1.得意先CD = "";
@@ -180,13 +180,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ucGridPager.Location = new System.Drawing.Point(0, 232);
             this.ucGridPager.Name = "ucGridPager";
+            this.ucGridPager.RowsInPage = 10000;
             this.ucGridPager.Size = new System.Drawing.Size(845, 497);
             this.ucGridPager.TabIndex = 69;
             this.ucGridPager.SizeChanged += new System.EventHandler(this.ucGridPager_SizeChanged);
             // 
             // uc売上伝票
             // 
-            this.uc売上伝票.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(47)))), ((int)(((byte)(87)))));
+            this.uc売上伝票.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(91)))), ((int)(((byte)(108)))));
             this.uc売上伝票.Location = new System.Drawing.Point(-33, 312);
             this.uc売上伝票.Name = "uc売上伝票";
             this.uc売上伝票.Size = new System.Drawing.Size(845, 645);
@@ -198,7 +199,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(47)))), ((int)(((byte)(87)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(91)))), ((int)(((byte)(108)))));
             this.ClientSize = new System.Drawing.Size(845, 729);
             this.Controls.Add(this.ucロード中);
             this.Controls.Add(this.cButton検索);

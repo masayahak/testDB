@@ -58,7 +58,7 @@
             // 
             // button検索商品
             // 
-            this.button検索商品.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
+            this.button検索商品.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(91)))), ((int)(((byte)(108)))));
             this.button検索商品.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button検索商品.BackgroundImage")));
             this.button検索商品.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.button検索商品.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(205)))), ((int)(((byte)(211)))));
@@ -90,7 +90,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(91)))), ((int)(((byte)(108)))));
             this.Controls.Add(this.textBox商品ID);
             this.Controls.Add(this.textBox商品名);
             this.Controls.Add(this.button検索商品);
