@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 
-namespace テストDB
+namespace 共通UI
 {
     public static class 処理モード
     {

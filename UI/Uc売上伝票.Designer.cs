@@ -37,17 +37,17 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.ucPager = new テストDB.共通UI.UcBasePager();
-            this.buttonｷｬﾝｾﾙ = new テストDB.共通UI.CButton();
-            this.textBox仕入高 = new テストDB.共通UI.CTextBox();
-            this.textBox消費税額 = new テストDB.共通UI.CTextBox();
-            this.textBox売上高 = new テストDB.共通UI.CTextBox();
-            this.textBox売上日 = new テストDB.共通UI.CTextBox();
-            this.textBox担当社員名 = new テストDB.共通UI.CTextBox();
-            this.textBox担当社員番号 = new テストDB.共通UI.CTextBox();
-            this.textBox得意先名 = new テストDB.共通UI.CTextBox();
-            this.textBox得意先CD = new テストDB.共通UI.CTextBox();
-            this.textBox伝票NO = new テストDB.共通UI.CTextBox();
+            this.ucGridPager = new 共通UI.UcGridPager();
+            this.buttonｷｬﾝｾﾙ = new 共通UI.CButton();
+            this.textBox仕入高 = new 共通UI.CTextBox();
+            this.textBox消費税額 = new 共通UI.CTextBox();
+            this.textBox売上高 = new 共通UI.CTextBox();
+            this.textBox売上日 = new 共通UI.CTextBox();
+            this.textBox担当社員名 = new 共通UI.CTextBox();
+            this.textBox担当社員番号 = new 共通UI.CTextBox();
+            this.textBox得意先名 = new 共通UI.CTextBox();
+            this.textBox得意先CD = new 共通UI.CTextBox();
+            this.textBox伝票NO = new 共通UI.CTextBox();
             this.SuspendLayout();
             // 
             // label2
@@ -149,17 +149,17 @@
             this.label9.TabIndex = 50;
             this.label9.Text = "仕入高";
             // 
-            // ucPager
+            // ucGridPager
             // 
-            this.ucPager.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.ucGridPager.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ucPager.Location = new System.Drawing.Point(0, 311);
-            this.ucPager.Name = "ucPager";
-            this.ucPager.RowsInPage = 100;
-            this.ucPager.Size = new System.Drawing.Size(842, 417);
-            this.ucPager.TabIndex = 54;
-            this.ucPager.SizeChanged += new System.EventHandler(this.ucPager_SizeChanged);
+            this.ucGridPager.Location = new System.Drawing.Point(0, 311);
+            this.ucGridPager.Name = "ucGridPager";
+            this.ucGridPager.RowsInPage = 100;
+            this.ucGridPager.Size = new System.Drawing.Size(842, 417);
+            this.ucGridPager.TabIndex = 54;
+            this.ucGridPager.SizeChanged += new System.EventHandler(this.ucGridPager_SizeChanged);
             // 
             // buttonｷｬﾝｾﾙ
             // 
@@ -286,7 +286,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(47)))), ((int)(((byte)(87)))));
-            this.Controls.Add(this.ucPager);
+            this.Controls.Add(this.ucGridPager);
             this.Controls.Add(this.buttonｷｬﾝｾﾙ);
             this.Controls.Add(this.textBox仕入高);
             this.Controls.Add(this.label9);
@@ -334,6 +334,6 @@
         private 共通UI.CTextBox textBox仕入高;
         private System.Windows.Forms.Label label9;
         private 共通UI.CButton buttonｷｬﾝｾﾙ;
-        private 共通UI.UcBasePager ucPager;
+        private 共通UI.UcGridPager ucGridPager;
     }
 }

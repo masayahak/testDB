@@ -5,7 +5,7 @@ using System.Windows.Forms;
 /// コントロールの端をD＆Dすることによってサイズを変更出来る機能を提供するクラス
 /// </summary>
 
-namespace テストDB.共通UI
+namespace 共通UI
 {
 
     class DAndDSizeChanger

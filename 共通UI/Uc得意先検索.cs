@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using テストDB.Models;
 using テストDB.ViewModel;
 
-namespace テストDB.共通UI
+namespace 共通UI
 {
     public partial class Uc得意先検索 : UserControl
     {
@@ -88,8 +88,8 @@ namespace テストDB.共通UI
 
             // 列幅の設定:
             dataGridView得意先一覧.Columns[0].Visible = false;
-            dataGridView得意先一覧.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridView得意先一覧.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridView得意先一覧.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dataGridView得意先一覧.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             dataGridView得意先一覧.Columns[3].Visible = false;
             dataGridView得意先一覧.Columns[4].Visible = false;
             dataGridView得意先一覧.Columns[5].Visible = false;

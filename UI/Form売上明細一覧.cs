@@ -3,9 +3,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using テストDB.ViewModel;
-using static テストDB.共通UI.UcBasePager;
-using static テストDB.共通UI.Uc商品検索;
-using static テストDB.共通UI.Uc得意先検索;
+using static 共通UI.UcGridPager;
+using static 共通UI.Uc商品検索;
+using static 共通UI.Uc得意先検索;
 
 namespace テストDB.UI
 {
@@ -78,10 +78,10 @@ namespace テストDB.UI
             this.uc得意先検索.On得意先CDSelected += On得意先CD_Selected;
 
             // グリッドのフォーマットイベント
-            this.ucPager.OnGridFormat += OnGrid_Format;
+            this.ucGridPager.OnGridFormat += OnGrid_Format;
 
             // グリッドのダブルクリック
-            this.ucPager.OnGridDoubleClick += OnGrid_DoubleClick;
+            this.ucGridPager.OnGridDoubleClick += OnGrid_DoubleClick;
         }
 
         private void Form売上明細一覧_Load(object sender, EventArgs e)
@@ -154,9 +154,9 @@ namespace テストDB.UI
                .ToList()
                 ;
 
-            this.ucPager.RowsInPage = 100;
-            this.ucPager.SetFullDatasource<ds売上明細一覧>(list);
-            this.ucPager.ShowPage();
+            this.ucGridPager.RowsInPage = 100;
+            this.ucGridPager.SetFullDatasource<ds売上明細一覧>(list);
+            this.ucGridPager.ShowPage();
 
             // ロード終了
             OnLoaded();
@@ -182,7 +182,7 @@ namespace テストDB.UI
         // グリッドの書式設定
         private void OnGrid_Format()
         {
-            DataGridView dg = this.ucPager.pagerDataGridView;
+            DataGridView dg = this.ucGridPager.pagerDataGridView;
 
             // 書式
             dg.Columns[(int)ds売上明細一覧_Col.売上日].DefaultCellStyle.Format = "MM/dd";
@@ -192,21 +192,21 @@ namespace テストDB.UI
 
             dg.Columns[(int)ds売上明細一覧_Col.ID].HeaderText = "伝票№";
 
-            ucPager_SizeChanged(this, null);
+            ucGridPager_SizeChanged(this, null);
         }
 
         // ----------------------------------------------------------------
         // 一覧のサイズ変更
         // ----------------------------------------------------------------
-        private void ucPager_SizeChanged(object sender, EventArgs e)
+        private void ucGridPager_SizeChanged(object sender, EventArgs e)
         {
-            DataGridView dg = this.ucPager.pagerDataGridView;
+            DataGridView dg = this.ucGridPager.pagerDataGridView;
 
             // データ0行ならなにもしない
             if (dg.RowCount == 0) return;
 
-            dg.Columns[(int)ds売上明細一覧_Col.商品名].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dg.Columns[(int)ds売上明細一覧_Col.得意先名].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dg.Columns[(int)ds売上明細一覧_Col.商品名].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dg.Columns[(int)ds売上明細一覧_Col.得意先名].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
 
             int ColWidthSum = 0;
             foreach (DataGridViewColumn column in dg.Columns)

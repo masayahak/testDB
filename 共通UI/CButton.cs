@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace テストDB.共通UI
+namespace 共通UI
 {
     public partial class CButton : Button
     {

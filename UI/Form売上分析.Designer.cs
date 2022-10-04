@@ -38,7 +38,7 @@
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.button期間検索 = new System.Windows.Forms.Button();
-            this.dtp期間開始 = new テストDB.共通UI.CDateTimePicker();
+            this.dtp期間開始 = new 共通UI.CDateTimePicker();
             this.chart売上上位得意先 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chart売上上位商品 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chart売上高 = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -61,8 +61,8 @@
             this.button過去7日 = new System.Windows.Forms.Button();
             this.button期間本日 = new System.Windows.Forms.Button();
             this.button期間カスタム = new System.Windows.Forms.Button();
-            this.dtp期間終了 = new テストDB.共通UI.CDateTimePicker();
-            this.ucロード中 = new テストDB.共通UI.Ucロード中();
+            this.dtp期間終了 = new 共通UI.CDateTimePicker();
+            this.ucロード中 = new 共通UI.Ucロード中();
             ((System.ComponentModel.ISupportInitialize)(this.chart売上上位得意先)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart売上上位商品)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart売上高)).BeginInit();

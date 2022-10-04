@@ -1,4 +1,4 @@
-﻿namespace テストDB.共通UI
+﻿namespace 共通UI
 {
     partial class Uc得意先入力
     {
@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Uc得意先入力));
             this.textBox得意先ID = new System.Windows.Forms.TextBox();
-            this.textBox得意先名 = new テストDB.共通UI.CTextBox();
-            this.textBox得意先CD = new テストDB.共通UI.CTextBox();
+            this.textBox得意先名 = new 共通UI.CTextBox();
+            this.textBox得意先CD = new 共通UI.CTextBox();
             this.button検索商品 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 

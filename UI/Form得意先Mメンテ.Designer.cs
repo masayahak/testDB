@@ -29,20 +29,20 @@
         private void InitializeComponent()
         {
             テストDB.Models.M社員 m社員1 = new テストDB.Models.M社員();
-            this.ucCRUD = new テストDB.共通UI.UcCRUD();
-            this.ucロード中 = new テストDB.共通UI.Ucロード中();
-            this.ucPager = new テストDB.共通UI.UcBasePager();
+            this.ucCRUD = new 共通UI.UcCRUD();
+            this.ucロード中 = new 共通UI.Ucロード中();
+            this.ucGridPager = new 共通UI.UcGridPager();
             this.panel詳細 = new System.Windows.Forms.Panel();
-            this.uc社員検索 = new テストDB.共通UI.Uc社員検索();
+            this.uc社員検索 = new 共通UI.Uc社員検索();
             this.labelLineRight = new System.Windows.Forms.Label();
             this.labelLineBottom = new System.Windows.Forms.Label();
             this.labelLineLeft = new System.Windows.Forms.Label();
             this.labelLineTop = new System.Windows.Forms.Label();
             this.textBox得意先ID = new System.Windows.Forms.TextBox();
-            this.uc社員入力 = new テストDB.共通UI.Uc社員入力();
+            this.uc社員入力 = new 共通UI.Uc社員入力();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox得意先名 = new テストDB.共通UI.CTextBox();
-            this.textBox得意先CD = new テストDB.共通UI.CTextBox();
+            this.textBox得意先名 = new 共通UI.CTextBox();
+            this.textBox得意先CD = new 共通UI.CTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel詳細.SuspendLayout();
@@ -67,17 +67,17 @@
             this.ucロード中.Size = new System.Drawing.Size(340, 125);
             this.ucロード中.TabIndex = 40;
             // 
-            // ucPager
+            // ucGridPager
             // 
-            this.ucPager.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.ucGridPager.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ucPager.Location = new System.Drawing.Point(0, 0);
-            this.ucPager.Name = "ucPager";
-            this.ucPager.RowsInPage = 100;
-            this.ucPager.Size = new System.Drawing.Size(715, 729);
-            this.ucPager.TabIndex = 50;
-            this.ucPager.SizeChanged += new System.EventHandler(this.ucPager_SizeChanged);
+            this.ucGridPager.Location = new System.Drawing.Point(0, 0);
+            this.ucGridPager.Name = "ucGridPager";
+            this.ucGridPager.RowsInPage = 100;
+            this.ucGridPager.Size = new System.Drawing.Size(715, 729);
+            this.ucGridPager.TabIndex = 50;
+            this.ucGridPager.SizeChanged += new System.EventHandler(this.ucGridPager_SizeChanged);
             // 
             // panel詳細
             // 
@@ -239,7 +239,7 @@
             this.Controls.Add(this.ucCRUD);
             this.Controls.Add(this.panel詳細);
             this.Controls.Add(this.ucロード中);
-            this.Controls.Add(this.ucPager);
+            this.Controls.Add(this.ucGridPager);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form得意先Mメンテ";
             this.Text = "Form得意先Mメンテ";
@@ -254,7 +254,7 @@
 
         private 共通UI.UcCRUD ucCRUD;
         private 共通UI.Ucロード中 ucロード中;
-        private 共通UI.UcBasePager ucPager;
+        private 共通UI.UcGridPager ucGridPager;
         private System.Windows.Forms.Panel panel詳細;
         private 共通UI.Uc社員検索 uc社員検索;
         private System.Windows.Forms.TextBox textBox得意先ID;

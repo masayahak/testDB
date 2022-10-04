@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             テストDB.Models.M社員 m社員1 = new テストDB.Models.M社員();
-            テストDB.Models.M得意先J担当者 m得意先一覧1 = new テストDB.Models.M得意先J担当者();
+            テストDB.Models.M得意先J担当者 m得意先J担当者1 = new テストDB.Models.M得意先J担当者();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.ucロード中 = new テストDB.共通UI.Ucロード中();
-            this.cButton検索 = new テストDB.共通UI.CButton();
-            this.uc得意先検索 = new テストDB.共通UI.Uc得意先検索();
-            this.uc社員検索 = new テストDB.共通UI.Uc社員検索();
-            this.uc社員入力 = new テストDB.共通UI.Uc社員入力();
-            this.uc得意先入力 = new テストDB.共通UI.Uc得意先入力();
-            this.dtp期間終了 = new テストDB.共通UI.CDateTimePicker();
-            this.dtp期間開始 = new テストDB.共通UI.CDateTimePicker();
-            this.ucPager = new テストDB.共通UI.UcBasePager();
+            this.ucロード中 = new 共通UI.Ucロード中();
+            this.cButton検索 = new 共通UI.CButton();
+            this.uc得意先検索 = new 共通UI.Uc得意先検索();
+            this.uc社員検索 = new 共通UI.Uc社員検索();
+            this.uc社員入力 = new 共通UI.Uc社員入力();
+            this.uc得意先入力 = new 共通UI.Uc得意先入力();
+            this.dtp期間終了 = new 共通UI.CDateTimePicker();
+            this.dtp期間開始 = new 共通UI.CDateTimePicker();
+            this.ucGridPager = new 共通UI.UcGridPager();
             this.uc売上伝票 = new テストDB.UI.Uc売上伝票();
             this.SuspendLayout();
             // 
@@ -105,9 +105,9 @@
             // 
             // uc得意先検索
             // 
-            this.uc得意先検索.Location = new System.Drawing.Point(220, 85);
+            this.uc得意先検索.Location = new System.Drawing.Point(403, 49);
             this.uc得意先検索.Name = "uc得意先検索";
-            this.uc得意先検索.Size = new System.Drawing.Size(514, 331);
+            this.uc得意先検索.Size = new System.Drawing.Size(374, 331);
             this.uc得意先検索.TabIndex = 75;
             this.uc得意先検索.Visible = false;
             this.uc得意先検索.得意先CD = null;
@@ -140,13 +140,13 @@
             // 
             this.uc得意先入力.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(45)))), ((int)(((byte)(86)))));
             this.uc得意先入力.Location = new System.Drawing.Point(188, 49);
-            m得意先一覧1.ID = -1;
-            m得意先一覧1.得意先CD = "";
-            m得意先一覧1.得意先名 = "";
-            m得意先一覧1.担当社員ID = 0;
-            m得意先一覧1.担当社員名 = null;
-            m得意先一覧1.担当社員番号 = null;
-            this.uc得意先入力.M得意先J担当者 = m得意先一覧1;
+            m得意先J担当者1.ID = -1;
+            m得意先J担当者1.得意先CD = "";
+            m得意先J担当者1.得意先名 = "";
+            m得意先J担当者1.担当社員ID = 0;
+            m得意先J担当者1.担当社員名 = null;
+            m得意先J担当者1.担当社員番号 = null;
+            this.uc得意先入力.M得意先J担当者 = m得意先J担当者1;
             this.uc得意先入力.Name = "uc得意先入力";
             this.uc得意先入力.ReadOnly得意先CD = false;
             this.uc得意先入力.Size = new System.Drawing.Size(294, 78);
@@ -173,17 +173,17 @@
             this.dtp期間開始.Size = new System.Drawing.Size(142, 31);
             this.dtp期間開始.TabIndex = 70;
             // 
-            // ucPager
+            // ucGridPager
             // 
-            this.ucPager.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.ucGridPager.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ucPager.Location = new System.Drawing.Point(0, 232);
-            this.ucPager.Name = "ucPager";
-            this.ucPager.RowsInPage = 100;
-            this.ucPager.Size = new System.Drawing.Size(845, 497);
-            this.ucPager.TabIndex = 69;
-            this.ucPager.SizeChanged += new System.EventHandler(this.ucPager_SizeChanged);
+            this.ucGridPager.Location = new System.Drawing.Point(0, 232);
+            this.ucGridPager.Name = "ucGridPager";
+            this.ucGridPager.RowsInPage = 100;
+            this.ucGridPager.Size = new System.Drawing.Size(845, 497);
+            this.ucGridPager.TabIndex = 69;
+            this.ucGridPager.SizeChanged += new System.EventHandler(this.ucGridPager_SizeChanged);
             // 
             // uc売上伝票
             // 
@@ -212,7 +212,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dtp期間終了);
             this.Controls.Add(this.dtp期間開始);
-            this.Controls.Add(this.ucPager);
+            this.Controls.Add(this.ucGridPager);
             this.Controls.Add(this.uc売上伝票);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form売上一覧";
@@ -225,7 +225,7 @@
 
         #endregion
 
-        private 共通UI.UcBasePager ucPager;
+        private 共通UI.UcGridPager ucGridPager;
         private 共通UI.CButton cButton検索;
         private 共通UI.Uc得意先検索 uc得意先検索;
         private 共通UI.Uc社員検索 uc社員検索;

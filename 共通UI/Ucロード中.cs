@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace テストDB.共通UI
+namespace 共通UI
 {
     public partial class Ucロード中 : UserControl
     {

@@ -36,11 +36,11 @@
             this.labelLineTop = new System.Windows.Forms.Label();
             this.labelLineRight = new System.Windows.Forms.Label();
             this.labelLineBottom = new System.Windows.Forms.Label();
-            this.textBox社員名 = new テストDB.共通UI.CTextBox();
-            this.textBox社員番号 = new テストDB.共通UI.CTextBox();
-            this.ucCRUD = new テストDB.共通UI.UcCRUD();
-            this.ucロード中 = new テストDB.共通UI.Ucロード中();
-            this.ucPager = new テストDB.共通UI.UcBasePager();
+            this.textBox社員名 = new 共通UI.CTextBox();
+            this.textBox社員番号 = new 共通UI.CTextBox();
+            this.ucCRUD = new 共通UI.UcCRUD();
+            this.ucロード中 = new 共通UI.Ucロード中();
+            this.ucGridPager = new 共通UI.UcGridPager();
             this.panel詳細.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -177,17 +177,17 @@
             this.ucロード中.Size = new System.Drawing.Size(340, 125);
             this.ucロード中.TabIndex = 35;
             // 
-            // ucPager
+            // ucGridPager
             // 
-            this.ucPager.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.ucGridPager.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ucPager.Location = new System.Drawing.Point(0, 0);
-            this.ucPager.Name = "ucPager";
-            this.ucPager.RowsInPage = 100;
-            this.ucPager.Size = new System.Drawing.Size(715, 729);
-            this.ucPager.TabIndex = 37;
-            this.ucPager.SizeChanged += new System.EventHandler(this.ucPager_SizeChanged);
+            this.ucGridPager.Location = new System.Drawing.Point(0, 0);
+            this.ucGridPager.Name = "ucGridPager";
+            this.ucGridPager.RowsInPage = 100;
+            this.ucGridPager.Size = new System.Drawing.Size(715, 729);
+            this.ucGridPager.TabIndex = 37;
+            this.ucGridPager.SizeChanged += new System.EventHandler(this.ucGridPager_SizeChanged);
             // 
             // Form社員Mメンテ
             // 
@@ -198,7 +198,7 @@
             this.Controls.Add(this.panel詳細);
             this.Controls.Add(this.ucCRUD);
             this.Controls.Add(this.ucロード中);
-            this.Controls.Add(this.ucPager);
+            this.Controls.Add(this.ucGridPager);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form社員Mメンテ";
             this.Text = "Form社員Mメンテ";
@@ -218,7 +218,7 @@
         private System.Windows.Forms.TextBox textBox社員ID;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private 共通UI.UcBasePager ucPager;
+        private 共通UI.UcGridPager ucGridPager;
         private 共通UI.UcCRUD ucCRUD;
         private System.Windows.Forms.Label labelLineLeft;
         private System.Windows.Forms.Label labelLineTop;

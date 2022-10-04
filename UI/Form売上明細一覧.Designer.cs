@@ -30,19 +30,19 @@
         {
             テストDB.Models.M得意先J担当者 m得意先一覧1 = new テストDB.Models.M得意先J担当者();
             テストDB.Models.M商品 m商品1 = new テストDB.Models.M商品();
-            this.cButton検索 = new テストDB.共通UI.CButton();
-            this.ucPager = new テストDB.共通UI.UcBasePager();
-            this.uc得意先検索 = new テストDB.共通UI.Uc得意先検索();
+            this.cButton検索 = new 共通UI.CButton();
+            this.ucGridPager = new 共通UI.UcGridPager();
+            this.uc得意先検索 = new 共通UI.Uc得意先検索();
             this.label3 = new System.Windows.Forms.Label();
-            this.uc得意先入力 = new テストDB.共通UI.Uc得意先入力();
-            this.uc商品検索 = new テストDB.共通UI.Uc商品検索();
+            this.uc得意先入力 = new 共通UI.Uc得意先入力();
+            this.uc商品検索 = new 共通UI.Uc商品検索();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.uc商品入力 = new テストDB.共通UI.Uc商品入力();
-            this.dtp期間終了 = new テストDB.共通UI.CDateTimePicker();
-            this.dtp期間開始 = new テストDB.共通UI.CDateTimePicker();
+            this.uc商品入力 = new 共通UI.Uc商品入力();
+            this.dtp期間終了 = new 共通UI.CDateTimePicker();
+            this.dtp期間開始 = new 共通UI.CDateTimePicker();
             this.uc売上伝票 = new テストDB.UI.Uc売上伝票();
-            this.ucロード中 = new テストDB.共通UI.Ucロード中();
+            this.ucロード中 = new 共通UI.Ucロード中();
             this.SuspendLayout();
             // 
             // cButton検索
@@ -60,17 +60,17 @@
             this.cButton検索.UseVisualStyleBackColor = false;
             this.cButton検索.Click += new System.EventHandler(this.cButton検索_Click);
             // 
-            // ucPager
+            // ucGridPager
             // 
-            this.ucPager.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.ucGridPager.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ucPager.Location = new System.Drawing.Point(0, 216);
-            this.ucPager.Name = "ucPager";
-            this.ucPager.RowsInPage = 100;
-            this.ucPager.Size = new System.Drawing.Size(845, 513);
-            this.ucPager.TabIndex = 83;
-            this.ucPager.SizeChanged += new System.EventHandler(this.ucPager_SizeChanged);
+            this.ucGridPager.Location = new System.Drawing.Point(0, 216);
+            this.ucGridPager.Name = "ucGridPager";
+            this.ucGridPager.RowsInPage = 100;
+            this.ucGridPager.Size = new System.Drawing.Size(845, 513);
+            this.ucGridPager.TabIndex = 83;
+            this.ucGridPager.SizeChanged += new System.EventHandler(this.ucGridPager_SizeChanged);
             // 
             // uc得意先検索
             // 
@@ -203,7 +203,7 @@
             this.ClientSize = new System.Drawing.Size(845, 729);
             this.Controls.Add(this.ucロード中);
             this.Controls.Add(this.cButton検索);
-            this.Controls.Add(this.ucPager);
+            this.Controls.Add(this.ucGridPager);
             this.Controls.Add(this.uc得意先検索);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.uc得意先入力);
@@ -226,7 +226,7 @@
         #endregion
 
         private 共通UI.CButton cButton検索;
-        private 共通UI.UcBasePager ucPager;
+        private 共通UI.UcGridPager ucGridPager;
         private 共通UI.Uc得意先検索 uc得意先検索;
         private System.Windows.Forms.Label label3;
         private 共通UI.Uc得意先入力 uc得意先入力;

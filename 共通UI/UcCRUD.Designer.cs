@@ -1,4 +1,4 @@
-﻿namespace テストDB.共通UI
+﻿namespace 共通UI
 {
     partial class UcCRUD
     {
@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnｷｬﾝｾﾙ = new テストDB.共通UI.CButton();
-            this.btn保存 = new テストDB.共通UI.CButton();
-            this.btn削除 = new テストDB.共通UI.CButton();
-            this.btn修正開始 = new テストDB.共通UI.CButton();
+            this.btnｷｬﾝｾﾙ = new 共通UI.CButton();
+            this.btn保存 = new 共通UI.CButton();
+            this.btn削除 = new 共通UI.CButton();
+            this.btn修正開始 = new 共通UI.CButton();
             this.lbl作業中 = new System.Windows.Forms.Label();
-            this.btn追加開始 = new テストDB.共通UI.CButton();
+            this.btn追加開始 = new 共通UI.CButton();
             this.SuspendLayout();
             // 
             // btnｷｬﾝｾﾙ

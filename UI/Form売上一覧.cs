@@ -2,12 +2,11 @@
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
-using static テストDB.共通UI.Uc社員検索;
-using static テストDB.共通UI.Uc得意先検索;
+using static 共通UI.Uc社員検索;
+using static 共通UI.Uc得意先検索;
 using テストDB.ViewModel;
-using static テストDB.共通UI.UcBasePager;
 using System.Threading.Tasks;
-using テストDB.Models;
+using static 共通UI.UcGridPager;
 
 namespace テストDB.UI
 {
@@ -61,6 +60,9 @@ namespace テストDB.UI
             this.uc社員入力.M社員 = e.m社員;
         }
 
+        // ----------------------------------------------------------------
+        // コンストラクタ
+        // ----------------------------------------------------------------
         public Form売上一覧()
         {
             InitializeComponent();
@@ -74,11 +76,10 @@ namespace テストDB.UI
             this.uc社員検索.On社員番号Selected += On社員番号_Selected;
 
             // グリッドのフォーマットイベント
-            this.ucPager.OnGridFormat += OnGrid_Format;
+            this.ucGridPager.OnGridFormat += OnGrid_Format;
 
             // グリッドのダブルクリック
-            this.ucPager.OnGridDoubleClick += OnGrid_DoubleClick;
-
+            this.ucGridPager.OnGridDoubleClick += OnGrid_DoubleClick;
 
         }
 
@@ -155,9 +156,9 @@ namespace テストDB.UI
                 ;
 
 
-            this.ucPager.RowsInPage = 100;
-            this.ucPager.SetFullDatasource<ds売上一覧>(list);
-            this.ucPager.ShowPage();
+            this.ucGridPager.RowsInPage = 100;
+            this.ucGridPager.SetFullDatasource<ds売上一覧>(list);
+            this.ucGridPager.ShowPage();
 
             // ロード終了
             OnLoaded();
@@ -182,7 +183,7 @@ namespace テストDB.UI
         // グリッドの書式設定
         private void OnGrid_Format()
         {
-            DataGridView dg = this.ucPager.pagerDataGridView;
+            DataGridView dg = this.ucGridPager.pagerDataGridView;
 
             // 書式
             dg.Columns[(int)ds売上一覧_Col.売上日].DefaultCellStyle.Format = "MM/dd";
@@ -191,17 +192,17 @@ namespace テストDB.UI
             // ヘッダー
             dg.Columns[(int)ds売上一覧_Col.ID].HeaderText = "伝票№";
 
-            ucPager_SizeChanged(this, null);
+            ucGridPager_SizeChanged(this, null);
         }
 
 
         // ----------------------------------------------------------------
         // 一覧のサイズ変更
         // ----------------------------------------------------------------
-        private void ucPager_SizeChanged(object sender, EventArgs e)
+        private void ucGridPager_SizeChanged(object sender, EventArgs e)
         {
 
-            DataGridView dg = this.ucPager.pagerDataGridView;
+            DataGridView dg = this.ucGridPager.pagerDataGridView;
 
             // データ0行ならなにもしない
             if (dg.RowCount == 0) return;

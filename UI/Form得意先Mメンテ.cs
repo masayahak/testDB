@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using テストDB.Models;
 using テストDB.ViewModel;
-using static テストDB.共通UI.UcBasePager;
-using static テストDB.共通UI.Uc社員検索;
+using static 共通UI.UcGridPager;
+using static 共通UI.Uc社員検索;
+using 共通UI;
 
 namespace テストDB.UI
 {
@@ -61,12 +62,12 @@ namespace テストDB.UI
             this.uc社員入力.ReadOnly社員番号 = false;
 
             panel詳細.BringToFront();
-            ucPager.Enabled = false;
+            ucGridPager.Enabled = false;
         }
 
         private void ChangeMode_修正()
         {
-            ds得意先一覧 currentItem = (ds得意先一覧)ucPager.pagerDataGridView.SelectedRows[0].DataBoundItem;
+            ds得意先一覧 currentItem = (ds得意先一覧)ucGridPager.pagerDataGridView.SelectedRows[0].DataBoundItem;
             ShowDetail(currentItem);
 
             this.textBox得意先CD.ReadOnly = false;
@@ -74,7 +75,7 @@ namespace テストDB.UI
             this.uc社員入力.ReadOnly社員番号 = false;
 
             panel詳細.BringToFront();
-            ucPager.Enabled = false;
+            ucGridPager.Enabled = false;
         }
 
         private void ChangeMode_照会()
@@ -84,7 +85,7 @@ namespace テストDB.UI
             this.uc社員入力.ReadOnly社員番号 = true;
 
             panel詳細.SendToBack();
-            ucPager.Enabled = true;
+            ucGridPager.Enabled = true;
         }
 
         private void ShowDetail(ds得意先一覧 得意先)
@@ -126,10 +127,10 @@ namespace テストDB.UI
             uc社員検索.On社員番号Selected += On社員番号_Selected;
 
             // グリッドのフォーマットイベント
-            this.ucPager.OnGridFormat += OnGrid_Format;
+            this.ucGridPager.OnGridFormat += OnGrid_Format;
 
             // グリッドのダブルクリック
-            this.ucPager.OnGridDoubleClick += OnGrid_DoubleClick;
+            this.ucGridPager.OnGridDoubleClick += OnGrid_DoubleClick;
         }
         // ------------------------------------------------------------
         // コントロール表示時に全データを読み込み
@@ -169,9 +170,9 @@ namespace テストDB.UI
                 .ToList()
                 ;
 
-            this.ucPager.RowsInPage = 100;
-            this.ucPager.SetFullDatasource<ds得意先一覧>(list);
-            this.ucPager.ShowPage();
+            this.ucGridPager.RowsInPage = 100;
+            this.ucGridPager.SetFullDatasource<ds得意先一覧>(list);
+            this.ucGridPager.ShowPage();
 
             // ロード終了
             OnLoaded();
@@ -196,26 +197,26 @@ namespace テストDB.UI
         // グリッドの書式設定
         private void OnGrid_Format()
         {
-            DataGridView dg = this.ucPager.pagerDataGridView;
+            DataGridView dg = this.ucGridPager.pagerDataGridView;
 
             dg.Columns[(int)ds得意先一覧_Col.ID].Visible = false;
             dg.Columns[(int)ds得意先一覧_Col.担当社員ID].Visible = false;
 
-            ucPager_SizeChanged(this, null);
+            ucGridPager_SizeChanged(this, null);
         }
 
         // ----------------------------------------------------------------
         // 一覧のサイズ変更
         // ----------------------------------------------------------------
-        private void ucPager_SizeChanged(object sender, EventArgs e)
+        private void ucGridPager_SizeChanged(object sender, EventArgs e)
         {
 
-            DataGridView dg = this.ucPager.pagerDataGridView;
+            DataGridView dg = this.ucGridPager.pagerDataGridView;
 
             // データ0行ならなにもしない
             if (dg.RowCount == 0) return;
 
-            dg.Columns[(int)ds得意先一覧_Col.得意先名].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dg.Columns[(int)ds得意先一覧_Col.得意先名].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
 
             int ColWidthSum = 0;
             foreach (DataGridViewColumn column in dg.Columns)

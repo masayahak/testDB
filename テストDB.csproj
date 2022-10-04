@@ -151,17 +151,18 @@
     <Compile Include="共通UI\CTextbox.Designer.cs">
       <DependentUpon>CTextbox.cs</DependentUpon>
     </Compile>
-    <Compile Include="共通UI\UcBasePager.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="共通UI\UcBasePager.Designer.cs">
-      <DependentUpon>UcBasePager.cs</DependentUpon>
-    </Compile>
+    <Compile Include="共通UI\GridToExcel.cs" />
     <Compile Include="共通UI\UcCRUD.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="共通UI\UcCRUD.Designer.cs">
       <DependentUpon>UcCRUD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="共通UI\UcGridPager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="共通UI\UcGridPager.designer.cs">
+      <DependentUpon>UcGridPager.cs</DependentUpon>
     </Compile>
     <Compile Include="共通UI\Ucロード中.cs">
       <SubType>UserControl</SubType>
@@ -240,11 +241,11 @@
     <EmbeddedResource Include="共通UI\CDateTimePicker.resx">
       <DependentUpon>CDateTimePicker.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="共通UI\UcBasePager.resx">
-      <DependentUpon>UcBasePager.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="共通UI\UcCRUD.resx">
       <DependentUpon>UcCRUD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="共通UI\UcGridPager.resx">
+      <DependentUpon>UcGridPager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="共通UI\Ucロード中.resx">
       <DependentUpon>Ucロード中.cs</DependentUpon>

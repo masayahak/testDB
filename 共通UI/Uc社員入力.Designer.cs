@@ -1,4 +1,4 @@
-﻿namespace テストDB.共通UI
+﻿namespace 共通UI
 {
     partial class Uc社員入力
     {
@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Uc社員入力));
             this.button検索社員 = new System.Windows.Forms.Button();
-            this.textBox社員名 = new テストDB.共通UI.CTextBox();
-            this.textBox社員番号 = new テストDB.共通UI.CTextBox();
+            this.textBox社員名 = new 共通UI.CTextBox();
+            this.textBox社員番号 = new 共通UI.CTextBox();
             this.textBox社員ID = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
@@ -103,9 +103,9 @@
 
         #endregion
 
-        private テストDB.共通UI.CTextBox textBox社員名;
+        private 共通UI.CTextBox textBox社員名;
         private System.Windows.Forms.Button button検索社員;
-        private テストDB.共通UI.CTextBox textBox社員番号;
+        private 共通UI.CTextBox textBox社員番号;
         private System.Windows.Forms.TextBox textBox社員ID;
     }
 }

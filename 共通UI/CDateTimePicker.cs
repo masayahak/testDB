@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 
-namespace テストDB.共通UI
+namespace 共通UI
 {
     public partial class CDateTimePicker : DateTimePicker
     {

@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using テストDB.Models;
 using テストDB.ViewModel;
 
-namespace テストDB.共通UI
+namespace 共通UI
 {
     public partial class Uc得意先入力 : UserControl
     {

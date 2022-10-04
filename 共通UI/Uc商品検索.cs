@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using テストDB.Models;
 using テストDB.ViewModel;
 
-namespace テストDB.共通UI
+namespace 共通UI
 {
     public partial class Uc商品検索 : UserControl
     {
