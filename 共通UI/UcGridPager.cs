@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,8 +14,10 @@ namespace 共通UI
         // -------------------------------------------------------
 
         // 外部からDataGridViewを直接参照用
-        public DataGridView pagerDataGridView {
-            get {
+        public DataGridView pagerDataGridView
+        {
+            get
+            {
                 return dataGridView;
             }
         }
@@ -24,19 +25,15 @@ namespace 共通UI
         // こちらに全ページ分のDataSourceをセット
         private List<Object> fullDataSource;
 
-        public void SetFullDatasource<T>(List<T> list)
+        public void SetFullDatasource(List<Object> list)
         {
-            fullDataSource = list.Cast<Object>().ToList();
-            MaxRowCount = fullDataSource.Count;
+            fullDataSource = list;
+            SetMaxRowCount(fullDataSource.Count);
         }
 
-        // -------------------------------------------------------
-        // 公開プロパティ
-        // -------------------------------------------------------
-
-        private int rowsInPage = 100;
+        private int rowsInPage = 10000;
         /// <summary>
-        /// １ページに何行表示するか。デフォルト100行／ページ
+        /// １ページに何行表示するか。デフォルト10000行／ページ
         /// </summary>
         public int RowsInPage
         {
@@ -47,47 +44,43 @@ namespace 共通UI
             }
         }
 
-        // 現在表示している行範囲の先頭
-        private int currentCount;
-        private int CurrentCount
-        {
-            get { return currentCount; }
-            set
-            {
-                currentCount = value;
-
-                int end;
-                if (value + RowsInPage < maxRowCount)
-                    end = value + RowsInPage - 1;
-                else
-                    end = maxRowCount;
-
-                if (maxRowCount == 0)
-                {
-                    this.lblCurrentCount.Text = "0";
-                }
-                else
-                {
-                    this.lblCurrentCount.Text = value.ToString() + "～" + end.ToString();
-                }
-
-                // ボタン制御
-                SwitchButtonEnabled();
-            }
-        }
-
+        // -------------------------------------------------------
+        // プロパティ
+        // -------------------------------------------------------
         // 一覧に表示するリストの最大行数
         private int maxRowCount;
-        private int MaxRowCount
+        private void SetMaxRowCount(int value)
         {
-            set
-            {
-                maxRowCount = value;
-                this.lblMaxCount.Text = maxRowCount.ToString();
+            maxRowCount = value;
+            this.lblMaxCount.Text = maxRowCount.ToString();
 
-                // 件数が変わった＝初期化された。
-                CurrentCount = 1;
+            // 件数が変わった＝初期化された。
+            SetCurrentCount(1);
+        }
+
+        // 現在表示している行範囲の先頭
+        private int currentCount;
+        private void SetCurrentCount(int value)
+        {
+            currentCount = value;
+
+            int end;
+            if (value + RowsInPage < maxRowCount)
+                end = value + RowsInPage - 1;
+            else
+                end = maxRowCount;
+
+            if (maxRowCount == 0)
+            {
+                this.lblCurrentCount.Text = "0";
             }
+            else
+            {
+                this.lblCurrentCount.Text = value.ToString() + "～" + end.ToString();
+            }
+
+            // ボタン制御
+            SwitchButtonEnabled();
         }
 
         // -------------------------------------------------------------
@@ -110,13 +103,13 @@ namespace 共通UI
                 return;
             }
 
-            if (CurrentCount == 1)
+            if (currentCount == 1)
             {
                 this.btnFirst.Enabled = false;
                 this.btnBack.Enabled = false;
             }
 
-            if (CurrentCount + RowsInPage > maxRowCount)
+            if (currentCount + RowsInPage > maxRowCount)
             {
                 this.btnNext.Enabled = false;
                 this.btnLast.Enabled = false;
@@ -137,7 +130,7 @@ namespace 共通UI
 
         public class OnGridDoubleClickArgs : EventArgs
         {
-            public object Row;
+            public object[] RowItems;
         }
 
         // -------------------------------------------------------
@@ -146,7 +139,29 @@ namespace 共通UI
         public UcGridPager()
         {
             InitializeComponent();
-            MaxRowCount = 0;
+
+            SetMaxRowCount(0);
+
+            // DataGirdViewのパフォーマンス・チューニング
+            InitDataGridView();
+        }
+
+        // DataGirdViewのパフォーマンス・チューニング
+        private void InitDataGridView()
+        {
+            // DoubleBuffered
+            Type dgvtype = typeof(DataGridView);
+            System.Reflection.PropertyInfo dgvPropertyInfo =
+                dgvtype.GetProperty("DoubleBuffered", System.Reflection.BindingFlags.Instance
+                | System.Reflection.BindingFlags.NonPublic);
+            dgvPropertyInfo.SetValue(dataGridView, true, null);
+
+            // AutoSize None
+            dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+            dataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+
+            // RowHeader false
+            dataGridView.RowHeadersVisible = false;
         }
 
         // -------------------------------------------------------
@@ -156,47 +171,66 @@ namespace 共通UI
         {
             if (fullDataSource == null) return;
 
+            // 計測対象の処理
             var list = fullDataSource
-                .Skip(CurrentCount - 1)
+                .Skip(currentCount - 1)
                 .Take(RowsInPage)
                 .ToList()
                 ;
 
-            bindingSource.DataSource = list;
-            dataGridView.DataSource = bindingSource;
+            // バインドデータを更新する間、レイアウトの描画を停止
+            try
+            {
 
-            // ０行だと書式設定できない
-            if (list.Count == 0) return;
+                // バインド前に高速化のためにグリッドの描画を一旦止める
+                dataGridView.SuspendLayout();
 
-            SetDgvFormat();
+                // バインド
+                BindingSource bs = new BindingSource();
+                bs.DataSource = list;
+                dataGridView.DataSource = bs;
+            }
+            finally
+            {
+                // ０行だと書式設定できない
+                if (list.Count > 0)
+                {
+                    // 書式設定
+                    SetDgvFormat();
+
+                }
+                // グリッドの描画再開
+                dataGridView.ResumeLayout();
+            }
 
         }
 
         private void btnFirst_Click(object sender, EventArgs e)
         {
-            CurrentCount = 1;
+            SetCurrentCount(1);
             ShowPage();
         }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            CurrentCount -= RowsInPage;
+            SetCurrentCount(currentCount - RowsInPage);
             ShowPage();
         }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            CurrentCount += RowsInPage;
+            SetCurrentCount(currentCount + RowsInPage);
             ShowPage();
         }
 
         private void btnLast_Click(object sender, EventArgs e)
         {
-            while (CurrentCount < maxRowCount)
+
+            while (currentCount < maxRowCount)
             {
-                CurrentCount += RowsInPage;
+                SetCurrentCount(currentCount + RowsInPage);
             }
-            CurrentCount -= RowsInPage;
+            SetCurrentCount(currentCount - RowsInPage);
 
             ShowPage();
         }
@@ -214,13 +248,14 @@ namespace 共通UI
                 if (column.ValueType == typeof(int))
                 {
                     column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
                 }
                 if (column.ValueType == typeof(DateTime))
                 {
                     column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 }
             }
-
             // 実装側で追加の書式設定
             OnGridFormat();
         }
@@ -232,10 +267,19 @@ namespace 共通UI
         {
             try
             {
-                var row = dataGridView.Rows[e.RowIndex].DataBoundItem;
+                var row = dataGridView.Rows[e.RowIndex];
+                var cols = row.Cells.Count;
+
+                Object[] rowItems = new object[cols];
+
+                for (int i = 0; i < cols; i++)
+                {
+                    rowItems[i] = row.Cells[i].Value;
+                }
+
                 var arg = new OnGridDoubleClickArgs()
                 {
-                    Row = row
+                    RowItems = rowItems
                 };
 
                 // 実装側で追加のダブルクリックイベント
@@ -252,6 +296,14 @@ namespace 共通UI
         // -----------------------------------------------------
         private async void buttonExcel_Click(object sender, EventArgs e)
         {
+
+            // Stopwatchクラス生成
+            var sw = new System.Diagnostics.Stopwatch();
+            // 計測開始
+            sw.Start();
+
+            // --------------計測 ↓↓↓↓↓↓↓↓↓------------
+
             // ボタンを連続でクリックできなくする
             this.buttonExcel.Enabled = false;
             Cursor.Current = Cursors.WaitCursor;
@@ -266,6 +318,15 @@ namespace 共通UI
             //元に戻す
             Cursor.Current = Cursors.Default;
             this.buttonExcel.Enabled = true;
+
+            // --------------計測 ↑↑↑↑↑↑↑↑------------
+
+            // 計測停止
+            sw.Stop();
+
+            TimeSpan ts = sw.Elapsed;
+            Console.WriteLine($"計測時間 {ts.TotalMilliseconds}ミリ秒");
+
         }
 
         // ------------------------------------------------------------
@@ -306,11 +367,11 @@ namespace 共通UI
             // Datasourceから検索することも考えたが、テーブルの構造もわからないので、
             // 直接DataGridView内を検索する事にした。
 
-            int currentRow = dataGridView.SelectedRows[0].Index+1;
+            int currentRow = dataGridView.SelectedRows[0].Index + 1;
 
             var キーワードRow = GetRowByキーワード(キーワード, currentRow);
 
-            if(キーワードRow >= 0)
+            if (キーワードRow >= 0)
             {
                 SelectAndShowRow(キーワードRow);
             }

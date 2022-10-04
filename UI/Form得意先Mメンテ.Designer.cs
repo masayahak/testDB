@@ -74,7 +74,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ucGridPager.Location = new System.Drawing.Point(0, 0);
             this.ucGridPager.Name = "ucGridPager";
-            this.ucGridPager.RowsInPage = 100;
             this.ucGridPager.Size = new System.Drawing.Size(715, 729);
             this.ucGridPager.TabIndex = 50;
             this.ucGridPager.SizeChanged += new System.EventHandler(this.ucGridPager_SizeChanged);

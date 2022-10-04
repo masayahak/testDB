@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,20 +16,6 @@ namespace テストDB.UI
         // ----------------------------------------------------------------
         // 表示する一覧の定義
         // ----------------------------------------------------------------
-        public class ds売上明細一覧
-        {
-            public int No { get; set; }
-            public int ID { get; set; }
-            public DateTime 売上日 { get; set; }
-            public string バーコード { get; set; }
-            public string 商品名 { get; set; }
-            public string 得意先CD { get; set; }
-            public string 得意先名 { get; set; }
-            public int 単価 { get; set; }
-            public int 数量 { get; set; }
-            public int 売上高 { get; set; }
-        }
-
         public enum ds売上明細一覧_Col
         {
             No = 0,
@@ -130,32 +117,33 @@ namespace テストDB.UI
             vm売上明細 = new ViewModel売上();
 
             // 非同期でデータ取得
+            var list = new List<Object>();
+
             await Task.Run(() =>
             {
                 vm売上明細.LoadT売上明細(期間開始, 期間終了, バーコード, 得意先CD);
+
+                list = vm売上明細.listV売上明細
+                    .OrderBy(it => it.売上日)
+                    .ThenBy(it => it.バーコード)
+                    .Select((it, i) => new
+                    {
+                        No = i + 1,
+                        ID = it.ID,
+                        売上日 = it.売上日,
+                        バーコード = it.バーコード,
+                        商品名 = it.商品名,
+                        得意先CD = it.得意先CD,
+                        得意先名 = it.得意先名,
+                        単価 = it.販売単価,
+                        数量 = it.販売数量,
+                        売上高 = it.明細売上高,
+                    })
+                    .Cast<Object>().ToList();
+                ;
             });
 
-            var list = vm売上明細.listV売上明細
-                .OrderBy(it => it.売上日)
-                .ThenBy(it => it.バーコード)
-                .Select((it, i) => new ds売上明細一覧
-                {
-                    No = i + 1,
-                    ID = it.ID,
-                    売上日 = it.売上日,
-                    バーコード = it.バーコード,
-                    商品名 = it.商品名,
-                    得意先CD = it.得意先CD,
-                    得意先名 = it.得意先名,
-                    単価 = it.販売単価,
-                    数量 = it.販売数量,
-                    売上高 = it.明細売上高,
-                })
-               .ToList()
-                ;
-
-            this.ucGridPager.RowsInPage = 100;
-            this.ucGridPager.SetFullDatasource<ds売上明細一覧>(list);
+            this.ucGridPager.SetFullDatasource(list);
             this.ucGridPager.ShowPage();
 
             // ロード終了
@@ -241,11 +229,7 @@ namespace テストDB.UI
         // ----------------------------------------------------------------
         private void OnGrid_DoubleClick(OnGridDoubleClickArgs args)
         {
-            if (!(args.Row is ds売上明細一覧)) return;
-
-            var ds = (ds売上明細一覧)args.Row;
-
-            this.uc売上伝票.売上ID = ds.ID;
+            this.uc売上伝票.売上ID = (int)args.RowItems[(int)ds売上明細一覧_Col.ID];
             this.uc売上伝票.DataLoad();
             this.uc売上伝票.Visible = true;
             this.uc売上伝票.BringToFront();

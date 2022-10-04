@@ -98,7 +98,7 @@
             this.button売上総合.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button売上総合.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.button売上総合.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button売上総合.Image = global::テストDB.Properties.Resources.分析;
+            this.button売上総合.Image = global::テストDB.Properties.Resources.グラフ;
             this.button売上総合.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button売上総合.Location = new System.Drawing.Point(12, 160);
             this.button売上総合.Name = "button売上総合";

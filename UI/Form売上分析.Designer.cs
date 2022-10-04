@@ -37,6 +37,7 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form売上分析));
             this.button期間検索 = new System.Windows.Forms.Button();
             this.dtp期間開始 = new 共通UI.CDateTimePicker();
             this.chart売上上位得意先 = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -288,7 +289,7 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = global::テストDB.Properties.Resources.円;
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
             this.pictureBox3.Location = new System.Drawing.Point(9, 17);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(48, 48);
@@ -320,7 +321,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::テストDB.Properties.Resources.握手2;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(13, 17);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(48, 48);
@@ -378,7 +379,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::テストDB.Properties.Resources.グラフ;
+            this.pictureBox2.Image = global::テストDB.Properties.Resources.売上高;
             this.pictureBox2.Location = new System.Drawing.Point(12, 17);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(48, 48);

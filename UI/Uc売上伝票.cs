@@ -14,16 +14,6 @@ namespace テストDB.UI
         // ----------------------------------------------------------------
         // 表示する一覧の定義
         // ----------------------------------------------------------------
-        private class 売上明細list
-        {
-            public string バーコード { get; set; }
-            public string 商品名 { get; set; }
-            public int 販売単価 { get; set; }
-            public int 販売数量 { get; set; }
-            public int 明細売上高 { get; set; }
-            public int 明細消費税額 { get; set; }
-        }
-
         enum 売上明細list_Col
         {
             バーコード = 0,
@@ -80,7 +70,7 @@ namespace テストDB.UI
             this.textBox仕入高.Text = 売上.仕入高.ToString("C");
 
             var 売上明細lists = vm売上.list売上明細
-                            .Select(it => new 売上明細list
+                            .Select(it => new 
                             {
                                 バーコード = it.バーコード,
                                 商品名 = it.商品名,
@@ -89,11 +79,10 @@ namespace テストDB.UI
                                 明細売上高 = it.明細売上高,
                                 明細消費税額 = it.明細消費税額,
                             })
-                            .ToList()
+                            .Cast<Object>().ToList();
                             ;
 
-            this.ucGridPager.RowsInPage = 100;
-            this.ucGridPager.SetFullDatasource<売上明細list>(売上明細lists);
+            this.ucGridPager.SetFullDatasource(売上明細lists);
             this.ucGridPager.ShowPage();
 
         }

@@ -8,6 +8,8 @@ using テストDB.ViewModel;
 using static 共通UI.UcGridPager;
 using static 共通UI.Uc社員検索;
 using 共通UI;
+using System.Collections.Generic;
+using static テストDB.UI.Form社員Mメンテ;
 
 namespace テストDB.UI
 {
@@ -67,7 +69,18 @@ namespace テストDB.UI
 
         private void ChangeMode_修正()
         {
-            ds得意先一覧 currentItem = (ds得意先一覧)ucGridPager.pagerDataGridView.SelectedRows[0].DataBoundItem;
+
+            var row = ucGridPager.pagerDataGridView.SelectedRows[0];
+
+            ds得意先一覧 currentItem = new ds得意先一覧()
+            {
+                ID = (int)row.Cells[(int)ds得意先一覧_Col.ID].Value,
+                得意先CD = (string)row.Cells[(int)ds得意先一覧_Col.得意先CD].Value,
+                得意先名 = (string)row.Cells[(int)ds得意先一覧_Col.得意先名].Value,
+                担当社員ID = (int)row.Cells[(int)ds得意先一覧_Col.担当社員ID].Value,
+                担当社員番号 = (string)row.Cells[(int)ds得意先一覧_Col.担当社員番号].Value,
+                担当社員名 = (string)row.Cells[(int)ds得意先一覧_Col.担当社員名].Value,
+            };
             ShowDetail(currentItem);
 
             this.textBox得意先CD.ReadOnly = false;
@@ -150,28 +163,29 @@ namespace テストDB.UI
             ShowLoading();
 
             // 非同期でデータ取得
+            var list = new List<Object>();
+
             await Task.Run(() =>
             {
                 vm得意先 = new ViewModel得意先();
-            });
-
-            var list = vm得意先.list得意先一覧
-                .OrderBy(it => it.得意先CD)
-                .Select((it, i) => new ds得意先一覧
-                {
-                    No = i + 1,
-                    ID = it.ID,
-                    得意先CD = it.得意先CD,
-                    得意先名 = it.得意先名,
-                    担当社員ID = it.担当社員ID,
-                    担当社員番号 = it.担当社員番号,
-                    担当社員名 = it.担当社員名,
-                })
-                .ToList()
+                list = vm得意先.list得意先一覧
+                    .OrderBy(it => it.得意先CD)
+                    .Select((it, i) => new
+                    {
+                        No = i + 1,
+                        ID = it.ID,
+                        得意先CD = it.得意先CD,
+                        得意先名 = it.得意先名,
+                        担当社員ID = it.担当社員ID,
+                        担当社員番号 = it.担当社員番号,
+                        担当社員名 = it.担当社員名,
+                    })
+                    .Cast<Object>().ToList();
                 ;
 
-            this.ucGridPager.RowsInPage = 100;
-            this.ucGridPager.SetFullDatasource<ds得意先一覧>(list);
+            });
+
+            this.ucGridPager.SetFullDatasource(list);
             this.ucGridPager.ShowPage();
 
             // ロード終了

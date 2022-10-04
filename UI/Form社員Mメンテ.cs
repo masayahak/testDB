@@ -7,6 +7,7 @@ using テストDB.Models;
 using テストDB.ViewModel;
 using static 共通UI.UcGridPager;
 using 共通UI;
+using System.Collections.Generic;
 
 namespace テストDB.UI
 {
@@ -55,7 +56,15 @@ namespace テストDB.UI
 
         private void ChangeMode_修正()
         {
-            ds社員一覧 currentItem = (ds社員一覧)ucGridPager.pagerDataGridView.SelectedRows[0].DataBoundItem;
+            var row = ucGridPager.pagerDataGridView.SelectedRows[0];
+
+            ds社員一覧 currentItem = new ds社員一覧()
+            {
+                ID = (int)row.Cells[(int)ds社員一覧_Col.ID].Value,
+                社員番号 = (string)row.Cells[(int)ds社員一覧_Col.社員番号].Value,
+                社員名 = (string)row.Cells[(int)ds社員一覧_Col.社員名].Value,
+            };
+
             ShowDetail(currentItem);
 
             this.textBox社員番号.ReadOnly = false;
@@ -121,25 +130,27 @@ namespace テストDB.UI
             ShowLoading();
 
             // 非同期でデータ取得
+            var list = new List<Object>();
+
             await Task.Run(() =>
             {
                 vm社員 = new ViewModel社員();
+
+                list = vm社員.list社員
+                    .OrderBy(it => it.社員番号)
+                    .Select((it, i) => new 
+                    {
+                        No = i + 1,
+                        ID = it.ID,
+                        社員番号 = it.社員番号,
+                        社員名 = it.社員名,
+                    })
+                    .Cast<Object>().ToList();
+                    ;
+
             });
 
-            var list = vm社員.list社員
-                .OrderBy(it => it.社員番号)
-                .Select((it, i) => new ds社員一覧
-                {
-                    No = i + 1,
-                    ID = it.ID,
-                    社員番号 = it.社員番号,
-                    社員名 = it.社員名,
-                })
-                .ToList()
-                ;
-
-            this.ucGridPager.RowsInPage = 100;
-            this.ucGridPager.SetFullDatasource<ds社員一覧>(list);
+            this.ucGridPager.SetFullDatasource(list);
             this.ucGridPager.ShowPage();
 
             // ロード終了

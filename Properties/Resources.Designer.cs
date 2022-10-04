@@ -103,26 +103,6 @@ namespace テストDB.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap メニュー {
-            get {
-                object obj = ResourceManager.GetObject("メニュー", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
-        /// </summary>
-        internal static System.Drawing.Bitmap 伝票 {
-            get {
-                object obj = ResourceManager.GetObject("伝票", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
-        /// </summary>
         internal static System.Drawing.Bitmap 円 {
             get {
                 object obj = ResourceManager.GetObject("円", resourceCulture);
@@ -133,9 +113,9 @@ namespace テストDB.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap 分析 {
+        internal static System.Drawing.Bitmap 商品 {
             get {
-                object obj = ResourceManager.GetObject("分析", resourceCulture);
+                object obj = ResourceManager.GetObject("商品", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +123,9 @@ namespace テストDB.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap 商品 {
+        internal static System.Drawing.Bitmap 売上高 {
             get {
-                object obj = ResourceManager.GetObject("商品", resourceCulture);
+                object obj = ResourceManager.GetObject("売上高", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
