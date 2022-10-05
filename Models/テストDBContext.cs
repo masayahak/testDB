@@ -5,7 +5,7 @@ namespace テストDB.Models
     public partial class テストDBContext : DbContext
     {
         public テストDBContext()
-            : base("name=テストDBContext")
+            : base("name=locaDbConnection")
         {
         }
 
