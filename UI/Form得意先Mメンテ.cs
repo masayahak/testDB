@@ -10,6 +10,7 @@ using static 共通UI.Uc社員検索;
 using 共通UI;
 using System.Collections.Generic;
 using static テストDB.UI.Form社員Mメンテ;
+using System.ComponentModel.DataAnnotations;
 
 namespace テストDB.UI
 {
@@ -267,7 +268,7 @@ namespace テストDB.UI
         private void On保存Click()
         {
 
-            if (IsInputCheckError()) return;
+            if (!IsAll_Validated()) return;
 
             try
             {
@@ -302,42 +303,76 @@ namespace テストDB.UI
         // ------------------------------------------------------------
         // 入力情報のチェック
         // ------------------------------------------------------------
-        private bool IsInputCheckError()
+        private bool IsAll_Validated()
         {
 
-            var 得意先CD = textBox得意先CD.Text;
-            if (string.IsNullOrWhiteSpace(得意先CD))
+            bool allValidated = true;
+
+            // エラープロバイダーを一旦全て消す
+            errorProvider.Clear();
+
+            // -------------------------------------------------
+            // 参照整合性制約のチェック
+            // -------------------------------------------------
+            if (uc社員入力.M社員.ID < 0)
             {
-                MessageBox.Show("得意先CDは必須です。",
-                    "エラー",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                    );
-                return true;
+                errorProvider.SetError(uc社員入力, "担当社員を指定してください。");
+                return false;
             }
 
-            var 得意先名 = textBox得意先名.Text;
-            if (string.IsNullOrWhiteSpace(得意先名))
+            // -------------------------------------------------
+            // Modelのアノテーションを利用したチェック
+            // -------------------------------------------------
+            M得意先 得意先 = new M得意先
             {
-                MessageBox.Show("得意先名は必須です。",
-                    "エラー",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                    );
-                return true;
+                得意先CD = textBox得意先CD.Text,
+                得意先名 = textBox得意先名.Text,
+                担当社員ID = uc社員入力.M社員.ID,
+            };
+
+            ValidationContext context = new ValidationContext(得意先, null, null);
+            IList<ValidationResult> errors = new List<ValidationResult>();
+
+            if (!Validator.TryValidateObject(得意先, context, errors, true))
+            {
+                allValidated = false;
+
+                foreach (ValidationResult result in errors)
+                {
+                    SetErrorProviders(result);
+                }
             }
 
-            if (uc社員入力.M社員.ID <= 0)
+            return allValidated;
+        }
+
+        // エラープロバイダーのセット
+        private void SetErrorProviders(ValidationResult result)
+        {
+            var エラー列名 = result.MemberNames.First();
+
+            Control ErrorControl = null;
+
+            switch (エラー列名)
             {
-                MessageBox.Show("担当者は必須です。",
-                    "エラー",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                    );
-                return true;
+                case "得意先CD":
+                    {
+                        ErrorControl = textBox得意先CD;
+                        break;
+                    }
+                case "得意先名":
+                    {
+                        ErrorControl = textBox得意先名;
+                        break;
+                    }
+                case "担当社員ID":
+                    {
+                        ErrorControl = uc社員入力;
+                        break;
+                    }
             }
 
-            return false;
+            errorProvider.SetError(ErrorControl, result.ErrorMessage);
         }
 
 

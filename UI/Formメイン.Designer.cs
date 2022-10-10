@@ -29,18 +29,20 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panelMain = new System.Windows.Forms.Panel();
+            this.button商品 = new System.Windows.Forms.Button();
             this.button商品別 = new System.Windows.Forms.Button();
             this.button売上日別 = new System.Windows.Forms.Button();
             this.button売上総合 = new System.Windows.Forms.Button();
             this.button得意先 = new System.Windows.Forms.Button();
             this.button社員 = new System.Windows.Forms.Button();
-            this.panelMain = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(47)))));
+            this.panel2.Controls.Add(this.button商品);
             this.panel2.Controls.Add(this.button商品別);
             this.panel2.Controls.Add(this.button売上日別);
             this.panel2.Controls.Add(this.button売上総合);
@@ -51,6 +53,35 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(163, 729);
             this.panel2.TabIndex = 7;
+            // 
+            // panelMain
+            // 
+            this.panelMain.BackColor = System.Drawing.Color.White;
+            this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelMain.Location = new System.Drawing.Point(163, 0);
+            this.panelMain.Name = "panelMain";
+            this.panelMain.Size = new System.Drawing.Size(845, 729);
+            this.panelMain.TabIndex = 8;
+            // 
+            // button商品
+            // 
+            this.button商品.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button商品.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(47)))));
+            this.button商品.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.button商品.FlatAppearance.BorderSize = 2;
+            this.button商品.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button商品.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.button商品.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(137)))), ((int)(((byte)(163)))));
+            this.button商品.Image = global::テストDB.Properties.Resources.商品1;
+            this.button商品.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button商品.Location = new System.Drawing.Point(12, 562);
+            this.button商品.Name = "button商品";
+            this.button商品.Size = new System.Drawing.Size(135, 48);
+            this.button商品.TabIndex = 8;
+            this.button商品.Text = "　商 品";
+            this.button商品.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button商品.UseVisualStyleBackColor = false;
+            this.button商品.Click += new System.EventHandler(this.button商品_Click);
             // 
             // button商品別
             // 
@@ -150,15 +181,6 @@
             this.button社員.UseVisualStyleBackColor = false;
             this.button社員.Click += new System.EventHandler(this.button社員_Click);
             // 
-            // panelMain
-            // 
-            this.panelMain.BackColor = System.Drawing.Color.White;
-            this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelMain.Location = new System.Drawing.Point(163, 0);
-            this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(845, 729);
-            this.panelMain.TabIndex = 8;
-            // 
             // Formメイン
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -183,5 +205,6 @@
         private System.Windows.Forms.Button button得意先;
         private System.Windows.Forms.Button button社員;
         private System.Windows.Forms.Panel panelMain;
+        private System.Windows.Forms.Button button商品;
     }
 }

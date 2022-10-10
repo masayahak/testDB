@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel詳細 = new System.Windows.Forms.Panel();
             this.labelLineRight = new System.Windows.Forms.Label();
             this.labelLineBottom = new System.Windows.Forms.Label();
@@ -41,7 +42,9 @@
             this.ucCRUD = new 共通UI.UcCRUD();
             this.ucロード中 = new 共通UI.Ucロード中();
             this.ucGridPager = new 共通UI.UcGridPager();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel詳細.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // panel詳細
@@ -189,6 +192,10 @@
             this.ucGridPager.TabIndex = 37;
             this.ucGridPager.SizeChanged += new System.EventHandler(this.ucGridPager_SizeChanged);
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // Form社員Mメンテ
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -205,6 +212,7 @@
             this.Load += new System.EventHandler(this.Form社員メンテ_Load);
             this.panel詳細.ResumeLayout(false);
             this.panel詳細.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -224,5 +232,6 @@
         private System.Windows.Forms.Label labelLineTop;
         private System.Windows.Forms.Label labelLineRight;
         private System.Windows.Forms.Label labelLineBottom;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

@@ -12,6 +12,7 @@ namespace テストDB.UI
         Form売上明細一覧 form売上明細一覧 = new Form売上明細一覧();
         Form社員Mメンテ form社員Mメンテ = new Form社員Mメンテ();
         Form得意先Mメンテ form得意先Mメンテ = new Form得意先Mメンテ();
+        Form商品Mメンテ form商品Mメンテ = new Form商品Mメンテ();
 
         // -----------------------------------------------------------
         // グラフで売上日をダブルクリック
@@ -108,6 +109,14 @@ namespace テストDB.UI
 
             ClearAllButton();
             this.button得意先.ForeColor = Color.WhiteSmoke;
+        }
+
+        private void button商品_Click(object sender, EventArgs e)
+        {
+            ShowFormInPanel(form商品Mメンテ);
+
+            ClearAllButton();
+            this.button商品.ForeColor = Color.WhiteSmoke;
         }
 
         // パネルへロード

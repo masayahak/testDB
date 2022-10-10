@@ -29,7 +29,7 @@ namespace テストDB.ViewModel
                     throw new Exception("バーコードが重複しています。");
  
                 db.M商品s.Add(追加商品);
-                db.SaveChanges();
+                db.SaveChanges();   // <= Will throw validation exception
             }
 
             return 追加商品.ID;
@@ -50,6 +50,8 @@ namespace テストDB.ViewModel
 
                 商品.バーコード = 更新商品.バーコード;
                 商品.商品名 = 更新商品.商品名;
+                商品.販売単価 = 更新商品.販売単価;
+                商品.仕入単価 = 更新商品.仕入単価;
 
                 db.SaveChanges();
             }

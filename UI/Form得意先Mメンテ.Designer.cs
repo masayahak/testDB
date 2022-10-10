@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             テストDB.Models.M社員 m社員1 = new テストDB.Models.M社員();
             this.ucCRUD = new 共通UI.UcCRUD();
             this.ucロード中 = new 共通UI.Ucロード中();
@@ -45,7 +46,9 @@
             this.textBox得意先CD = new 共通UI.CTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel詳細.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // ucCRUD
@@ -230,6 +233,10 @@
             this.label1.TabIndex = 42;
             this.label1.Text = "得意先コード";
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // Form得意先Mメンテ
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -246,6 +253,7 @@
             this.Load += new System.EventHandler(this.Form得意先メンテ_Load);
             this.panel詳細.ResumeLayout(false);
             this.panel詳細.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -268,5 +276,6 @@
         private System.Windows.Forms.Label labelLineBottom;
         private System.Windows.Forms.Label labelLineLeft;
         private System.Windows.Forms.Label labelLineTop;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

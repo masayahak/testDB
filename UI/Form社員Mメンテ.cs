@@ -8,6 +8,7 @@ using テストDB.ViewModel;
 using static 共通UI.UcGridPager;
 using 共通UI;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace テストDB.UI
 {
@@ -209,7 +210,7 @@ namespace テストDB.UI
         private void On保存Click()
         {
 
-            if (IsInputCheckError()) return;
+            if (!IsAll_Validated()) return;
 
             try
             {
@@ -244,32 +245,60 @@ namespace テストDB.UI
         // ------------------------------------------------------------
         // 入力情報のチェック
         // ------------------------------------------------------------
-        private bool IsInputCheckError()
+        private bool IsAll_Validated()
         {
+            bool allValidated = true;
 
-            var 社員番号 = textBox社員番号.Text;
-            if (string.IsNullOrWhiteSpace(社員番号))
+            // エラープロバイダーを一旦全て消す
+            errorProvider.Clear();
+
+            // -------------------------------------------------
+            // Modelのアノテーションを利用したチェック
+            // -------------------------------------------------
+            M社員 社員 = new M社員
             {
-                MessageBox.Show("社員番号は必須です。",
-                    "エラー",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                    );
-                return true;
+                社員番号 = textBox社員番号.Text,
+                社員名 = textBox社員名.Text,
+            };
+
+            ValidationContext context = new ValidationContext(社員, null, null);
+            IList<ValidationResult> errors = new List<ValidationResult>();
+
+            if (!Validator.TryValidateObject(社員, context, errors, true))
+            {
+                allValidated = false;
+
+                foreach (ValidationResult result in errors)
+                {
+                    SetErrorProviders(result);
+                }
             }
 
-            var 社員名 = textBox社員名.Text;
-            if (string.IsNullOrWhiteSpace(社員名))
+            return allValidated;
+        }
+
+        // エラープロバイダーのセット
+        private void SetErrorProviders(ValidationResult result)
+        {
+            var エラー列名 = result.MemberNames.First();
+
+            Control ErrorControl = null;
+
+            switch (エラー列名)
             {
-                MessageBox.Show("社員名は必須です。",
-                    "エラー",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                    );
-                return true;
+                case "社員番号":
+                    {
+                        ErrorControl = textBox社員番号;
+                        break;
+                    }
+                case "社員名":
+                    {
+                        ErrorControl = textBox社員名;
+                        break;
+                    }
             }
 
-            return false;
+            errorProvider.SetError(ErrorControl, result.ErrorMessage);
         }
 
 
